@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atmatrix.abr.infrastructure.dao.BillingPriceMapper">
+    <resultMap id="BaseResultMap" type="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="parent_union_code" jdbcType="VARCHAR" property="parentUnionCode"/>
+        <result column="union_code" jdbcType="VARCHAR" property="unionCode"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="min_price" jdbcType="INTEGER" property="minPrice"/>
+        <result column="max_price" jdbcType="INTEGER" property="maxPrice"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="unit" jdbcType="VARCHAR" property="unit"/>
+        <result column="delete" jdbcType="INTEGER" property="delete"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+  </sql>
+    <select id="selectByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from billing_price
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <delete id="deleteByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceExample">
+        delete from billing_price
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+    insert into billing_price (id, parent_union_code, union_code, 
+      name, min_price, max_price, 
+      type, unit, delete, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{parentUnionCode,jdbcType=VARCHAR}, #{unionCode,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{minPrice,jdbcType=INTEGER}, #{maxPrice,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{delete,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+        insert into billing_price
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="parentUnionCode != null">
+                parent_union_code,
+            </if>
+            <if test="unionCode != null">
+                union_code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="minPrice != null">
+                min_price,
+            </if>
+            <if test="maxPrice != null">
+                max_price,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="unit != null">
+                unit,
+            </if>
+            <if test="delete != null">
+                delete,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="parentUnionCode != null">
+                #{parentUnionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="unionCode != null">
+                #{unionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="minPrice != null">
+                #{minPrice,jdbcType=INTEGER},
+            </if>
+            <if test="maxPrice != null">
+                #{maxPrice,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="unit != null">
+                #{unit,jdbcType=VARCHAR},
+            </if>
+            <if test="delete != null">
+                #{delete,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceExample"
+            resultType="java.lang.Long">
+        select count(*) from billing_price
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update billing_price
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.parentUnionCode != null">
+                parent_union_code = #{record.parentUnionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.unionCode != null">
+                union_code = #{record.unionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.name != null">
+                name = #{record.name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.minPrice != null">
+                min_price = #{record.minPrice,jdbcType=INTEGER},
+            </if>
+            <if test="record.maxPrice != null">
+                max_price = #{record.maxPrice,jdbcType=INTEGER},
+            </if>
+            <if test="record.type != null">
+                type = #{record.type,jdbcType=INTEGER},
+            </if>
+            <if test="record.unit != null">
+                unit = #{record.unit,jdbcType=VARCHAR},
+            </if>
+            <if test="record.delete != null">
+                delete = #{record.delete,jdbcType=INTEGER},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updateTime != null">
+                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update billing_price
+        set id = #{record.id,jdbcType=INTEGER},
+        parent_union_code = #{record.parentUnionCode,jdbcType=VARCHAR},
+        union_code = #{record.unionCode,jdbcType=VARCHAR},
+        name = #{record.name,jdbcType=VARCHAR},
+        min_price = #{record.minPrice,jdbcType=INTEGER},
+        max_price = #{record.maxPrice,jdbcType=INTEGER},
+        type = #{record.type,jdbcType=INTEGER},
+        unit = #{record.unit,jdbcType=VARCHAR},
+        delete = #{record.delete,jdbcType=INTEGER},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+
+    <select id="getBillingPriceByParentCode" resultType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+        select
+        <include refid="Base_Column_List"/>
+        from `billing_price`
+        where `parent_union_code` in
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    <select id="getBillingPriceByCode" resultType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+        select
+        <include refid="Base_Column_List"/>
+        from `billing_price`
+        where `union_code` =#{code}
+    </select>
+
+</mapper>

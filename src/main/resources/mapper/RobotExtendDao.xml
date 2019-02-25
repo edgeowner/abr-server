@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atmatrix.abr.infrastructure.dao.RobotExtendDao">
+
+    <sql id="Jion_Table_List">
+        rd.`id` AS id,
+        rd.`robot_name` AS robotName,
+        rd.`robot_union_code` AS robotUnionCode,
+        rd.`region_code` AS regionCode,
+        rd.`region_name` AS regionName,
+        rd.`billing_type` AS billingType,
+        rd.`billing_price` AS billingPrice,
+        rdi.`name` AS billlingTypeName,
+        rd.`rent_status` AS rentStatus,
+        rds.`name` as rentStatusName,
+        rd.`work_type` AS workType,
+        rd.`delete` AS `delete`,
+        rd.`create_time` AS createTime,
+        rd.`update_time` AS updateTime,
+        rb.`robot_pic_url` AS picUrl,
+        rw.`worktype_name` AS workTypeName,
+        rw.`worktype_desc` AS worktypeDesc
+    </sql>
+
+    <select id="queryListByPageCondition" resultType="com.atmatrix.abr.mgt.dto.RobotDetailDto">
+        select
+        <include refid="Jion_Table_List"/>
+        from robot_detail as rd
+        left join robot_worktype as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status and rds.type = 'rentStatus'
+        WHERE rd.`delete` = 1
+        <if test="conditions !=null">
+            <if test="conditions.regionCode !=null and conditions.regionCode !=''">
+                <choose>
+                    <when test="conditions.like">
+                        and rd.region_code like concat(#{conditions.regionCode},',%')
+                    </when>
+                    <otherwise>
+                        and rd.region_code = #{conditions.regionCode}
+                    </otherwise>
+                </choose>
+            </if>
+        </if>
+        <if test="conditions.billingTypeCode !=null and conditions.billingTypeCode !=''">
+            and rd.billing_type = #{conditions.billingTypeCode}
+        </if>
+        <if test="conditions.min !=null and conditions.min !=''">
+            and rd.billing_price &gt;= #{conditions.min}
+        </if>
+        <if test="conditions.max !=null and conditions.max !=''">
+            and rd.billing_price &lt; #{conditions.max}
+        </if>
+        <if test="conditions.rentStatus !=null and conditions.rentStatus !=''">
+            and rd.rent_status = #{conditions.rentStatus}
+        </if>
+        <if test="conditions.workTypes !=null and conditions.workTypes.size() &gt; 0">
+            and rd.work_type in
+            <foreach close=")" collection="conditions.workTypes" item="item" open="(" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        order by id desc
+    </select>
+
+    <!--private String robotUnionCode;-->
+    <!--&#45;&#45;     private String accountAddress;-->
+    <!--&#45;&#45;     private String name;-->
+    <!--&#45;&#45;     private String rentStatus;-->
+    <!--&#45;&#45;     private Integer rentName;-->
+    <!--&#45;&#45;     private String worktypeName;-->
+    <!--&#45;&#45;     private String worktypeCode;-->
+    <!--&#45;&#45;     private String worktypeDesc;-->
+    <!--&#45;&#45;     private Integer leftDayOrTimes;-->
+    <!--&#45;&#45;     private String billingTypeCode;-->
+    <!--&#45;&#45;     private String billingPrice;-->
+    <!--&#45;&#45;     private String billingUnit;-->
+    <sql id="Detail_Info_Extend">
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as robotName,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rdr.`name` as rentName,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rdb.`name` as billingTypeName
+    </sql>
+
+    <select id="queryDetailInfoByUnionCode" resultType="com.atmatrix.abr.mgt.dto.RobotDetailExtendDto">
+        select
+        <include refid="Detail_Info_Extend"/>
+        from robot_detail as rd
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdb on rdb.code = rd.billing_type and rdb.type = 'billing'
+        left join robot_dictionary as rdr on rdr.code = rd.rent_status and rdr.type = 'rentStatus'
+        left join robot_worktype as rw on rw.union_code = rd.work_type and rw.`delete` = 1
+        where rd.`robot_union_code` = #{robotUnionCode}
+        and rd.`delete` = 1
+    </select>
+</mapper>
