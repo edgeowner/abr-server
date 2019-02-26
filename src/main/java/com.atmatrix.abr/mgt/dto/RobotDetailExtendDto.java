@@ -19,9 +19,9 @@ public class RobotDetailExtendDto {
     private String name;
     private String rentStatus;
     private String rentName;
-    private String worktypeName;
-    private String worktypeCode;
-    private String worktypeDesc;
+    private String workTypeName;
+    private String workTypeCode;
+    private String workTypeDesc;
     private Integer leftDayOrTimes;
     private String billingTypeCode;
     private String billingPrice;

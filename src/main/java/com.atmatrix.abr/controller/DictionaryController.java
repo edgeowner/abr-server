@@ -3,7 +3,6 @@ package com.atmatrix.abr.controller;
 import com.atmatrix.abr.application.DictionaryAppliction;
 import com.atmatrix.abr.application.dto.BillingDto;
 import com.atmatrix.abr.application.dto.DictionaryDto;
-import com.atmatrix.abr.application.dto.condtion.RegionConditionDto;
 import com.atmatrix.abr.common.web.WebUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

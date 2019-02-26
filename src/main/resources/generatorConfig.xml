@@ -102,7 +102,7 @@
                <!--selectByExampleQueryId="true">-->
         <!--</table>-->
 
-        <table tableName="robot_param" domainObjectName="RobotParam"
+        <table tableName="robot_work_type" domainObjectName="RobotWorkType"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

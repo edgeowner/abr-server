@@ -19,7 +19,7 @@ public class RobotParamMgtImplTest extends BaseTest {
 
     @Test
     public void getRobotParamListByCode() {
-        String code = "404782845716627470";
+        String code = "404783011800760331";
         List<RobotParam> robotParams = robotParamMapper.queryParamsByUnionCode(code);
         System.out.println(new Gson().toJson(robotParams));
     }

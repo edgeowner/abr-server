@@ -91,6 +91,9 @@ public class RobotApplicationImpl implements RobotApplication {
     public RobotDetailExtendDto getRobotDetailExntendInfo(String robotUnionCode) {
         RobotInfoDto result = new RobotInfoDto();
         RobotDetailExtendDto robotDetailInfo = robotDetailMgt.getRobotDetailInfo(robotUnionCode);
+        if (robotDetailInfo == null) {
+            return result;
+        }
         BeanUtils.copyProperties(robotDetailInfo, result);
         List<ParamDto> paramDtos = Lists.newArrayList();
         List<RobotParam> robotParamResources = robotParamsMgt.getRobotParamListByCode(robotUnionCode);

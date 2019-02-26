@@ -1,0 +1,23 @@
+[2019-02-26 10:03:31] ERROR com.atmatrix.abr.controller.RobotController 62 getRobotDetailInfo - getRegionList Failed :java.lang.IllegalArgumentException: Source must not be null
+[2019-02-26 10:13:10] ERROR com.atmatrix.abr.controller.RobotController 46 getRobotList - getRegionList Failed :org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.DataSourceClosedException: dataSource already closed at Tue Feb 26 10:13:10 CST 2019
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotExtendDao.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotExtendDao.queryListByPageCondition_COUNT
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.DataSourceClosedException: dataSource already closed at Tue Feb 26 10:13:10 CST 2019
+[2019-02-26 10:32:59] ERROR com.atmatrix.abr.controller.RobotController 62 getRobotDetailInfo - getRegionList Failed :org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotExtendDao.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select                   rd.`id`  as id,         rb.`union_code` as robotUnionCode,         rb.`device_id`  as  deviceId,         rb.`account_address` as accountAddress,         rb.`robot_pic_url` as picUrl,         rd.`robot_name` as name,         rd.`region_code` AS regionCode,         rd.`rent_status` as rentStatus,         rdr.`name` as rentName,         rd.`billing_type`  as billingTypeCode,         rd.`billing_price` as billingPrice,         rdb.`name` as billingTypeName,         rd.`work_type` as workTypeCode,         rw.`worktype_name` as workTypeName,         rw.`worktype_desc` as workTypeDesc               from robot_detail as rd         left join robot_basic as rb on rb.union_code = rd.robot_union_code         left join robot_dictionary as rdb on rdb.code = rd.billing_type and rdb.type = 'billing'         left join robot_dictionary as rdr on rdr.code = rd.rent_status and rdr.type = 'rentStatus'         left join robot_worktype as rw on rw.union_code = rd.work_type and rw.`delete` = 1         where rd.`robot_union_code` = ?         and rd.`delete` = 1
+### Cause: java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
+[2019-02-26 10:33:03] ERROR com.atmatrix.abr.controller.RobotController 46 getRobotList - getRegionList Failed :org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotExtendDao.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT count(0) FROM robot_detail AS rd LEFT JOIN robot_worktype AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status AND rds.type = 'rentStatus' WHERE rd.`delete` = 1
+### Cause: java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist

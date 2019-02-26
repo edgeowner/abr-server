@@ -4,20 +4,19 @@ import com.atmatrix.abr.common.constants.DeleteEnum;
 import com.atmatrix.abr.common.constants.QueryDicTypeEnum;
 import com.atmatrix.abr.common.constants.ShowStatusEnum;
 import com.atmatrix.abr.infrastructure.entity.RobotDictionary;
-import com.atmatrix.abr.infrastructure.entity.RobotWorktype;
+import com.atmatrix.abr.infrastructure.entity.RobotWorkType;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 public class RobotWorktypeMapperTest  extends BaseTest{
 
 
     @Autowired
-    private RobotWorktypeMapper robotWorktypeMapper;
+    private RobotWorkTypeMapper robotWorkTypeMapper;
     @Autowired
     private RobotDictionaryMapper robotDictionaryMapper;
 
@@ -25,10 +24,10 @@ public class RobotWorktypeMapperTest  extends BaseTest{
     public void getAll() {
 
         List<RobotDictionary> listToSave = Lists.newArrayList();
-        List<RobotWorktype> all = robotWorktypeMapper.getAll();
+        List<RobotWorkType> all = robotWorkTypeMapper.getAll();
         RobotDictionary dto = null;
         int i = 0;
-        for (RobotWorktype robotWorktype:all) {
+        for (RobotWorkType robotWorktype:all) {
             dto = new RobotDictionary();
             dto.setSort(++i);
             dto.setParentName(robotWorktype.getWorktypeName());
