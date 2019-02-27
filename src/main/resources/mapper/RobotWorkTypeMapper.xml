@@ -248,4 +248,16 @@
     from robot_worktype
     where `delete` = 1
   </select>
+
+  <sql id="Dto_Result_Column">
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+  </sql>
+
+  <select id="queryWorkTypeDto" resultType="com.atmatrix.abr.mgt.dto.RobotWorkTypeDto">
+    select <include refid="Dto_Result_Column"/>
+    from robot_work_type rwt
+    where rwt.`delete` = 1
+  </select>
 </mapper>

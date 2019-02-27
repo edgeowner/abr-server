@@ -2,9 +2,8 @@ package com.atmatrix.abr.application;
 
 import com.atmatrix.abr.application.dto.BillingDto;
 import com.atmatrix.abr.application.dto.DictionaryDto;
-import com.atmatrix.abr.application.dto.RegionDto;
-import com.atmatrix.abr.application.dto.condtion.QueryPageDicConditionDto;
-import com.atmatrix.abr.common.web.PageResult;
+import com.atmatrix.abr.mgt.dto.BillingTypeDto;
+import com.atmatrix.abr.mgt.dto.RobotWorkTypeDto;
 
 import java.util.List;
 import java.util.Map;
@@ -23,9 +22,12 @@ public interface DictionaryAppliction {
 
     List<DictionaryDto> queryRegionList();
 
-    List<DictionaryDto> queryWorkTypeList();
-
     List<BillingDto> queryBillingList();
 
     List<DictionaryDto> queryRentStatusList();
+
+    List<RobotWorkTypeDto> queryWorkTypeList();
+
+
+
 }

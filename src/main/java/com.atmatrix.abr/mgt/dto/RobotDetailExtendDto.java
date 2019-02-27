@@ -2,6 +2,8 @@ package com.atmatrix.abr.mgt.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @ProjectName: abr-server
  * @ClassName: RobotDetailExtendDto
@@ -27,4 +29,12 @@ public class RobotDetailExtendDto {
     private String billingPrice;
     private String billingTypeName;
     private String picUrl;
+    private String unit;//单位
+
+
+    //按钮是否可点控制
+    private Boolean canRent = false;
+    private Boolean canRecharge = false;
+    private Boolean canAdjustPrice = false;
+    private Boolean startOrStop = false;  //true ->开启状态 //false ->停止状态
 }

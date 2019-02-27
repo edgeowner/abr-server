@@ -10,13 +10,8 @@ import com.atmatrix.abr.application.dto.page.PageQuery;
 import com.atmatrix.abr.common.BizException;
 import com.atmatrix.abr.infrastructure.entity.BillingPrice;
 import com.atmatrix.abr.infrastructure.entity.RobotParam;
-import com.atmatrix.abr.mgt.BillingMgt;
-import com.atmatrix.abr.mgt.RobotDetailMgt;
-import com.atmatrix.abr.mgt.RobotParamMgt;
-import com.atmatrix.abr.mgt.dto.RobotConditionDto;
-import com.atmatrix.abr.mgt.dto.RobotDetailDto;
-import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
-import com.google.common.collect.Lists;
+import com.atmatrix.abr.mgt.*;
+import com.atmatrix.abr.mgt.dto.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +40,10 @@ public class RobotApplicationImpl implements RobotApplication {
 
     @Autowired
     private RobotParamMgt robotParamsMgt;
+
+    @Autowired
+    private DictionaryMgt dictionaryMgt;
+
 
     public PageInfoResult<RobotDetailDto> getRobotDetailPageList(QueryCondPageDicDto queryDto) {
         if (queryDto == null) {
@@ -88,14 +87,15 @@ public class RobotApplicationImpl implements RobotApplication {
     }
 
     @Override
-    public RobotDetailExtendDto getRobotDetailExntendInfo(String robotUnionCode) {
+    public RobotInfoDto getRobotDetailExntendInfo(String robotUnionCode) {
         RobotInfoDto result = new RobotInfoDto();
         RobotDetailExtendDto robotDetailInfo = robotDetailMgt.getRobotDetailInfo(robotUnionCode);
         if (robotDetailInfo == null) {
             return result;
         }
         BeanUtils.copyProperties(robotDetailInfo, result);
-        List<ParamDto> paramDtos = Lists.newArrayList();
+        handlerButtonStatus(robotDetailInfo, result);
+        List<ParamDto> paramDtos = result.getParams();
         List<RobotParam> robotParamResources = robotParamsMgt.getRobotParamListByCode(robotUnionCode);
         robotParamResources.stream().forEach(e -> {
             ParamDto paramDto = new ParamDto();
@@ -103,7 +103,20 @@ public class RobotApplicationImpl implements RobotApplication {
             paramDto.setKey(e.getKey());
             paramDtos.add(paramDto);
         });
-
+        result.setParams(paramDtos);
+        List<BillingTypeDto> billingTypeList = dictionaryMgt.getBillingTypes();
+        result.setBillingTypes(billingTypeList);
         return result;
+    }
+
+
+    private void handlerButtonStatus(RobotDetailExtendDto robotDetailInfo, RobotInfoDto result) {
+        if (robotDetailInfo == null) {
+
+        }
+//        result.setCanRent();
+//        result.setCanAdjustPrice();
+//        result.setCanRecharge();
+//        result.setStartOrStop();
     }
 }

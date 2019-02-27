@@ -22,6 +22,7 @@ public class QueryCondPageDicDto {
     private String billingPriceCode;
     private String rentStatus;
     private PageQuery page;
-
+    private Integer min;
+    private Integer max;
 
 }

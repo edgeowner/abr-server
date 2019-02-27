@@ -21,3 +21,518 @@
 ### SQL: SELECT count(0) FROM robot_detail AS rd LEFT JOIN robot_worktype AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status AND rds.type = 'rentStatus' WHERE rd.`delete` = 1
 ### Cause: java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
 ; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'abr_robot.robot_worktype' doesn't exist
+[2019-02-26 16:00:41] ERROR com.atmatrix.abr.controller.DictionaryController 60 getWorkTypeList - getWorkTypeList Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotWorkTypeMapper.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotWorkTypeMapper.queryWorkTypeDto
+### The error occurred while executing a query
+### SQL: select       `id` as id     `worktype_name` as name,     `union_code` as code,         from robot_work_type     where `delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+[2019-02-26 16:00:42] ERROR com.atmatrix.abr.controller.RobotController 62 getRobotDetailInfo - getRobotDetailInfo Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotWorkTypeMapper.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotWorkTypeMapper.queryWorkTypeDto
+### The error occurred while executing a query
+### SQL: select       `id` as id     `worktype_name` as name,     `union_code` as code,         from robot_work_type     where `delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'ame` as name,
+    `union_code` as c', expect IDENTIFIER, actual IDENTIFIER pos 43, line 3, column 21, token IDENTIFIER null : select  
+    `id` as id
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+[2019-02-26 16:01:50] ERROR com.atmatrix.abr.controller.RobotController 62 getRobotDetailInfo - getRobotDetailInfo Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 92, line 4, column 27, token FROM : select  
+    `id` as id,
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotWorkTypeMapper.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotWorkTypeMapper.queryWorkTypeDto
+### The error occurred while executing a query
+### SQL: select       `id` as id,     `worktype_name` as name,     `union_code` as code,         from robot_work_type     where `delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 92, line 4, column 27, token FROM : select  
+    `id` as id,
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. pos 92, line 4, column 27, token FROM : select  
+    `id` as id,
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 92, line 4, column 27, token FROM : select  
+    `id` as id,
+    `worktype_name` as name,
+    `union_code` as code,
+   
+    from robot_work_type
+    where `delete` = 1
+[2019-02-26 16:03:01] ERROR com.atmatrix.abr.controller.RobotController 62 getRobotDetailInfo - getRobotDetailInfo Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 98, line 4, column 29, token FROM : select  
+    `id` as `id`,
+    `worktype_name` as `name`,
+    `union_code` as `code`,
+   
+    from robot_work_type
+    where `delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotWorkTypeMapper.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotWorkTypeMapper.queryWorkTypeDto
+### The error occurred while executing a query
+### SQL: select       `id` as `id`,     `worktype_name` as `name`,     `union_code` as `code`,         from robot_work_type     where `delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 98, line 4, column 29, token FROM : select  
+    `id` as `id`,
+    `worktype_name` as `name`,
+    `union_code` as `code`,
+   
+    from robot_work_type
+    where `delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. pos 98, line 4, column 29, token FROM : select  
+    `id` as `id`,
+    `worktype_name` as `name`,
+    `union_code` as `code`,
+   
+    from robot_work_type
+    where `delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 98, line 4, column 29, token FROM : select  
+    `id` as `id`,
+    `worktype_name` as `name`,
+    `union_code` as `code`,
+   
+    from robot_work_type
+    where `delete` = 1
+[2019-02-26 16:03:52] ERROR com.atmatrix.abr.controller.RobotController 62 getRobotDetailInfo - getRobotDetailInfo Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 110, line 4, column 33, token FROM : select  
+    rwt.`id` as `id`,
+    rwt.`worktype_name` as `name`,
+    rwt.`union_code` as `code`,
+   
+    from robot_work_type rwt
+    where rwt.`delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotWorkTypeMapper.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotWorkTypeMapper.queryWorkTypeDto
+### The error occurred while executing a query
+### SQL: select       rwt.`id` as `id`,     rwt.`worktype_name` as `name`,     rwt.`union_code` as `code`,         from robot_work_type rwt     where rwt.`delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 110, line 4, column 33, token FROM : select  
+    rwt.`id` as `id`,
+    rwt.`worktype_name` as `name`,
+    rwt.`union_code` as `code`,
+   
+    from robot_work_type rwt
+    where rwt.`delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. pos 110, line 4, column 33, token FROM : select  
+    rwt.`id` as `id`,
+    rwt.`worktype_name` as `name`,
+    rwt.`union_code` as `code`,
+   
+    from robot_work_type rwt
+    where rwt.`delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. pos 110, line 4, column 33, token FROM : select  
+    rwt.`id` as `id`,
+    rwt.`worktype_name` as `name`,
+    rwt.`union_code` as `code`,
+   
+    from robot_work_type rwt
+    where rwt.`delete` = 1
+[2019-02-26 16:39:21] ERROR com.atmatrix.abr.controller.RobotController 63 getRobotDetailInfo - getRobotDetailInfo Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdr.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotExtendDao.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotExtendDao.queryDetailInfoByUnionCode
+### The error occurred while executing a query
+### SQL: select                   rd.`id`  as id,         rb.`union_code` as robotUnionCode,         rb.`device_id`  as  deviceId,         rb.`account_address` as accountAddress,         rb.`robot_pic_url` as picUrl,         rd.`robot_name` as name,         rd.`region_code` AS regionCode,         rd.`rent_status` as rentStatus,         rd.`billing_type`  as billingTypeCode,         rd.`billing_price` as billingPrice,         rd.`work_type` as workTypeCode,         rw.`worktype_name` as workTypeName,         rw.`worktype_desc` as workTypeDesc         rdr.`name` as rentName,         rdb.`name` as billingTypeName,         rdu.`name` as unit               from robot_detail as rd         left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`         left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'         left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'         left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdr.`type` = 'unit'         left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1         where rd.`robot_union_code` = ?         and rd.`delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdr.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdr.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdr.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-02-26 16:41:19] ERROR com.atmatrix.abr.controller.RobotController 63 getRobotDetailInfo - getRobotDetailInfo Failed :org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+### The error may exist in file [/Users/atmatrix/java-project/abr-server/target/classes/mapper/RobotExtendDao.xml]
+### The error may involve com.atmatrix.abr.infrastructure.dao.RobotExtendDao.queryDetailInfoByUnionCode
+### The error occurred while executing a query
+### SQL: select                   rd.`id`  as id,         rb.`union_code` as robotUnionCode,         rb.`device_id`  as  deviceId,         rb.`account_address` as accountAddress,         rb.`robot_pic_url` as picUrl,         rd.`robot_name` as name,         rd.`region_code` AS regionCode,         rd.`rent_status` as rentStatus,         rd.`billing_type`  as billingTypeCode,         rd.`billing_price` as billingPrice,         rd.`work_type` as workTypeCode,         rw.`worktype_name` as workTypeName,         rw.`worktype_desc` as workTypeDesc         rdr.`name` as rentName,         rdb.`name` as billingTypeName,         rdu.`name` as unit               from robot_detail as rd         left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`         left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'         left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'         left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'         left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1         where rd.`robot_union_code` = ?         and rd.`delete` = 1
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     rdr.`name` as rentName,
+      ', expect IDENTIFIER, actual IDENTIFIER pos 550, line 16, column 13, token IDENTIFIER rdr : select
+         
+        rd.`id`  as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` AS regionCode,
+        rd.`rent_status` as rentStatus,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-02-26 16:42:00] ERROR org.apache.juli.logging.DirectJDKLog 175 log - Servlet.service() for servlet [dispatcherServlet] in context with path [/abr] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: class com.atmatrix.abr.application.dto.RobotInfoDto declares multiple JSON fields named billingTypes] with root cause java.lang.IllegalArgumentException: class com.atmatrix.abr.application.dto.RobotInfoDto declares multiple JSON fields named billingTypes
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.getBoundFields(ReflectiveTypeAdapterFactory.java:172) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.create(ReflectiveTypeAdapterFactory.java:102) ~[gson-2.8.5.jar:?]
+	at com.google.gson.Gson.getAdapter(Gson.java:458) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.write(TypeAdapterRuntimeTypeWrapper.java:56) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.write(MapTypeAdapterFactory.java:208) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.write(MapTypeAdapterFactory.java:145) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.write(TypeAdapterRuntimeTypeWrapper.java:69) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.write(ReflectiveTypeAdapterFactory.java:127) ~[gson-2.8.5.jar:?]
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.write(ReflectiveTypeAdapterFactory.java:245) ~[gson-2.8.5.jar:?]
+	at com.google.gson.Gson.toJson(Gson.java:704) ~[gson-2.8.5.jar:?]
+	at com.google.gson.Gson.toJson(Gson.java:683) ~[gson-2.8.5.jar:?]
+	at com.google.gson.Gson.toJson(Gson.java:638) ~[gson-2.8.5.jar:?]
+	at com.google.gson.Gson.toJson(Gson.java:618) ~[gson-2.8.5.jar:?]
+	at com.atmatrix.abr.common.log.WebLogAspect.doAfterReturning(WebLogAspect.java:63) ~[classes/:?]
+	at com.atmatrix.abr.common.log.WebLogAspect$$FastClassBySpringCGLIB$$5a4ec88b.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.alibaba.druid.support.spring.stat.DruidStatInterceptor.invoke(DruidStatInterceptor.java:72) ~[druid-1.1.10.jar:1.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.atmatrix.abr.common.log.WebLogAspect$$EnhancerBySpringCGLIB$$27f7ec11.doAfterReturning(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:626) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.aspectj.AspectJAfterReturningAdvice.afterReturning(AspectJAfterReturningAdvice.java:66) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:56) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.atmatrix.abr.controller.RobotController$$EnhancerBySpringCGLIB$$e56191f3.getRobotDetailInfo(<generated>) ~[classes/:?]
+	at com.atmatrix.abr.controller.RobotController$$FastClassBySpringCGLIB$$f09102de.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.alibaba.druid.support.spring.stat.DruidStatInterceptor.invoke(DruidStatInterceptor.java:72) ~[druid-1.1.10.jar:1.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.atmatrix.abr.controller.RobotController$$EnhancerBySpringCGLIB$$68cbb5dc.getRobotDetailInfo(<generated>) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123) ~[druid-1.1.10.jar:1.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90) ~[spring-boot-actuator-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:151) ~[spring-session-core-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:81) ~[spring-session-core-2.1.4.RELEASE.jar:2.1.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117) ~[spring-boot-actuator-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106) ~[spring-boot-actuator-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_171]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_171]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.16.jar:9.0.16]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+

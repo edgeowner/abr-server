@@ -19,7 +19,8 @@
         rw.`worktype_name` as workTypeName,
         rw.`worktype_desc` as worktypeDesc,
         rds.`name` as rentStatusName,
-        rdi.`name` as billlingTypeName
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
     </sql>
 
     <select id="queryListByPageCondition" resultType="com.atmatrix.abr.mgt.dto.RobotDetailDto">
@@ -30,6 +31,7 @@
         left join robot_basic as rb on rb.union_code = rd.robot_union_code
         left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
         left join robot_dictionary as rds on rds.code = rd.rent_status and rds.type = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
         WHERE rd.`delete` = 1
         <if test="conditions !=null">
             <if test="conditions.regionCode !=null and conditions.regionCode !=''">
@@ -74,23 +76,25 @@
         rd.`robot_name` as name,
         rd.`region_code` AS regionCode,
         rd.`rent_status` as rentStatus,
-        rdr.`name` as rentName,
         rd.`billing_type`  as billingTypeCode,
         rd.`billing_price` as billingPrice,
-        rdb.`name` as billingTypeName,
         rd.`work_type` as workTypeCode,
         rw.`worktype_name` as workTypeName,
-        rw.`worktype_desc` as workTypeDesc
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
     </sql>
 
     <select id="queryDetailInfoByUnionCode" resultType="com.atmatrix.abr.mgt.dto.RobotDetailExtendDto">
         select
         <include refid="Detail_Info_Extend"/>
         from robot_detail as rd
-        left join robot_basic as rb on rb.union_code = rd.robot_union_code
-        left join robot_dictionary as rdb on rdb.code = rd.billing_type and rdb.type = 'billing'
-        left join robot_dictionary as rdr on rdr.code = rd.rent_status and rdr.type = 'rentStatus'
-        left join robot_work_type as rw on rw.union_code = rd.work_type and rw.`delete` = 1
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
         where rd.`robot_union_code` = #{robotUnionCode}
         and rd.`delete` = 1
     </select>

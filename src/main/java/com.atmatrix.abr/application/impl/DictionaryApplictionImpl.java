@@ -9,6 +9,9 @@ import com.atmatrix.abr.infrastructure.entity.BillingPrice;
 import com.atmatrix.abr.infrastructure.entity.RobotDictionary;
 import com.atmatrix.abr.mgt.BillingMgt;
 import com.atmatrix.abr.mgt.DictionaryMgt;
+import com.atmatrix.abr.mgt.RobotWorkTypeMgt;
+import com.atmatrix.abr.mgt.dto.BillingTypeDto;
+import com.atmatrix.abr.mgt.dto.RobotWorkTypeDto;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -37,6 +40,9 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
 
     @Autowired
     private BillingMgt billingMgt;
+
+    @Autowired
+    private RobotWorkTypeMgt robotWorkTypeMgt;
 
 
     @Override
@@ -79,14 +85,6 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
         return result;
     }
 
-    @Override
-    public List<DictionaryDto> queryWorkTypeList() {
-        String workType = QueryDicTypeEnum.WORK_TYPE.getName();
-        List<RobotDictionary> resource = dictionaryMgt.getListDtoByType(workType);
-        List<DictionaryDto> result = Lists.newArrayList();
-        result.addAll(handlerParentChildrenResouceList(resource));
-        return result;
-    }
 
     @Override
     public List<BillingDto> queryBillingList() {
@@ -94,16 +92,14 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
         String billing = QueryDicTypeEnum.BILLING.getName();
         List<RobotDictionary> resource = dictionaryMgt.getListDtoByType(billing);
         List<String> billTypeCode = Lists.newArrayList();
-
-        BillingDto billingDto = null;
-        for (RobotDictionary robotDictionary : resource) {
-            billingDto = new BillingDto();
-            billingDto.setCode(robotDictionary.getCode());
-            billingDto.setName(robotDictionary.getName());
-            billingDto.setType(robotDictionary.getType());
-            billTypeCode.add(robotDictionary.getCode());
+        resource.stream().forEach(e->{
+            BillingDto  billingDto = new BillingDto();
+            billingDto.setCode(e.getCode());
+            billingDto.setName(e.getName());
+            billingDto.setType(e.getType());
+            billTypeCode.add(e.getCode());
             result.add(billingDto);
-        }
+        });
         List<BillingPrice> billingPrices = billingMgt.getBillPriceByParentCode(billTypeCode);
         handlerBillingTypePriceDto(result, billingPrices);
         return result;
@@ -114,7 +110,7 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
         List<DictionaryDto> result = Lists.newArrayList();
         String statusType = QueryDicTypeEnum.RENT_STATUS.getName();
         List<RobotDictionary> listDtoByType = dictionaryMgt.getListDtoByType(statusType);
-        listDtoByType.stream().forEach(e->{
+        listDtoByType.stream().forEach(e -> {
             DictionaryDto dictionaryDto = new DictionaryDto();
             dictionaryDto.setCode(e.getCode());
             dictionaryDto.setName(e.getName());
@@ -123,6 +119,12 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
         return result;
     }
 
+    @Override
+    public List<RobotWorkTypeDto> queryWorkTypeList() {
+        return robotWorkTypeMgt.getRobotWorkTypeList();
+    }
+
+
 
     private void handlerBillingTypePriceDto(List<BillingDto> result, List<BillingPrice> billingPrices) {
         if (!CollectionUtils.isEmpty(billingPrices)) {
@@ -130,7 +132,7 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
                 List<BillingPriceDto> priceList = billingDto.getPriceList();
                 BillingPriceDto billingPriceDto = null;
                 for (BillingPrice billingPrice : billingPrices) {
-                    if (billingPrice.getParentUnionCode().equals(billingDto.getCode()) ) {
+                    if (billingPrice.getParentUnionCode().equals(billingDto.getCode())) {
                         billingPriceDto = new BillingPriceDto();
                         billingPriceDto.setCode(billingPrice.getUnionCode());
                         billingPriceDto.setMax(billingPrice.getMaxPrice());

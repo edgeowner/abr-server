@@ -1,6 +1,7 @@
 package com.atmatrix.abr.controller;
 
 import com.atmatrix.abr.application.RobotApplication;
+import com.atmatrix.abr.application.dto.RobotInfoDto;
 import com.atmatrix.abr.application.dto.condtion.QueryCondPageDicDto;
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
 import com.atmatrix.abr.common.web.WebUtil;
@@ -43,8 +44,8 @@ public class RobotController {
             return WebUtil.result(pageRobotList);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error(MessageFormat.format("getRegionList Failed :{0}", e));
-            return WebUtil.error("查询Region失败");
+            log.error(MessageFormat.format("getRobotList Failed :{0}", e));
+            return WebUtil.error("查询机器人列表失败");
         }
     }
 
@@ -55,12 +56,12 @@ public class RobotController {
     public ResponseEntity<Map<String, Object>> getRobotDetailInfo(@RequestBody CommonQueryCondDto cond) {
         try {
             String unionCode = cond.getUnionCode();
-            RobotDetailExtendDto result = robotApplication.getRobotDetailExntendInfo(unionCode);
+            RobotInfoDto result = robotApplication.getRobotDetailExntendInfo(unionCode);
             return WebUtil.result(result);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error(MessageFormat.format("getRegionList Failed :{0}", e));
-            return WebUtil.error("查询Region失败");
+            log.error(MessageFormat.format("getRobotDetailInfo Failed :{0}", e));
+            return WebUtil.error("查询机器人数据详情失败");
         }
     }
 

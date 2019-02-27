@@ -4,6 +4,8 @@ import com.atmatrix.abr.common.constants.QueryDicTypeEnum;
 import com.atmatrix.abr.infrastructure.dao.RobotDictionaryMapper;
 import com.atmatrix.abr.infrastructure.entity.RobotDictionary;
 import com.atmatrix.abr.mgt.DictionaryMgt;
+import com.atmatrix.abr.mgt.dto.BillingTypeDto;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,5 +39,8 @@ public class DictionaryMgtImpl implements DictionaryMgt {
         return result;
     }
 
-
+    @Override
+    public List<BillingTypeDto> getBillingTypes() {
+        return robotDictionaryMapper.getBillingTypeList();
+    }
 }

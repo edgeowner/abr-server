@@ -15,8 +15,10 @@ import lombok.Data;
 public class RobotDetailDto extends RobotDetail {
     private String rentStatusName;
     private String workTypeName;
-    private String worktypeDesc;
-    private String billlingTypeName;
+    private String workTypeDesc;
+    private String billingTypeName;
     private String picUrl;
+    private String unit;
+
 
 }

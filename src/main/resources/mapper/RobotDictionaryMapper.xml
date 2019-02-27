@@ -290,6 +290,18 @@
         and `delete` = 1
     </select>
 
+
+    <select id="getBillingTypeList" resultType="com.atmatrix.abr.mgt.dto.BillingTypeDto">
+        select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+    </select>
+
+
     <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="arraylist">
         insert into robot_dictionary (
         `type`,

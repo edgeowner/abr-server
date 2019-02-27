@@ -9,6 +9,8 @@
     <!-- targetRuntime：设置生成的文件适用于那个 mybatis 版本 -->
     <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3">
         <!--设置生成的Java文件的编码格式-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
         <property name="javaFileEncoding" value="UTF-8"></property>
         <property name="suppressDate" value="true"/>
         <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -18,7 +20,7 @@
         <!--格式化xml代码-->
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"></property>
         <!--javaBean 实现序列化接口-->
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
         <!--javaBean生成toString() 方法-->
         <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />-->
         <!--optional,旨在创建class时，对注释进行控制-->
@@ -72,41 +74,26 @@
         </javaClientGenerator>
 
 
-        <!--<table tableName="region_map" domainObjectName="RegionMap"-->
-        <!--enableCountByExample="true" enableUpdateByExample="true"-->
-        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
-        <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
-
-        <!--<table tableName="robot_dictionary" domainObjectName="RobotDictionary"-->
-        <!--enableCountByExample="true" enableUpdateByExample="true"-->
-        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
-        <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
-
-
-        <!--<table tableName="robot_worktype" domainObjectName="robotWorktype"-->
-        <!--enableCountByExample="true" enableUpdateByExample="true"-->
-        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
-        <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
-
-        <!--<table tableName="billing_price" domainObjectName="BillingPrice"-->
-        <!--enableCountByExample="true" enableUpdateByExample="true"-->
-        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
-        <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
-        <!--<table tableName="robot_detail" domainObjectName="RobotDetail"-->
-               <!--enableCountByExample="true" enableUpdateByExample="true"-->
-               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
-               <!--selectByExampleQueryId="true">-->
-        <!--</table>-->
-
-        <table tableName="robot_work_type" domainObjectName="RobotWorkType"
+        <table tableName="contract_rent" domainObjectName="ContractRent"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
         </table>
+
+        <table tableName="contract_recharge" domainObjectName="ContractRecharge"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table tableName="user_account" domainObjectName="UserAccount"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+
+
 
 
     </context>
