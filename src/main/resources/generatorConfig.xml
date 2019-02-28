@@ -74,14 +74,30 @@
         </javaClientGenerator>
 
 
-        <table tableName="contract_rent_time" domainObjectName="ContractRentTime"
+        <table tableName="exec_robot" domainObjectName="ExecRobot"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table tableName="exec_type" domainObjectName="ExecType"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table tableName="evaluation_standard" domainObjectName="EvaluationStandard"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
         </table>
 
 
-
+        <table tableName="robot_evaluation" domainObjectName="RobotEvaluation"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
 
 
 

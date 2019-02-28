@@ -49,6 +49,7 @@ public class RobotApplicationImpl implements RobotApplication {
         if (queryDto == null) {
             return PageInfoResult.buildPage();
         }
+
         PageQuery pageQuery = queryDto.getPage();
         RobotConditionDto robotConditionDto = buildRobotConditionDto(queryDto);
         PageInfoResult<RobotDetailDto> result = robotDetailMgt.getDictionaryListByPageDto(robotConditionDto, pageQuery);
