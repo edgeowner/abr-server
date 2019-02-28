@@ -1,6 +1,5 @@
 package com.atmatrix.abr.infrastructure.entity;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -456,123 +455,53 @@ public class ContractRentExample {
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceEqualTo(BigDecimal value) {
+        public Criteria andBillingPriceEqualTo(Integer value) {
             addCriterion("billing_price =", value, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceNotEqualTo(BigDecimal value) {
+        public Criteria andBillingPriceNotEqualTo(Integer value) {
             addCriterion("billing_price <>", value, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceGreaterThan(BigDecimal value) {
+        public Criteria andBillingPriceGreaterThan(Integer value) {
             addCriterion("billing_price >", value, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andBillingPriceGreaterThanOrEqualTo(Integer value) {
             addCriterion("billing_price >=", value, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceLessThan(BigDecimal value) {
+        public Criteria andBillingPriceLessThan(Integer value) {
             addCriterion("billing_price <", value, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andBillingPriceLessThanOrEqualTo(Integer value) {
             addCriterion("billing_price <=", value, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceIn(List<BigDecimal> values) {
+        public Criteria andBillingPriceIn(List<Integer> values) {
             addCriterion("billing_price in", values, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceNotIn(List<BigDecimal> values) {
+        public Criteria andBillingPriceNotIn(List<Integer> values) {
             addCriterion("billing_price not in", values, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andBillingPriceBetween(Integer value1, Integer value2) {
             addCriterion("billing_price between", value1, value2, "billingPrice");
             return (Criteria) this;
         }
 
-        public Criteria andBillingPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andBillingPriceNotBetween(Integer value1, Integer value2) {
             addCriterion("billing_price not between", value1, value2, "billingPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitIsNull() {
-            addCriterion("billing_price_unit is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitIsNotNull() {
-            addCriterion("billing_price_unit is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitEqualTo(String value) {
-            addCriterion("billing_price_unit =", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitNotEqualTo(String value) {
-            addCriterion("billing_price_unit <>", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitGreaterThan(String value) {
-            addCriterion("billing_price_unit >", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitGreaterThanOrEqualTo(String value) {
-            addCriterion("billing_price_unit >=", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitLessThan(String value) {
-            addCriterion("billing_price_unit <", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitLessThanOrEqualTo(String value) {
-            addCriterion("billing_price_unit <=", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitLike(String value) {
-            addCriterion("billing_price_unit like", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitNotLike(String value) {
-            addCriterion("billing_price_unit not like", value, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitIn(List<String> values) {
-            addCriterion("billing_price_unit in", values, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitNotIn(List<String> values) {
-            addCriterion("billing_price_unit not in", values, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitBetween(String value1, String value2) {
-            addCriterion("billing_price_unit between", value1, value2, "billingPriceUnit");
-            return (Criteria) this;
-        }
-
-        public Criteria andBillingPriceUnitNotBetween(String value1, String value2) {
-            addCriterion("billing_price_unit not between", value1, value2, "billingPriceUnit");
             return (Criteria) this;
         }
 
@@ -703,6 +632,146 @@ public class ContractRentExample {
 
         public Criteria andBillingOverdraftNotBetween(Integer value1, Integer value2) {
             addCriterion("billing_overdraft not between", value1, value2, "billingOverdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeIsNull() {
+            addCriterion("user_union_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeIsNotNull() {
+            addCriterion("user_union_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeEqualTo(String value) {
+            addCriterion("user_union_code =", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeNotEqualTo(String value) {
+            addCriterion("user_union_code <>", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeGreaterThan(String value) {
+            addCriterion("user_union_code >", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("user_union_code >=", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeLessThan(String value) {
+            addCriterion("user_union_code <", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeLessThanOrEqualTo(String value) {
+            addCriterion("user_union_code <=", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeLike(String value) {
+            addCriterion("user_union_code like", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeNotLike(String value) {
+            addCriterion("user_union_code not like", value, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeIn(List<String> values) {
+            addCriterion("user_union_code in", values, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeNotIn(List<String> values) {
+            addCriterion("user_union_code not in", values, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeBetween(String value1, String value2) {
+            addCriterion("user_union_code between", value1, value2, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserUnionCodeNotBetween(String value1, String value2) {
+            addCriterion("user_union_code not between", value1, value2, "userUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactIsNull() {
+            addCriterion("user_contact is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactIsNotNull() {
+            addCriterion("user_contact is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactEqualTo(String value) {
+            addCriterion("user_contact =", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactNotEqualTo(String value) {
+            addCriterion("user_contact <>", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactGreaterThan(String value) {
+            addCriterion("user_contact >", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactGreaterThanOrEqualTo(String value) {
+            addCriterion("user_contact >=", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactLessThan(String value) {
+            addCriterion("user_contact <", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactLessThanOrEqualTo(String value) {
+            addCriterion("user_contact <=", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactLike(String value) {
+            addCriterion("user_contact like", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactNotLike(String value) {
+            addCriterion("user_contact not like", value, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactIn(List<String> values) {
+            addCriterion("user_contact in", values, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactNotIn(List<String> values) {
+            addCriterion("user_contact not in", values, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactBetween(String value1, String value2) {
+            addCriterion("user_contact between", value1, value2, "userContact");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserContactNotBetween(String value1, String value2) {
+            addCriterion("user_contact not between", value1, value2, "userContact");
             return (Criteria) this;
         }
 

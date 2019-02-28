@@ -16,9 +16,11 @@ import java.util.List;
  **/
 
 public interface RobotExtendDao {
+
     List<RobotDetailDto> queryListByPageCondition(@Param("conditions") RobotConditionDto robotConditionDto);
 
-
     RobotDetailExtendDto queryDetailInfoByUnionCode(@Param("robotUnionCode") String unionCode);
+
+    RobotDetailDto queryOneByUnionCode(@Param("unionCode") String unionCode);
 
 }

@@ -165,6 +165,76 @@ public class ContractRechargeExample {
             return (Criteria) this;
         }
 
+        public Criteria andUnionCodeIsNull() {
+            addCriterion("union_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeIsNotNull() {
+            addCriterion("union_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeEqualTo(String value) {
+            addCriterion("union_code =", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeNotEqualTo(String value) {
+            addCriterion("union_code <>", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeGreaterThan(String value) {
+            addCriterion("union_code >", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("union_code >=", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeLessThan(String value) {
+            addCriterion("union_code <", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeLessThanOrEqualTo(String value) {
+            addCriterion("union_code <=", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeLike(String value) {
+            addCriterion("union_code like", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeNotLike(String value) {
+            addCriterion("union_code not like", value, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeIn(List<String> values) {
+            addCriterion("union_code in", values, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeNotIn(List<String> values) {
+            addCriterion("union_code not in", values, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeBetween(String value1, String value2) {
+            addCriterion("union_code between", value1, value2, "unionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andUnionCodeNotBetween(String value1, String value2) {
+            addCriterion("union_code not between", value1, value2, "unionCode");
+            return (Criteria) this;
+        }
+
         public Criteria andAccountAddressIsNull() {
             addCriterion("account_address is null");
             return (Criteria) this;
@@ -232,6 +302,76 @@ public class ContractRechargeExample {
 
         public Criteria andAccountAddressNotBetween(String value1, String value2) {
             addCriterion("account_address not between", value1, value2, "accountAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressIsNull() {
+            addCriterion("from_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressIsNotNull() {
+            addCriterion("from_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressEqualTo(String value) {
+            addCriterion("from_address =", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressNotEqualTo(String value) {
+            addCriterion("from_address <>", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressGreaterThan(String value) {
+            addCriterion("from_address >", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("from_address >=", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressLessThan(String value) {
+            addCriterion("from_address <", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressLessThanOrEqualTo(String value) {
+            addCriterion("from_address <=", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressLike(String value) {
+            addCriterion("from_address like", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressNotLike(String value) {
+            addCriterion("from_address not like", value, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressIn(List<String> values) {
+            addCriterion("from_address in", values, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressNotIn(List<String> values) {
+            addCriterion("from_address not in", values, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressBetween(String value1, String value2) {
+            addCriterion("from_address between", value1, value2, "fromAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andFromAddressNotBetween(String value1, String value2) {
+            addCriterion("from_address not between", value1, value2, "fromAddress");
             return (Criteria) this;
         }
 
@@ -365,75 +505,136 @@ public class ContractRechargeExample {
             return (Criteria) this;
         }
 
-        public Criteria andUnitIsNull() {
-            addCriterion("unit is null");
+        public Criteria andUnitCodeIsNull() {
+            addCriterion("unit_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andUnitIsNotNull() {
-            addCriterion("unit is not null");
+        public Criteria andUnitCodeIsNotNull() {
+            addCriterion("unit_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUnitEqualTo(String value) {
-            addCriterion("unit =", value, "unit");
+        public Criteria andUnitCodeEqualTo(String value) {
+            addCriterion("unit_code =", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitNotEqualTo(String value) {
-            addCriterion("unit <>", value, "unit");
+        public Criteria andUnitCodeNotEqualTo(String value) {
+            addCriterion("unit_code <>", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitGreaterThan(String value) {
-            addCriterion("unit >", value, "unit");
+        public Criteria andUnitCodeGreaterThan(String value) {
+            addCriterion("unit_code >", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitGreaterThanOrEqualTo(String value) {
-            addCriterion("unit >=", value, "unit");
+        public Criteria andUnitCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("unit_code >=", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitLessThan(String value) {
-            addCriterion("unit <", value, "unit");
+        public Criteria andUnitCodeLessThan(String value) {
+            addCriterion("unit_code <", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitLessThanOrEqualTo(String value) {
-            addCriterion("unit <=", value, "unit");
+        public Criteria andUnitCodeLessThanOrEqualTo(String value) {
+            addCriterion("unit_code <=", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitLike(String value) {
-            addCriterion("unit like", value, "unit");
+        public Criteria andUnitCodeLike(String value) {
+            addCriterion("unit_code like", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitNotLike(String value) {
-            addCriterion("unit not like", value, "unit");
+        public Criteria andUnitCodeNotLike(String value) {
+            addCriterion("unit_code not like", value, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitIn(List<String> values) {
-            addCriterion("unit in", values, "unit");
+        public Criteria andUnitCodeIn(List<String> values) {
+            addCriterion("unit_code in", values, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitNotIn(List<String> values) {
-            addCriterion("unit not in", values, "unit");
+        public Criteria andUnitCodeNotIn(List<String> values) {
+            addCriterion("unit_code not in", values, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitBetween(String value1, String value2) {
-            addCriterion("unit between", value1, value2, "unit");
+        public Criteria andUnitCodeBetween(String value1, String value2) {
+            addCriterion("unit_code between", value1, value2, "unit_code");
             return (Criteria) this;
         }
 
-        public Criteria andUnitNotBetween(String value1, String value2) {
-            addCriterion("unit not between", value1, value2, "unit");
+        public Criteria andUnitCodeNotBetween(String value1, String value2) {
+            addCriterion("unit_code not between", value1, value2, "unit_code");
             return (Criteria) this;
         }
+
+        public Criteria andTotalPriceIsNull() {
+            addCriterion("total_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceIsNotNull() {
+            addCriterion("total_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceEqualTo(Integer value) {
+            addCriterion("total_price =", value, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceNotEqualTo(Integer value) {
+            addCriterion("total_price <>", value, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceGreaterThan(Integer value) {
+            addCriterion("total_price >", value, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_price >=", value, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceLessThan(Integer value) {
+            addCriterion("total_price <", value, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceLessThanOrEqualTo(Integer value) {
+            addCriterion("total_price <=", value, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceIn(List<Integer> values) {
+            addCriterion("total_price in", values, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceNotIn(List<Integer> values) {
+            addCriterion("total_price not in", values, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceBetween(Integer value1, Integer value2) {
+            addCriterion("total_price between", value1, value2, "total_price");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPriceNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_price not between", value1, value2, "total_price");
+            return (Criteria) this;
+        }
+
 
         public Criteria andDeleteIsNull() {
             addCriterion("delete is null");

@@ -13,4 +13,7 @@ public interface RobotDetailMgt {
 
 
     RobotDetailExtendDto getRobotDetailInfo(String unionCode);
+
+
+    RobotDetailDto getRobotDetailDto(String unionCode);
 }

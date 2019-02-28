@@ -6,13 +6,19 @@ import lombok.Data;
 public class ContractRecharge {
     private Integer id;
 
+    private String unionCode;
+
     private String accountAddress;
+
+    private String fromAddress;
 
     private String billingType;
 
     private Integer amount;
 
-    private String unit;
+    private String unitCode;
+
+    private Integer totalPrice;
 
     private Integer delete;
 

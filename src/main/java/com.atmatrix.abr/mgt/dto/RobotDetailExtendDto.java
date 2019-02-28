@@ -26,10 +26,11 @@ public class RobotDetailExtendDto {
     private String workTypeDesc;
     private Integer leftDayOrTimes;
     private String billingTypeCode;
-    private String billingPrice;
+    private Integer billingPrice;
     private String billingTypeName;
     private String picUrl;
     private String unit;//单位
+    private Integer overdraft;//透支额度
 
 
     //按钮是否可点控制

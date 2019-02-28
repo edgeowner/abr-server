@@ -5,9 +5,10 @@ import lombok.Data;
 
 @Data
 public class UserAccount {
+
     private Integer id;
 
-    private String userUnionId;
+    private String unionCode;
 
     private String accountAddress;
 
@@ -16,6 +17,8 @@ public class UserAccount {
     private String phone;
 
     private String address;
+
+    private Integer delete;
 
     private String createTime;
 

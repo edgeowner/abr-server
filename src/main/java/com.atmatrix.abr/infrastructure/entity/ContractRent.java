@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class ContractRent {
-    
+
     private Integer id;
 
     private String unionCode;
@@ -18,13 +18,19 @@ public class ContractRent {
 
     private String robotAddress;
 
-    private BigDecimal billingPrice;
+    private Integer billingPrice;
 
     private String billingPriceUnit;
 
     private String billingType;
 
     private Integer billingOverdraft;
+
+    private String userUnionCode;
+
+    private String userContact;
+
+    private String userName;
 
     private Integer totalPrice;
 

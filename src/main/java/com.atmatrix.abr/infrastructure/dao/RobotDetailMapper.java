@@ -5,6 +5,7 @@ import com.atmatrix.abr.infrastructure.entity.RobotDetailExample;
 
 import java.util.List;
 
+import com.atmatrix.abr.mgt.dto.RobotDetailDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface RobotDetailMapper {

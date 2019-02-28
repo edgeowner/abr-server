@@ -11,6 +11,7 @@
         <result column="billing_price" jdbcType="INTEGER" property="billingPrice"/>
         <result column="rent_status" jdbcType="VARCHAR" property="rentStatus"/>
         <result column="work_type" jdbcType="VARCHAR" property="workType"/>
+        <result column="overdraft" jdbcType="INTEGER" property="overdraft"/>
         <result column="delete" jdbcType="INTEGER" property="delete"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
@@ -76,9 +77,20 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, robot_name, robot_union_code, region_code, region_name, billing_type,
-    billing_price, rent_status, work_type, delete, create_time, update_time
-  </sql>
+        `id`,
+        `robot_name`,
+        `robot_union_code`,
+        `region_code`,
+        `region_name`,
+        `billing_type`,
+        `billing_price`,
+        `rent_status`,
+        `work_type`,
+        `overdraft`,
+        `delete`,
+        `create_time`,
+        `update_time`
+    </sql>
     <select id="selectByExample" parameterType="com.atmatrix.abr.infrastructure.entity.RobotDetailExample"
             resultMap="BaseResultMap">
         select
@@ -102,16 +114,34 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.atmatrix.abr.infrastructure.entity.RobotDetail">
-    insert into robot_detail (robot_name,
-      robot_union_code, region_code, region_name,
-      billing_type, billing_price, rent_status,
-      work_type, delete, create_time,
-      update_time)
-    values ( #{robotName,jdbcType=VARCHAR},
-      #{robotUnionCode,jdbcType=BIGINT}, #{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR},
-      #{billingType,jdbcType=VARCHAR}, #{billingPrice,jdbcType=INTEGER}, #{rentStatus,jdbcType=VARCHAR},
-      #{workType,jdbcType=VARCHAR}, #{delete,jdbcType=INTEGER},
-      now(),now())
+    insert into robot_detail (
+      robot_name,
+      robot_union_code,
+      region_code,
+      region_name,
+      billing_type,
+      billing_price,
+      rent_status,
+      work_type,
+      overdraft,
+      delete,
+      create_time,
+      update_time
+      )
+    values (
+      #{robotName,jdbcType=VARCHAR},
+      #{robotUnionCode,jdbcType=BIGINT},
+      #{regionCode,jdbcType=VARCHAR},
+      #{regionName,jdbcType=VARCHAR},
+      #{billingType,jdbcType=VARCHAR},
+      #{billingPrice,jdbcType=INTEGER},
+      #{rentStatus,jdbcType=VARCHAR},
+      #{workType,jdbcType=VARCHAR},
+      #{overdraft,jdbcType=INTEGER},
+      #{delete,jdbcType=INTEGER},
+      now(),
+      now()
+      )
   </insert>
     <insert id="insertSelective" parameterType="com.atmatrix.abr.infrastructure.entity.RobotDetail">
         insert into robot_detail
@@ -144,8 +174,11 @@
             <if test="workType != null">
                 work_type,
             </if>
+            <if test="overdraft != null">
+                overdraft,
+            </if>
             <if test="delete != null">
-                delete,
+                `delete`,
             </if>
             <if test="createTime != null">
                 create_time,
@@ -182,6 +215,9 @@
             </if>
             <if test="workType != null">
                 #{workType,jdbcType=VARCHAR},
+            </if>
+            <if test="overdraft != null">
+                #{overdraft,jdbcType=INTEGER},
             </if>
             <if test="delete != null">
                 #{delete,jdbcType=INTEGER},
@@ -232,6 +268,9 @@
             <if test="record.workType != null">
                 work_type = #{record.workType,jdbcType=VARCHAR},
             </if>
+            <if test="record.overdraft != null">
+                overdraft = #{record.overdraft,jdbcType=INTEGER},
+            </if>
             <if test="record.delete != null">
                 delete = #{record.delete,jdbcType=INTEGER},
             </if>
@@ -249,22 +288,25 @@
 
     <update id="updateByExample" parameterType="map">
         update robot_detail
-        set id = #{record.id,jdbcType=INTEGER},
-        robot_name = #{record.robotName,jdbcType=VARCHAR},
-        robot_union_code = #{record.robotUnionCode,jdbcType=BIGINT},
-        region_code = #{record.regionCode,jdbcType=VARCHAR},
-        region_name = #{record.regionName,jdbcType=VARCHAR},
-        billing_type = #{record.billingType,jdbcType=VARCHAR},
-        billing_price = #{record.billingPrice,jdbcType=INTEGER},
-        rent_status = #{record.rentStatus,jdbcType=VARCHAR},
-        work_type = #{record.workType,jdbcType=VARCHAR},
-        delete = #{record.delete,jdbcType=INTEGER},
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+        set `id` = #{record.id,jdbcType=INTEGER},
+        `robot_name` = #{record.robotName,jdbcType=VARCHAR},
+        `robot_union_code` = #{record.robotUnionCode,jdbcType=BIGINT},
+        `region_code` = #{record.regionCode,jdbcType=VARCHAR},
+        `region_name` = #{record.regionName,jdbcType=VARCHAR},
+        `billing_type` = #{record.billingType,jdbcType=VARCHAR},
+        `billing_price` = #{record.billingPrice,jdbcType=INTEGER},
+        `rent_status` = #{record.rentStatus,jdbcType=VARCHAR},
+        `work_type` = #{record.workType,jdbcType=VARCHAR},
+        `delete` = #{record.delete,jdbcType=INTEGER},
+        `overdraft` = #{record.overdraft,jdbcType=INTEGER},
+        `create_time` = #{record.createTime,jdbcType=TIMESTAMP},
+        `update_time` = #{record.updateTime,jdbcType=TIMESTAMP}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
+
+
 
 
 </mapper>

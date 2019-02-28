@@ -74,23 +74,13 @@
         </javaClientGenerator>
 
 
-        <table tableName="contract_rent" domainObjectName="ContractRent"
+        <table tableName="contract_rent_time" domainObjectName="ContractRentTime"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
         </table>
 
-        <table tableName="contract_recharge" domainObjectName="ContractRecharge"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
 
-        <table tableName="user_account" domainObjectName="UserAccount"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
 
 
 

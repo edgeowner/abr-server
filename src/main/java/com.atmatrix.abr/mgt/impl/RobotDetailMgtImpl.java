@@ -2,7 +2,10 @@ package com.atmatrix.abr.mgt.impl;
 
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
 import com.atmatrix.abr.application.dto.page.PageQuery;
+import com.atmatrix.abr.infrastructure.dao.RobotDetailMapper;
 import com.atmatrix.abr.infrastructure.dao.RobotExtendDao;
+import com.atmatrix.abr.infrastructure.entity.RobotDetail;
+import com.atmatrix.abr.infrastructure.entity.RobotDetailExample;
 import com.atmatrix.abr.mgt.RobotDetailMgt;
 import com.atmatrix.abr.mgt.dto.RobotConditionDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailDto;
@@ -30,6 +33,7 @@ public class RobotDetailMgtImpl implements RobotDetailMgt {
     @Autowired
     private RobotExtendDao robotExtendDao;
 
+
     @Override
     public PageInfoResult<RobotDetailDto> getDictionaryListByPageDto(RobotConditionDto dicCondDto, PageQuery pageQuery) {
         PageHelper.startPage(pageQuery.getPageNo(), pageQuery.getPageSize());
@@ -41,8 +45,14 @@ public class RobotDetailMgtImpl implements RobotDetailMgt {
 
     @Override
     public RobotDetailExtendDto getRobotDetailInfo(String unionCode) {
-        RobotDetailExtendDto robotDetailExtendDto = robotExtendDao.queryDetailInfoByUnionCode(unionCode);
-        return robotDetailExtendDto;
+        RobotDetailExtendDto result = robotExtendDao.queryDetailInfoByUnionCode(unionCode);
+        return result;
+    }
+
+    @Override
+    public RobotDetailDto getRobotDetailDto(String unionCode) {
+        RobotDetailDto result = robotExtendDao.queryOneByUnionCode(unionCode);
+        return result;
     }
 
 }

@@ -1,19 +1,18 @@
 package com.atmatrix.abr.mgt.dto;
 
-import com.atmatrix.abr.infrastructure.entity.RobotParam;
+import com.atmatrix.abr.infrastructure.entity.RobotBasic;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * @ProjectName: abr-server
- * @ClassName: RobotParamsDto
+ * @ClassName: RobotBasicDto
  * @Description: TODO
  * @Author: edgeowner
- * @Create: 2019-02-25 5:16 PM
+ * @Create: 2019-02-27 4:26 PM
  **/
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class RobotParamsDto extends RobotParam {
-
+public class RobotBasicDto extends RobotBasic {
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atmatrix.abr.infrastructure.dao.ContractRentExtendDao">
+    <sql id="Rent_Detail_Columns">
+        cr.id as id,
+        cr.union_code as unionCode,
+        cr.robot_union_code as robotUnionCode,
+        rb.device_id as deviceId,
+        cr.robot_address as robotAddress,
+        cr.rent_address as rentAddress,
+        cr.billing_price_unit as billingPriceUnit,
+        cr.billing_overdraft as overdraft,
+        cr.user_union_code as userUnionCode,
+        cr.user_contact as userContact,
+        cr.total_price as totalPrice,
+        cr.contract_status as contractStatus,
+        cr.start_time as start_time,
+        cr.end_time as end_time,
+        cr.create_time as createTime,
+        cr.update_time as updateTime,
+        rd.billing_price  as billingPrice,
+        rd.billing_type as billingType,
+        rd.overdraft as overdraft,
+        ua.account_address as userAddress,
+        ua.name as userName
+    </sql>
+
+    <select id="queryByRobotUnionCode" resultType="com.atmatrix.abr.mgt.dto.ContractRentExtendDto">
+        select
+        <include refid="Rent_Detail_Columns"/>
+        from contract_rent as cr
+        left join robot_basic as rb on rb.union_code = cr.robot_union_code
+        left join user_account ua on ua.union_code = cr.user_union_code
+        where cr.delete = 1
+        and cr.robot_union_code = #{robotUnionCode}
+    </select>
+</mapper>

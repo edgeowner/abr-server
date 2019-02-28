@@ -4,6 +4,7 @@ import com.atmatrix.abr.mgt.dto.BillingTypeDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
 import com.atmatrix.abr.mgt.dto.RobotWorkTypeDto;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
  **/
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class RobotInfoDto extends RobotDetailExtendDto {
 
     List<ParamDto> params = new ArrayList<>();

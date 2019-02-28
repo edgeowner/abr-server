@@ -5,8 +5,13 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by zhangcan03 16/10/21.
- */
+ * @ProjectName: abr-server
+ * @ClassName: BillingApplication
+ * @Description: TODO
+ * @Author: edgeowner
+ * @Create: 2019-02-27 4:10 PM
+ **/
+
 public class IdWorker {
 
     public static final long MILLI_SECOND_OF_2016_01_01 = 1454293365812l;

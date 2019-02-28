@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserAccountExample {
+public class ContractRentTimeExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public UserAccountExample() {
+    public ContractRentTimeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,413 +165,253 @@ public class UserAccountExample {
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeIsNull() {
-            addCriterion("union_code is null");
+        public Criteria andRentUnionCodeIsNull() {
+            addCriterion("rent_union_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeIsNotNull() {
-            addCriterion("union_code is not null");
+        public Criteria andRentUnionCodeIsNotNull() {
+            addCriterion("rent_union_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeEqualTo(String value) {
-            addCriterion("union_code =", value, "unionCode");
+        public Criteria andRentUnionCodeEqualTo(String value) {
+            addCriterion("rent_union_code =", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeNotEqualTo(String value) {
-            addCriterion("union_code <>", value, "unionCode");
+        public Criteria andRentUnionCodeNotEqualTo(String value) {
+            addCriterion("rent_union_code <>", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeGreaterThan(String value) {
-            addCriterion("union_code >", value, "unionCode");
+        public Criteria andRentUnionCodeGreaterThan(String value) {
+            addCriterion("rent_union_code >", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("union_code >=", value, "unionCode");
+        public Criteria andRentUnionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("rent_union_code >=", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeLessThan(String value) {
-            addCriterion("union_code <", value, "unionCode");
+        public Criteria andRentUnionCodeLessThan(String value) {
+            addCriterion("rent_union_code <", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeLessThanOrEqualTo(String value) {
-            addCriterion("union_code <=", value, "unionCode");
+        public Criteria andRentUnionCodeLessThanOrEqualTo(String value) {
+            addCriterion("rent_union_code <=", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeLike(String value) {
-            addCriterion("union_code like", value, "unionCode");
+        public Criteria andRentUnionCodeLike(String value) {
+            addCriterion("rent_union_code like", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeNotLike(String value) {
-            addCriterion("union_code not like", value, "unionCode");
+        public Criteria andRentUnionCodeNotLike(String value) {
+            addCriterion("rent_union_code not like", value, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeIn(List<String> values) {
-            addCriterion("union_code in", values, "unionCode");
+        public Criteria andRentUnionCodeIn(List<String> values) {
+            addCriterion("rent_union_code in", values, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeNotIn(List<String> values) {
-            addCriterion("union_code not in", values, "unionCode");
+        public Criteria andRentUnionCodeNotIn(List<String> values) {
+            addCriterion("rent_union_code not in", values, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeBetween(String value1, String value2) {
-            addCriterion("union_code between", value1, value2, "unionCode");
+        public Criteria andRentUnionCodeBetween(String value1, String value2) {
+            addCriterion("rent_union_code between", value1, value2, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andUnionCodeNotBetween(String value1, String value2) {
-            addCriterion("union_code not between", value1, value2, "unionCode");
+        public Criteria andRentUnionCodeNotBetween(String value1, String value2) {
+            addCriterion("rent_union_code not between", value1, value2, "rentUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressIsNull() {
-            addCriterion("account_address is null");
+        public Criteria andRentStartTimeIsNull() {
+            addCriterion("rent_start_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressIsNotNull() {
-            addCriterion("account_address is not null");
+        public Criteria andRentStartTimeIsNotNull() {
+            addCriterion("rent_start_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressEqualTo(String value) {
-            addCriterion("account_address =", value, "accountAddress");
+        public Criteria andRentStartTimeEqualTo(Date value) {
+            addCriterion("rent_start_time =", value, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressNotEqualTo(String value) {
-            addCriterion("account_address <>", value, "accountAddress");
+        public Criteria andRentStartTimeNotEqualTo(Date value) {
+            addCriterion("rent_start_time <>", value, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressGreaterThan(String value) {
-            addCriterion("account_address >", value, "accountAddress");
+        public Criteria andRentStartTimeGreaterThan(Date value) {
+            addCriterion("rent_start_time >", value, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressGreaterThanOrEqualTo(String value) {
-            addCriterion("account_address >=", value, "accountAddress");
+        public Criteria andRentStartTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("rent_start_time >=", value, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressLessThan(String value) {
-            addCriterion("account_address <", value, "accountAddress");
+        public Criteria andRentStartTimeLessThan(Date value) {
+            addCriterion("rent_start_time <", value, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressLessThanOrEqualTo(String value) {
-            addCriterion("account_address <=", value, "accountAddress");
+        public Criteria andRentStartTimeLessThanOrEqualTo(Date value) {
+            addCriterion("rent_start_time <=", value, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressLike(String value) {
-            addCriterion("account_address like", value, "accountAddress");
+        public Criteria andRentStartTimeIn(List<Date> values) {
+            addCriterion("rent_start_time in", values, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressNotLike(String value) {
-            addCriterion("account_address not like", value, "accountAddress");
+        public Criteria andRentStartTimeNotIn(List<Date> values) {
+            addCriterion("rent_start_time not in", values, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressIn(List<String> values) {
-            addCriterion("account_address in", values, "accountAddress");
+        public Criteria andRentStartTimeBetween(Date value1, Date value2) {
+            addCriterion("rent_start_time between", value1, value2, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressNotIn(List<String> values) {
-            addCriterion("account_address not in", values, "accountAddress");
+        public Criteria andRentStartTimeNotBetween(Date value1, Date value2) {
+            addCriterion("rent_start_time not between", value1, value2, "rentStartTime");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressBetween(String value1, String value2) {
-            addCriterion("account_address between", value1, value2, "accountAddress");
+        public Criteria andRentEndTimeIsNull() {
+            addCriterion("rent_end_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountAddressNotBetween(String value1, String value2) {
-            addCriterion("account_address not between", value1, value2, "accountAddress");
+        public Criteria andRentEndTimeIsNotNull() {
+            addCriterion("rent_end_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("name is null");
+        public Criteria andRentEndTimeEqualTo(Date value) {
+            addCriterion("rent_end_time =", value, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("name is not null");
+        public Criteria andRentEndTimeNotEqualTo(Date value) {
+            addCriterion("rent_end_time <>", value, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("name =", value, "name");
+        public Criteria andRentEndTimeGreaterThan(Date value) {
+            addCriterion("rent_end_time >", value, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("name <>", value, "name");
+        public Criteria andRentEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("rent_end_time >=", value, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("name >", value, "name");
+        public Criteria andRentEndTimeLessThan(Date value) {
+            addCriterion("rent_end_time <", value, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("name >=", value, "name");
+        public Criteria andRentEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("rent_end_time <=", value, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(String value) {
-            addCriterion("name <", value, "name");
+        public Criteria andRentEndTimeIn(List<Date> values) {
+            addCriterion("rent_end_time in", values, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("name <=", value, "name");
+        public Criteria andRentEndTimeNotIn(List<Date> values) {
+            addCriterion("rent_end_time not in", values, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+        public Criteria andRentEndTimeBetween(Date value1, Date value2) {
+            addCriterion("rent_end_time between", value1, value2, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotLike(String value) {
-            addCriterion("name not like", value, "name");
+        public Criteria andRentEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("rent_end_time not between", value1, value2, "rentEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("name in", values, "name");
+        public Criteria andActualEndTimeIsNull() {
+            addCriterion("actual_end_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("name not in", values, "name");
+        public Criteria andActualEndTimeIsNotNull() {
+            addCriterion("actual_end_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("name between", value1, value2, "name");
+        public Criteria andActualEndTimeEqualTo(Date value) {
+            addCriterion("actual_end_time =", value, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("name not between", value1, value2, "name");
+        public Criteria andActualEndTimeNotEqualTo(Date value) {
+            addCriterion("actual_end_time <>", value, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneIsNull() {
-            addCriterion("phone is null");
+        public Criteria andActualEndTimeGreaterThan(Date value) {
+            addCriterion("actual_end_time >", value, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneIsNotNull() {
-            addCriterion("phone is not null");
+        public Criteria andActualEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("actual_end_time >=", value, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneEqualTo(String value) {
-            addCriterion("phone =", value, "phone");
+        public Criteria andActualEndTimeLessThan(Date value) {
+            addCriterion("actual_end_time <", value, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotEqualTo(String value) {
-            addCriterion("phone <>", value, "phone");
+        public Criteria andActualEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("actual_end_time <=", value, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneGreaterThan(String value) {
-            addCriterion("phone >", value, "phone");
+        public Criteria andActualEndTimeIn(List<Date> values) {
+            addCriterion("actual_end_time in", values, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneGreaterThanOrEqualTo(String value) {
-            addCriterion("phone >=", value, "phone");
+        public Criteria andActualEndTimeNotIn(List<Date> values) {
+            addCriterion("actual_end_time not in", values, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLessThan(String value) {
-            addCriterion("phone <", value, "phone");
+        public Criteria andActualEndTimeBetween(Date value1, Date value2) {
+            addCriterion("actual_end_time between", value1, value2, "actualEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLessThanOrEqualTo(String value) {
-            addCriterion("phone <=", value, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneLike(String value) {
-            addCriterion("phone like", value, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneNotLike(String value) {
-            addCriterion("phone not like", value, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneIn(List<String> values) {
-            addCriterion("phone in", values, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneNotIn(List<String> values) {
-            addCriterion("phone not in", values, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneBetween(String value1, String value2) {
-            addCriterion("phone between", value1, value2, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneNotBetween(String value1, String value2) {
-            addCriterion("phone not between", value1, value2, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressIsNull() {
-            addCriterion("address is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressIsNotNull() {
-            addCriterion("address is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressEqualTo(String value) {
-            addCriterion("address =", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressNotEqualTo(String value) {
-            addCriterion("address <>", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressGreaterThan(String value) {
-            addCriterion("address >", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressGreaterThanOrEqualTo(String value) {
-            addCriterion("address >=", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressLessThan(String value) {
-            addCriterion("address <", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressLessThanOrEqualTo(String value) {
-            addCriterion("address <=", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressLike(String value) {
-            addCriterion("address like", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressNotLike(String value) {
-            addCriterion("address not like", value, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressIn(List<String> values) {
-            addCriterion("address in", values, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressNotIn(List<String> values) {
-            addCriterion("address not in", values, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressBetween(String value1, String value2) {
-            addCriterion("address between", value1, value2, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andAddressNotBetween(String value1, String value2) {
-            addCriterion("address not between", value1, value2, "address");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteIsNull() {
-            addCriterion("delete is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteIsNotNull() {
-            addCriterion("delete is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteEqualTo(Integer value) {
-            addCriterion("delete =", value, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteNotEqualTo(Integer value) {
-            addCriterion("delete <>", value, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteGreaterThan(Integer value) {
-            addCriterion("delete >", value, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteGreaterThanOrEqualTo(Integer value) {
-            addCriterion("delete >=", value, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteLessThan(Integer value) {
-            addCriterion("delete <", value, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteLessThanOrEqualTo(Integer value) {
-            addCriterion("delete <=", value, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteIn(List<Integer> values) {
-            addCriterion("delete in", values, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteNotIn(List<Integer> values) {
-            addCriterion("delete not in", values, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteBetween(Integer value1, Integer value2) {
-            addCriterion("delete between", value1, value2, "delete");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteNotBetween(Integer value1, Integer value2) {
-            addCriterion("delete not between", value1, value2, "delete");
+        public Criteria andActualEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("actual_end_time not between", value1, value2, "actualEndTime");
             return (Criteria) this;
         }
 

@@ -2,6 +2,7 @@ package com.atmatrix.abr.mgt.dto;
 
 import com.atmatrix.abr.infrastructure.entity.RobotDetail;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @ProjectName: abr-server
@@ -12,6 +13,7 @@ import lombok.Data;
  **/
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class RobotDetailDto extends RobotDetail {
     private String rentStatusName;
     private String workTypeName;
@@ -19,6 +21,7 @@ public class RobotDetailDto extends RobotDetail {
     private String billingTypeName;
     private String picUrl;
     private String unit;
+    private String unitCode;
 
 
 }

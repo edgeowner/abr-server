@@ -28,4 +28,6 @@ public interface RobotBasicMapper {
     int updateByExampleSelective(@Param("record") RobotBasic record, @Param("example") RobotBasicExample example);
 
     int updateByExample(@Param("record") RobotBasic record, @Param("example") RobotBasicExample example);
+
+    RobotBasic queryRobotBasicByUnionCode(@Param("unionCode") String unionCode);
 }

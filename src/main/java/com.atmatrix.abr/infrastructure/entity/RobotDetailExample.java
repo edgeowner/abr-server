@@ -649,6 +649,56 @@ public class RobotDetailExample {
             return (Criteria) this;
         }
 
+        public Criteria andOverdraftEqualTo(Integer value) {
+            addCriterion("overdraft =", value, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftNotEqualTo(Integer value) {
+            addCriterion("overdraft <>", value, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftGreaterThan(Integer value) {
+            addCriterion("overdraft >", value, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftGreaterThanOrEqualTo(Integer value) {
+            addCriterion("overdraft >=", value, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftLessThan(Integer value) {
+            addCriterion("overdraft <", value, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftLessThanOrEqualTo(Integer value) {
+            addCriterion("overdraft <=", value, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftIn(List<Integer> values) {
+            addCriterion("overdraft in", values, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftNotIn(List<Integer> values) {
+            addCriterion("overdraft not in", values, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftBetween(Integer value1, Integer value2) {
+            addCriterion("overdraft between", value1, value2, "overdraft");
+            return (Criteria) this;
+        }
+
+        public Criteria andOverdraftNotBetween(Integer value1, Integer value2) {
+            addCriterion("overdraft not between", value1, value2, "overdraft");
+            return (Criteria) this;
+        }
+
         public Criteria andDeleteIsNull() {
             addCriterion("delete is null");
             return (Criteria) this;

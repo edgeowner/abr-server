@@ -1,18 +1,18 @@
 package com.atmatrix.abr.common.constants;
 
 public enum BillingTypeEnum {
-    DAY(1, "按天计费"),
-    FREQUENCY(2, "按次计费");
+    DAY("100", "天"),
+    FREQUENCY("200", "次");
 
-    private Integer code;
+    private String code;
     private String name;
 
-    BillingTypeEnum(Integer code, String name) {
+    BillingTypeEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
@@ -20,7 +20,7 @@ public enum BillingTypeEnum {
         return name;
     }
 
-    public static BillingTypeEnum getByCode(Integer code) {
+    public static BillingTypeEnum getByCode(String code) {
         for (BillingTypeEnum item : BillingTypeEnum.values()) {
             if (item.getCode().equals(code)) {
                 return item;

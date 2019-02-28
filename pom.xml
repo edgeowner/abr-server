@@ -27,6 +27,7 @@
         <mybatis-spring.version>2.0.0</mybatis-spring.version>
         <springboot-admin.version>2.1.0</springboot-admin.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <joda-time.version>2.10.1</joda-time.version>
         <skipTests>true</skipTests>
     </properties>
 
@@ -171,9 +172,9 @@
 
         <!--Page Helper-->
         <!--<dependency>-->
-            <!--<groupId>com.github.pagehelper</groupId>-->
-            <!--<artifactId>pagehelper</artifactId>-->
-            <!--<version>${pagehelper.version}</version>-->
+        <!--<groupId>com.github.pagehelper</groupId>-->
+        <!--<artifactId>pagehelper</artifactId>-->
+        <!--<version>${pagehelper.version}</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -199,6 +200,14 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>5.2</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+
 
     </dependencies>
 

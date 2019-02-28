@@ -68,17 +68,18 @@
 
 
     <sql id="Detail_Info_Extend">
-        rd.`id`  as id,
+        rd.`id` as id,
         rb.`union_code` as robotUnionCode,
         rb.`device_id`  as  deviceId,
         rb.`account_address` as accountAddress,
         rb.`robot_pic_url` as picUrl,
         rd.`robot_name` as name,
-        rd.`region_code` AS regionCode,
+        rd.`region_code` as regionCode,
         rd.`rent_status` as rentStatus,
         rd.`billing_type`  as billingTypeCode,
         rd.`billing_price` as billingPrice,
         rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
         rw.`worktype_name` as workTypeName,
         rw.`worktype_desc` as workTypeDesc,
         rdr.`name` as rentName,
@@ -97,5 +98,29 @@
         left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
         where rd.`robot_union_code` = #{robotUnionCode}
         and rd.`delete` = 1
+    </select>
+
+    <sql id="Detail_Info_Columns">
+        rd.`id` as id ,
+        rd.`robot_name` as robotName ,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price`as billingPrice,
+        rd.`delete` as delete ,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rdu.`name` as unit
+        rdu.`code` as unitCode
+    </sql>
+    <select id="queryOneByUnionCode" resultType="com.atmatrix.abr.mgt.dto.RobotDetailDto">
+        select
+        <include refid="Detail_Info_Columns"/>
+        from robot_detail as rd
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        where rd.`robot_union_code` = #{unionCode}
+        and rd.`delete` = 1
+        limit 1
     </select>
 </mapper>

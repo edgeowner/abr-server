@@ -25,6 +25,8 @@ public class RobotDetail {
 
     private String workType;
 
+    private Integer overdraft;
+
     private Integer delete;
 
     private Date createTime;

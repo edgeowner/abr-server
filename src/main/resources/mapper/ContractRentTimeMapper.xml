@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atmatrix.abr.infrastructure.dao.UserAccountMapper">
-    <resultMap id="BaseResultMap" type="com.atmatrix.abr.infrastructure.entity.UserAccount">
+<mapper namespace="com.atmatrix.abr.infrastructure.dao.ContractRentTimeMapper">
+    <resultMap id="BaseResultMap" type="com.atmatrix.abr.infrastructure.entity.ContractRentTime">
         <result column="id" jdbcType="INTEGER" property="id"/>
-        <result column="union_code" jdbcType="VARCHAR" property="unionCode"/>
-        <result column="account_address" jdbcType="VARCHAR" property="accountAddress"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="phone" jdbcType="VARCHAR" property="phone"/>
-        <result column="address" jdbcType="VARCHAR" property="address"/>
-        <result column="delete" jdbcType="INTEGER" property="delete"/>
+        <result column="rent_union_code" jdbcType="VARCHAR" property="rentUnionCode"/>
+        <result column="rent_start_time" jdbcType="TIMESTAMP" property="rentStartTime"/>
+        <result column="rent_end_time" jdbcType="TIMESTAMP" property="rentEndTime"/>
+        <result column="actual_end_time" jdbcType="TIMESTAMP" property="actualEndTime"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
@@ -73,9 +71,10 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, union_code, account_address, name, phone, address, create_time, update_time
+    id, rent_union_code, rent_start_time, rent_end_time, actual_end_time, create_time, 
+    update_time
   </sql>
-    <select id="selectByExample" parameterType="com.atmatrix.abr.infrastructure.entity.UserAccountExample"
+    <select id="selectByExample" parameterType="com.atmatrix.abr.infrastructure.entity.ContractRentTimeExample"
             resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -83,7 +82,7 @@
         </if>
         'true' as QUERYID,
         <include refid="Base_Column_List"/>
-        from user_account
+        from contract_rent_time
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -91,56 +90,47 @@
             order by ${orderByClause}
         </if>
     </select>
-    <delete id="deleteByExample" parameterType="com.atmatrix.abr.infrastructure.entity.UserAccountExample">
-        delete from user_account
+    <delete id="deleteByExample" parameterType="com.atmatrix.abr.infrastructure.entity.ContractRentTimeExample">
+        delete from contract_rent_time
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.atmatrix.abr.infrastructure.entity.UserAccount">
-    insert into user_account (
-      union_code,
-      account_address,
-      name,
-      phone,
-      address,
-      delete,
+    <insert id="insert" parameterType="com.atmatrix.abr.infrastructure.entity.ContractRentTime">
+    insert into contract_rent_time (
+      rent_union_code,
+      rent_start_time,
+      rent_end_time,
+      actual_end_time,
       create_time,
-      update_time)
+      update_time
+      )
     values (
-      #{unionCode,jdbcType=VARCHAR},
-      #{accountAddress,jdbcType=VARCHAR},
-      #{name,jdbcType=VARCHAR},
-      #{phone,jdbcType=VARCHAR},
-      #{address,jdbcType=VARCHAR},
-      #{delete,jdbcType=INTEGER},
+      #{rentUnionCode,jdbcType=VARCHAR},
+      #{rentStartTime,jdbcType=TIMESTAMP},
+      #{rentEndTime,jdbcType=TIMESTAMP},
+      #{actualEndTime,jdbcType=TIMESTAMP},
       now(),
       now()
-      )
+    )
   </insert>
-    <insert id="insertSelective" parameterType="com.atmatrix.abr.infrastructure.entity.UserAccount">
-        insert into user_account
+    <insert id="insertSelective" parameterType="com.atmatrix.abr.infrastructure.entity.ContractRentTime">
+        insert into contract_rent_time
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
             </if>
-            <if test="unionCode != null">
-                union_code,
+            <if test="rentUnionCode != null">
+                rent_union_code,
             </if>
-            <if test="accountAddress != null">
-                account_address,
+            <if test="rentStartTime != null">
+                rent_start_time,
             </if>
-            <if test="name != null">
-                name,
+            <if test="rentEndTime != null">
+                rent_end_time,
             </if>
-            <if test="phone != null">
-                phone,
-            </if>
-            <if test="address != null">
-                address,
-            </if>
-            <if test="delete != null">
-                delete,
+            <if test="actualEndTime != null">
+                actual_end_time,
             </if>
             <if test="createTime != null">
                 create_time,
@@ -153,83 +143,64 @@
             <if test="id != null">
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="unionCode != null">
-                #{unionCode,jdbcType=VARCHAR},
+            <if test="rentUnionCode != null">
+                #{rentUnionCode,jdbcType=VARCHAR},
             </if>
-            <if test="accountAddress != null">
-                #{accountAddress,jdbcType=VARCHAR},
+            <if test="rentStartTime != null">
+                #{rentStartTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="name != null">
-                #{name,jdbcType=VARCHAR},
+            <if test="rentEndTime != null">
+                #{rentEndTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="phone != null">
-                #{phone,jdbcType=VARCHAR},
-            </if>
-            <if test="address != null">
-                #{address,jdbcType=VARCHAR},
-            </if>
-            <if test="delete != null">
-                #{delete,jdbcType=INTEGER},
+            <if test="actualEndTime != null">
+                #{actualEndTime,jdbcType=TIMESTAMP},
             </if>
             <if test="createTime != null">
-                #{createTime,jdbcType=TIMESTAMP},
+               now(),
             </if>
             <if test="updateTime != null">
-                #{updateTime,jdbcType=TIMESTAMP},
+                now(),
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.atmatrix.abr.infrastructure.entity.UserAccountExample"
+    <select id="countByExample" parameterType="com.atmatrix.abr.infrastructure.entity.ContractRentTimeExample"
             resultType="java.lang.Long">
-        select count(*) from user_account
+        select count(*) from contract_rent_time
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update user_account
+        update contract_rent_time
         <set>
             <if test="record.id != null">
                 id = #{record.id,jdbcType=INTEGER},
             </if>
-            <if test="record.unionCode != null">
-                union_code = #{record.unionCode,jdbcType=VARCHAR},
+            <if test="record.rentUnionCode != null">
+                rent_union_code = #{record.rentUnionCode,jdbcType=VARCHAR},
             </if>
-            <if test="record.accountAddress != null">
-                account_address = #{record.accountAddress,jdbcType=VARCHAR},
+            <if test="record.rentStartTime != null">
+                rent_start_time = #{record.rentStartTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="record.name != null">
-                name = #{record.name,jdbcType=VARCHAR},
+            <if test="record.rentEndTime != null">
+                rent_end_time = #{record.rentEndTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="record.phone != null">
-                phone = #{record.phone,jdbcType=VARCHAR},
+            <if test="record.actualEndTime != null">
+                actual_end_time = #{record.actualEndTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="record.address != null">
-                address = #{record.address,jdbcType=VARCHAR},
-            </if>
-            <if test="record.delete != null">
-                delete = #{record.delete,jdbcType=INTEGER},
-            </if>
-            <if test="record.createTime != null">
-                create_time = #{record.createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="record.updateTime != null">
-                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-            </if>
+
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update user_account
-        set
-        `union_code` = #{record.unionCode,jdbcType=VARCHAR},
-        `account_address` = #{record.accountAddress,jdbcType=VARCHAR},
-        `name` = #{record.name,jdbcType=VARCHAR},
-        `phone` = #{record.phone,jdbcType=VARCHAR},
-        `address` = #{record.address,jdbcType=VARCHAR},
-        `delete` = #{record.delete,jdbcType=VARCHAR}
+        update contract_rent_time
+        set id = #{record.id,jdbcType=INTEGER},
+        rent_union_code = #{record.rentUnionCode,jdbcType=VARCHAR},
+        rent_start_time = #{record.rentStartTime,jdbcType=TIMESTAMP},
+        rent_end_time = #{record.rentEndTime,jdbcType=TIMESTAMP},
+        actual_end_time = #{record.actualEndTime,jdbcType=TIMESTAMP}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>

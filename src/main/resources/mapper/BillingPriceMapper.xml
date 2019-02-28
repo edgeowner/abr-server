@@ -101,14 +101,30 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
-    insert into billing_price (id, parent_union_code, union_code, 
-      name, min_price, max_price, 
-      type, unit, delete, 
-      create_time, update_time)
-    values (#{id,jdbcType=INTEGER}, #{parentUnionCode,jdbcType=VARCHAR}, #{unionCode,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{minPrice,jdbcType=INTEGER}, #{maxPrice,jdbcType=INTEGER}, 
-      #{type,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{delete,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    insert into billing_price (
+        `parent_union_code`,
+        `union_code`,
+        `name`,
+        `min_price`,
+        `max_price`,
+        `type`,
+        `unit`,
+        `delete`,
+        `create_time`,
+        `update_time`
+        )
+        values (
+        #{parentUnionCode,jdbcType=VARCHAR},
+        #{unionCode,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR},
+        #{minPrice,jdbcType=INTEGER},
+        #{maxPrice,jdbcType=INTEGER},
+        #{type,jdbcType=INTEGER},
+        #{unit,jdbcType=VARCHAR},
+        #{delete,jdbcType=INTEGER},
+        now(),
+        now()
+        )
   </insert>
     <insert id="insertSelective" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
         insert into billing_price
@@ -194,37 +210,37 @@
         update billing_price
         <set>
             <if test="record.id != null">
-                id = #{record.id,jdbcType=INTEGER},
+                `id` = #{record.id,jdbcType=INTEGER},
             </if>
             <if test="record.parentUnionCode != null">
-                parent_union_code = #{record.parentUnionCode,jdbcType=VARCHAR},
+                `parent_union_code` = #{record.parentUnionCode,jdbcType=VARCHAR},
             </if>
             <if test="record.unionCode != null">
-                union_code = #{record.unionCode,jdbcType=VARCHAR},
+                `union_code` = #{record.unionCode,jdbcType=VARCHAR},
             </if>
             <if test="record.name != null">
-                name = #{record.name,jdbcType=VARCHAR},
+                `name` = #{record.name,jdbcType=VARCHAR},
             </if>
             <if test="record.minPrice != null">
-                min_price = #{record.minPrice,jdbcType=INTEGER},
+                `min_price` = #{record.minPrice,jdbcType=INTEGER},
             </if>
             <if test="record.maxPrice != null">
-                max_price = #{record.maxPrice,jdbcType=INTEGER},
+                `max_price` = #{record.maxPrice,jdbcType=INTEGER},
             </if>
             <if test="record.type != null">
-                type = #{record.type,jdbcType=INTEGER},
+                `type` = #{record.type,jdbcType=INTEGER},
             </if>
             <if test="record.unit != null">
-                unit = #{record.unit,jdbcType=VARCHAR},
+                `uni`t = #{record.unit,jdbcType=VARCHAR},
             </if>
             <if test="record.delete != null">
-                delete = #{record.delete,jdbcType=INTEGER},
+                `delete` = #{record.delete,jdbcType=INTEGER},
             </if>
             <if test="record.createTime != null">
-                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+                `create_time` = #{record.createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="record.updateTime != null">
-                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+                `update_time` = #{record.updateTime,jdbcType=TIMESTAMP},
             </if>
         </set>
         <if test="_parameter != null">
@@ -233,17 +249,18 @@
     </update>
     <update id="updateByExample" parameterType="map">
         update billing_price
-        set id = #{record.id,jdbcType=INTEGER},
-        parent_union_code = #{record.parentUnionCode,jdbcType=VARCHAR},
-        union_code = #{record.unionCode,jdbcType=VARCHAR},
-        name = #{record.name,jdbcType=VARCHAR},
-        min_price = #{record.minPrice,jdbcType=INTEGER},
-        max_price = #{record.maxPrice,jdbcType=INTEGER},
-        type = #{record.type,jdbcType=INTEGER},
-        unit = #{record.unit,jdbcType=VARCHAR},
-        delete = #{record.delete,jdbcType=INTEGER},
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+        set
+        `id` = #{record.id,jdbcType=INTEGER},
+        `parent_union_code` = #{record.parentUnionCode,jdbcType=VARCHAR},
+        `union_code` = #{record.unionCode,jdbcType=VARCHAR},
+        `name` = #{record.name,jdbcType=VARCHAR},
+        `min_price` = #{record.minPrice,jdbcType=INTEGER},
+        `max_price` = #{record.maxPrice,jdbcType=INTEGER},
+        `type` = #{record.type,jdbcType=INTEGER},
+        `unit` = #{record.unit,jdbcType=VARCHAR},
+        `delete` = #{record.delete,jdbcType=INTEGER},
+        `create_time` = #{record.createTime,jdbcType=TIMESTAMP},
+        `update_time` = #{record.updateTime,jdbcType=TIMESTAMP}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
