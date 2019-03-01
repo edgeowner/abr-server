@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 /**
  * @ProjectName: abr-server
  * @ClassName: InitDataApplictionImpl
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-21 2:13 PM
  **/

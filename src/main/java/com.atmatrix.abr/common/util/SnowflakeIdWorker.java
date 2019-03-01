@@ -3,11 +3,11 @@ package com.atmatrix.abr.common.util;
 /**
  * @ProjectName: abr-server
  * @ClassName: SnowflakeIdWorker
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-22 8:29 AM
- **/
-/**
+ *
+ *
  * Twitter_Snowflake<br>
  * SnowFlake的结构如下(每部分用-分开):<br>
  * 0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 <br>

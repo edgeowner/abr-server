@@ -1,18 +1,21 @@
-package com.atmatrix.abr.application.dto;
+package com.atmatrix.abr.application.dto.evaluation;
 
 import lombok.Data;
 
 /**
  * @ProjectName: abr-server
  * @ClassName: EvalutionStandardDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-28 3:56 PM
  **/
 
 @Data
-public class EvalutionStandardDto {
+public class EvaluationStandardDto {
+    private Integer id;
+    private String unionCode;
     private String workTypeCode;
+    private String workTypeName;
     private Integer robotAmount;
     private String maxScore;
     private String avgScore;

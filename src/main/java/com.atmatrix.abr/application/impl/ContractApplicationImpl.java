@@ -1,18 +1,15 @@
 package com.atmatrix.abr.application.impl;
 
 import com.atmatrix.abr.application.ContractApplication;
+import com.atmatrix.abr.application.dto.condtion.RegionCondDto;
 import com.atmatrix.abr.application.dto.rent.RechargeDto;
 import com.atmatrix.abr.application.dto.rent.RentContractDto;
 import com.atmatrix.abr.common.BizException;
 import com.atmatrix.abr.common.constants.DeleteEnum;
 import com.atmatrix.abr.common.util.IdWorker;
-import com.atmatrix.abr.infrastructure.entity.RobotDetail;
 import com.atmatrix.abr.infrastructure.entity.UserAccount;
 import com.atmatrix.abr.mgt.*;
-import com.atmatrix.abr.mgt.dto.ContractRechargeDto;
-import com.atmatrix.abr.mgt.dto.RobotBasicDto;
-import com.atmatrix.abr.mgt.dto.RobotDetailDto;
-import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
+import com.atmatrix.abr.mgt.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +18,7 @@ import org.springframework.util.StringUtils;
 /**
  * @ProjectName: abr-server
  * @ClassName: BillingApplicationImpl
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-27 4:10 PM
  **/
@@ -43,6 +40,9 @@ public class ContractApplicationImpl implements ContractApplication {
 
     @Autowired
     private UserAccountMgt userAccountMgt;
+
+    @Autowired
+    private ContractRentAddressMgt contractRentAddressMgt;
 
 
     @Override
@@ -73,18 +73,47 @@ public class ContractApplicationImpl implements ContractApplication {
     @Transactional
     @Override
     public String saveOrUpdateContractRent(RentContractDto dto) {
-        Integer id = dto.getId();
         String unionCode = "";
-        if (id == null || id == 0) {
+        if (dto == null || dto.getId() == null || dto.getId() == 0) {
             String userUnionCode = String.valueOf(IdWorker.getId());
             dto.setUserUnionCode(userUnionCode);
+            //保存用户信息
             userAccountMgt.saveUserAccount(buildUserAccount(dto));
+            //保存出租合约信息
             unionCode = contractRentMgt.saveRentInfo(dto);
+            //保存合约出租地址
+            contractRentAddressMgt.saveAddress(buildRentAddress(dto));
         } else {
+            //更新用户信息
             userAccountMgt.updateUserAccount(buildUserAccount(dto));
+            //更新出租合约信息
             unionCode = contractRentMgt.updateRentInfo(dto);
+            //更新合约出租地址
+            contractRentAddressMgt.updateAddress(buildRentAddress(dto));
         }
         return unionCode;
+    }
+
+    private ContractRentAddressDto buildRentAddress(RentContractDto dto) {
+        ContractRentAddressDto rentAddressDto = new ContractRentAddressDto();
+        rentAddressDto.setRentUnionCode(dto.getUnionCode());
+        RegionCondDto regionCondDto = dto.getRegionCondDto();
+
+        if (StringUtils.isEmpty(dto.getWorkAddress())) {
+            if (dto.getRegionCondDto() != null) {
+                String regionCode = regionCondDto.getCode().concat(",").concat(regionCondDto.getChildCode());
+                String regionName = regionCondDto.getName().concat(",").concat(regionCondDto.getChildName());
+                rentAddressDto.setRegionCode(regionCode);
+                rentAddressDto.setRegionName(regionName);
+                rentAddressDto.setDelete(DeleteEnum.TRUE.getCode());
+            } else {
+                rentAddressDto = null;
+            }
+        } else {
+            rentAddressDto.setWorkAddress(dto.getWorkAddress());
+            rentAddressDto.setDelete(DeleteEnum.TRUE.getCode());
+        }
+        return rentAddressDto;
     }
 
 
@@ -122,9 +151,18 @@ public class ContractApplicationImpl implements ContractApplication {
 
     private UserAccount buildUserAccount(RentContractDto dto) {
         UserAccount userAccount = new UserAccount();
+        if (dto == null) {
+            return null;
+        } else {
+            if (StringUtils.isEmpty(dto.getUserAddress())
+                    && StringUtils.isEmpty(dto.getUserName())
+                    && StringUtils.isEmpty(dto.getUserContact())
+                    && StringUtils.isEmpty(dto.getUserUnionCode())) {
+                return null;
+            }
+        }
         userAccount.setAccountAddress(dto.getUserAddress());
         userAccount.setUnionCode(dto.getUserUnionCode());
-        userAccount.setAccountAddress(dto.getUserAddress());
         userAccount.setName(dto.getUserName());
         userAccount.setPhone(dto.getUserContact());
         userAccount.setDelete(DeleteEnum.TRUE.getCode());

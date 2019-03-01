@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @ProjectName: abr-server
  * @ClassName: RobotDetailExtendDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-22 5:30 PM
  **/
@@ -19,8 +19,8 @@ public class RobotDetailExtendDto {
     private String deviceId;
     private String accountAddress;
     private String name;
-    private String rentStatus;
-    private String rentName;
+    private String rentStatusCode;
+    private String rentStatusName;
     private String workTypeName;
     private String workTypeCode;
     private String workTypeDesc;

@@ -2,7 +2,6 @@ package com.atmatrix.abr.application;
 
 import com.atmatrix.abr.application.dto.BillingDto;
 import com.atmatrix.abr.application.dto.DictionaryDto;
-import com.atmatrix.abr.mgt.dto.BillingTypeDto;
 import com.atmatrix.abr.mgt.dto.RobotWorkTypeDto;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Map;
 /**
  * @ProjectName: abr-server
  * @ClassName: DictionaryAppliction
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-20 7:45 PM
  **/

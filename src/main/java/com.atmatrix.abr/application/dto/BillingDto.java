@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @ProjectName: abr-server
  * @ClassName: BillingDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-21 8:06 PM
  **/

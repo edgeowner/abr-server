@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  * @ProjectName: abr-server
  * @ClassName: ContractRechargeMgt
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-27 4:52 PM
  **/

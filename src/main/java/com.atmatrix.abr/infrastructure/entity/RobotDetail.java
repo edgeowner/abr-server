@@ -21,7 +21,7 @@ public class RobotDetail {
 
     private Integer billingPrice;
 
-    private String rentStatus;
+    private String rentStatusCode;
 
     private String workType;
 

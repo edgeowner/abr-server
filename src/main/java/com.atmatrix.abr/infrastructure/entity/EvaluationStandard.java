@@ -4,14 +4,20 @@ import lombok.Data;
 
 
 @Data
-public class RobotWorkType {
+public class EvaluationStandard {
     private Integer id;
-
-    private String worktypeName;
 
     private String unionCode;
 
-    private String picUrl;
+    private String workTypeCode;
+
+    private Integer robotAmount;
+
+    private String avgScore;
+
+    private String maxScore;
+
+    private String exceScore;
 
     private Integer delete;
 

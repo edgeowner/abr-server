@@ -2,11 +2,11 @@ package com.atmatrix.abr.controller;
 
 import com.atmatrix.abr.application.RobotApplication;
 import com.atmatrix.abr.application.dto.RobotInfoDto;
-import com.atmatrix.abr.application.dto.condtion.QueryCondPageDicDto;
+import com.atmatrix.abr.application.dto.condtion.CommonQueryCondDto;
+import com.atmatrix.abr.application.dto.condtion.QueryCondDicDto;
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
 import com.atmatrix.abr.common.web.WebUtil;
 import com.atmatrix.abr.mgt.dto.RobotDetailDto;
-import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * @ProjectName: abr-server
  * @ClassName: RobotController
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-22 8:05 AM
  **/
@@ -38,7 +38,7 @@ public class RobotController {
     @ApiOperation(value = "获取机器人列表", notes = "获取机器人列表")
     @RequestMapping(value = "/list/get", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> getRobotList(@RequestBody QueryCondPageDicDto cond) {
+    public ResponseEntity<Map<String, Object>> getRobotList(@RequestBody QueryCondDicDto cond) {
         try {
             PageInfoResult<RobotDetailDto> pageRobotList = robotApplication.getRobotDetailPageList(cond);
             return WebUtil.result(pageRobotList);

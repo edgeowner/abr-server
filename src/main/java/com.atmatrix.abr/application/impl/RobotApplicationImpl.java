@@ -3,8 +3,8 @@ package com.atmatrix.abr.application.impl;
 import com.atmatrix.abr.application.RobotApplication;
 import com.atmatrix.abr.application.dto.ParamDto;
 import com.atmatrix.abr.application.dto.RobotInfoDto;
-import com.atmatrix.abr.application.dto.condtion.QueryCondPageDicDto;
-import com.atmatrix.abr.application.dto.condtion.RegionConditionDto;
+import com.atmatrix.abr.application.dto.condtion.QueryCondDicDto;
+import com.atmatrix.abr.application.dto.condtion.RegionCondDto;
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
 import com.atmatrix.abr.application.dto.page.PageQuery;
 import com.atmatrix.abr.common.BizException;
@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * @ProjectName: abr-server
  * @ClassName: RobotApplicationImpl
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-21 2:14 PM
  **/
@@ -45,11 +45,10 @@ public class RobotApplicationImpl implements RobotApplication {
     private DictionaryMgt dictionaryMgt;
 
 
-    public PageInfoResult<RobotDetailDto> getRobotDetailPageList(QueryCondPageDicDto queryDto) {
+    public PageInfoResult<RobotDetailDto> getRobotDetailPageList(QueryCondDicDto queryDto) {
         if (queryDto == null) {
             return PageInfoResult.buildPage();
         }
-
         PageQuery pageQuery = queryDto.getPage();
         RobotConditionDto robotConditionDto = buildRobotConditionDto(queryDto);
         PageInfoResult<RobotDetailDto> result = robotDetailMgt.getDictionaryListByPageDto(robotConditionDto, pageQuery);
@@ -57,7 +56,7 @@ public class RobotApplicationImpl implements RobotApplication {
     }
 
 
-    private RobotConditionDto buildRobotConditionDto(QueryCondPageDicDto params) {
+    private RobotConditionDto buildRobotConditionDto(QueryCondDicDto params) {
         RobotConditionDto result = new RobotConditionDto();
         if (!StringUtils.isEmpty(params.getBillingPriceCode())) {
             BillingPrice billingPrice = billingMgt.getBillPriceByCode(params.getBillingPriceCode());
@@ -67,16 +66,16 @@ public class RobotApplicationImpl implements RobotApplication {
             result.setMax(billingPrice.getMaxPrice());
             result.setMin(billingPrice.getMinPrice());
         }
-        RegionConditionDto regionConditionDto = params.getRegionConditionDto();
+        RegionCondDto regionCondDto = params.getRegionCondDto();
         String regionCode = "";
-        if (StringUtils.isEmpty(regionConditionDto.getChildCode()) || StringUtils.isEmpty(regionConditionDto.getCode())) {
+        if (StringUtils.isEmpty(regionCondDto.getChildCode()) || StringUtils.isEmpty(regionCondDto.getCode())) {
             result.setLike(false);
         } else {
-            if (regionConditionDto.getChildCode().equals(regionConditionDto.getCode())) {
-                regionCode = regionConditionDto.getCode();
+            if (regionCondDto.getChildCode().equals(regionCondDto.getCode())) {
+                regionCode = regionCondDto.getCode();
                 result.setLike(true);
             } else {
-                regionCode = regionConditionDto.getCode().concat(",").concat(regionConditionDto.getChildCode());
+                regionCode = regionCondDto.getCode().concat(",").concat(regionCondDto.getChildCode());
                 result.setLike(false);
             }
         }

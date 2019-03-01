@@ -10,7 +10,7 @@
         rd.`region_name` as regionName,
         rd.`billing_type` as billingType,
         rd.`billing_price` as billingPrice,
-        rd.`rent_status` as rentStatus,
+        rd.`rent_status_code` as rentStatusCode,
         rd.`work_type` as workType,
         rd.`delete` as `delete`,
         rd.`create_time` as createTime,
@@ -18,7 +18,7 @@
         rw.`pic_url` as picUrl,
         rw.`worktype_name` as workTypeName,
         rw.`worktype_desc` as worktypeDesc,
-        rds.`name` as rentStatusName,
+        rds.`name` as rentStatusCodeName,
         rdi.`name` as billingTypeName,
         rdu.`name` as unit
     </sql>
@@ -27,10 +27,10 @@
         select
         <include refid="Join_Table_List"/>
         from robot_detail as rd
-        left join robot_work_type as rw on rw.union_code = rd.work_type
+        left join work_type as rw on rw.union_code = rd.work_type
         left join robot_basic as rb on rb.union_code = rd.robot_union_code
         left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
-        left join robot_dictionary as rds on rds.code = rd.rent_status and rds.type = 'rentStatus'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
         left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
         WHERE rd.`delete` = 1
         <if test="conditions !=null">
@@ -54,8 +54,8 @@
         <if test="conditions.max !=null and conditions.max !=''">
             and rd.`billing_price` &lt; #{conditions.max}
         </if>
-        <if test="conditions.rentStatus !=null and conditions.rentStatus !=''">
-            and rd.`rent_status` = #{conditions.rentStatus}
+        <if test="conditions.rentStatusCode !=null and conditions.rentStatusCode !=''">
+            and rd.`rent_status_code` = #{conditions.rentStatusCode}
         </if>
         <if test="conditions.workTypes !=null and conditions.workTypes.size() &gt; 0">
             and rd.work_type in
@@ -75,14 +75,14 @@
         rb.`robot_pic_url` as picUrl,
         rd.`robot_name` as name,
         rd.`region_code` as regionCode,
-        rd.`rent_status` as rentStatus,
+        rd.`rent_status_code` as rentStatusCode,
         rd.`billing_type`  as billingTypeCode,
         rd.`billing_price` as billingPrice,
         rd.`work_type` as workTypeCode,
         rd.`overdraft` as overdraft,
         rw.`worktype_name` as workTypeName,
         rw.`worktype_desc` as workTypeDesc,
-        rdr.`name` as rentName,
+        rdr.`name` as rentStatusName,
         rdb.`name` as billingTypeName,
         rdu.`name` as unit
     </sql>
@@ -93,9 +93,9 @@
         from robot_detail as rd
         left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
         left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
-        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
         left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
-        left join robot_work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
         where rd.`robot_union_code` = #{robotUnionCode}
         and rd.`delete` = 1
     </select>
@@ -122,5 +122,13 @@
         where rd.`robot_union_code` = #{unionCode}
         and rd.`delete` = 1
         limit 1
+    </select>
+    
+    <select id="countRentRobotGroupByWorkType" resultType="java.util.HashMap">
+        select `work_type` as workType, count(1) as amount
+        from robot_detail
+        where `rent_status_code` = #{rentStatusCode}
+        and `delete` = 1
+        group by `work_type`
     </select>
 </mapper>

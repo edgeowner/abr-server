@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @ProjectName: abr-server
  * @ClassName: BillingTypeDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-26 4:07 PM
  **/

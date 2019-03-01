@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * @ProjectName: abr-server
  * @ClassName: ContractRentExtendDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-27 6:34 PM
  **/
@@ -31,6 +31,10 @@ public class ContractRentExtendDto {
     private String userAddress;//承租方帐户地址
     private Integer totalPrice;//总价
     private Integer contractStatus;//合约状态
+    private String regionCode;
+    private String regionName;
+    private String workAddress;
+
     private String createTime;//创建时间
     private String updateTime;//更新时间
 

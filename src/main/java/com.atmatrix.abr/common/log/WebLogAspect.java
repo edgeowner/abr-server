@@ -4,8 +4,6 @@ import com.atmatrix.abr.common.util.RequestUtil;
 import com.google.gson.Gson;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import net.logstash.logback.marker.Markers;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
@@ -31,7 +29,7 @@ import java.util.Map;
 /**
  * @ProjectName: abr-server
  * @ClassName: WebLogAspect
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-20 6:03 PM
  **/

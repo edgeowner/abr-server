@@ -10,24 +10,20 @@ import com.atmatrix.abr.infrastructure.entity.RobotDictionary;
 import com.atmatrix.abr.mgt.BillingMgt;
 import com.atmatrix.abr.mgt.DictionaryMgt;
 import com.atmatrix.abr.mgt.RobotWorkTypeMgt;
-import com.atmatrix.abr.mgt.dto.BillingTypeDto;
 import com.atmatrix.abr.mgt.dto.RobotWorkTypeDto;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @ProjectName: abr-server
  * @ClassName: DictionaryApplictionImpl
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-20 7:46 PM
  **/

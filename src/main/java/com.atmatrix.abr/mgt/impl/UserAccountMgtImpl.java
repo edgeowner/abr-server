@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * @ProjectName: abr-server
  * @ClassName: UserAccountMgtImpl
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-28 11:39 AM
  **/
@@ -23,12 +23,18 @@ public class UserAccountMgtImpl implements UserAccountMgt {
 
     @Override
     public void saveUserAccount(UserAccount userAccount) {
+        if (userAccount == null) {
+            return;
+        }
         userAccountMapper.insert(userAccount);
     }
 
 
     @Override
     public void updateUserAccount(UserAccount userAccount) {
+        if (userAccount == null) {
+            return;
+        }
         UserAccountExample example = new UserAccountExample();
         UserAccountExample.Criteria criteria = example.createCriteria();
         criteria.andUnionCodeEqualTo(userAccount.getUnionCode());

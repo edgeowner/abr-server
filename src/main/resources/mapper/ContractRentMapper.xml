@@ -16,6 +16,7 @@
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="total_price" jdbcType="INTEGER" property="totalPrice"/>
         <result column="contract_status" jdbcType="INTEGER" property="contractStatus"/>
+        <result column="delete" jdbcType="INTEGER" property="delete"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>

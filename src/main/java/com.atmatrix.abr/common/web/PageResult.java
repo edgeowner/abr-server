@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @ProjectName: abr-server
  * @ClassName: PageReuslt
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-21 10:09 AM
  **/

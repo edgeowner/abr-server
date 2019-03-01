@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atmatrix.abr.infrastructure.dao.EvaluationExtendDao">
+
+  <sql id="Standard_Columns">
+      es.id as id,
+      es.`union_code` as unionCode,
+      es.`work_type_code` as workTypeCode,
+      es.`robot_amount` as robotAmount,
+      es.`avg_score` as avgScore,
+      es.`max_score` as maxScore,
+      es.`exce_score` as  exceScore,
+      es.`delete` as delete,
+      es.`create_time` as createTime,
+      es.`update_time` as updateTime,
+      rwt.`worktype_name` as workTypeName,
+  </sql>
+
+  <select id="queryStandardByWorkType" resultType="com.atmatrix.abr.mgt.dto.EvaluationStandardExtendDto">
+    select
+    <include refid="Standard_Columns"/>
+    from evaluation_standard as es
+    left join work_type as rwt on rwt.union_code = es.work_type_code and rwt.`delete`=1
+    where es.`delete`=1
+  </select>
+</mapper>

@@ -6,6 +6,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class RobotWorkTypeWithBLOBs extends RobotWorkType {
+public class WorkTypeWithBLOBs extends WorkType {
     private String worktypeDesc;
 }

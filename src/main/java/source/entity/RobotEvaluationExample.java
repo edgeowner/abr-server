@@ -1,17 +1,17 @@
-package com.atmatrix.abr.infrastructure.entity;
+package source.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class RobotWorkTypeExample {
+public class RobotEvaluationExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RobotWorkTypeExample() {
+    public RobotEvaluationExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,76 +165,6 @@ public class RobotWorkTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andWorktypeNameIsNull() {
-            addCriterion("worktype_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameIsNotNull() {
-            addCriterion("worktype_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameEqualTo(String value) {
-            addCriterion("worktype_name =", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameNotEqualTo(String value) {
-            addCriterion("worktype_name <>", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameGreaterThan(String value) {
-            addCriterion("worktype_name >", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameGreaterThanOrEqualTo(String value) {
-            addCriterion("worktype_name >=", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameLessThan(String value) {
-            addCriterion("worktype_name <", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameLessThanOrEqualTo(String value) {
-            addCriterion("worktype_name <=", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameLike(String value) {
-            addCriterion("worktype_name like", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameNotLike(String value) {
-            addCriterion("worktype_name not like", value, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameIn(List<String> values) {
-            addCriterion("worktype_name in", values, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameNotIn(List<String> values) {
-            addCriterion("worktype_name not in", values, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameBetween(String value1, String value2) {
-            addCriterion("worktype_name between", value1, value2, "worktypeName");
-            return (Criteria) this;
-        }
-
-        public Criteria andWorktypeNameNotBetween(String value1, String value2) {
-            addCriterion("worktype_name not between", value1, value2, "worktypeName");
-            return (Criteria) this;
-        }
-
         public Criteria andUnionCodeIsNull() {
             addCriterion("union_code is null");
             return (Criteria) this;
@@ -305,73 +235,283 @@ public class RobotWorkTypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlIsNull() {
-            addCriterion("pic_url is null");
+        public Criteria andRobotUnionCodeIsNull() {
+            addCriterion("robot_union_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlIsNotNull() {
-            addCriterion("pic_url is not null");
+        public Criteria andRobotUnionCodeIsNotNull() {
+            addCriterion("robot_union_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlEqualTo(String value) {
-            addCriterion("pic_url =", value, "picUrl");
+        public Criteria andRobotUnionCodeEqualTo(String value) {
+            addCriterion("robot_union_code =", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlNotEqualTo(String value) {
-            addCriterion("pic_url <>", value, "picUrl");
+        public Criteria andRobotUnionCodeNotEqualTo(String value) {
+            addCriterion("robot_union_code <>", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlGreaterThan(String value) {
-            addCriterion("pic_url >", value, "picUrl");
+        public Criteria andRobotUnionCodeGreaterThan(String value) {
+            addCriterion("robot_union_code >", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("pic_url >=", value, "picUrl");
+        public Criteria andRobotUnionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("robot_union_code >=", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlLessThan(String value) {
-            addCriterion("pic_url <", value, "picUrl");
+        public Criteria andRobotUnionCodeLessThan(String value) {
+            addCriterion("robot_union_code <", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlLessThanOrEqualTo(String value) {
-            addCriterion("pic_url <=", value, "picUrl");
+        public Criteria andRobotUnionCodeLessThanOrEqualTo(String value) {
+            addCriterion("robot_union_code <=", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlLike(String value) {
-            addCriterion("pic_url like", value, "picUrl");
+        public Criteria andRobotUnionCodeLike(String value) {
+            addCriterion("robot_union_code like", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlNotLike(String value) {
-            addCriterion("pic_url not like", value, "picUrl");
+        public Criteria andRobotUnionCodeNotLike(String value) {
+            addCriterion("robot_union_code not like", value, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlIn(List<String> values) {
-            addCriterion("pic_url in", values, "picUrl");
+        public Criteria andRobotUnionCodeIn(List<String> values) {
+            addCriterion("robot_union_code in", values, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlNotIn(List<String> values) {
-            addCriterion("pic_url not in", values, "picUrl");
+        public Criteria andRobotUnionCodeNotIn(List<String> values) {
+            addCriterion("robot_union_code not in", values, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlBetween(String value1, String value2) {
-            addCriterion("pic_url between", value1, value2, "picUrl");
+        public Criteria andRobotUnionCodeBetween(String value1, String value2) {
+            addCriterion("robot_union_code between", value1, value2, "robotUnionCode");
             return (Criteria) this;
         }
 
-        public Criteria andPicUrlNotBetween(String value1, String value2) {
-            addCriterion("pic_url not between", value1, value2, "picUrl");
+        public Criteria andRobotUnionCodeNotBetween(String value1, String value2) {
+            addCriterion("robot_union_code not between", value1, value2, "robotUnionCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeIsNull() {
+            addCriterion("work_type_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeIsNotNull() {
+            addCriterion("work_type_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeEqualTo(String value) {
+            addCriterion("work_type_code =", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotEqualTo(String value) {
+            addCriterion("work_type_code <>", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeGreaterThan(String value) {
+            addCriterion("work_type_code >", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("work_type_code >=", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeLessThan(String value) {
+            addCriterion("work_type_code <", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeLessThanOrEqualTo(String value) {
+            addCriterion("work_type_code <=", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeLike(String value) {
+            addCriterion("work_type_code like", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotLike(String value) {
+            addCriterion("work_type_code not like", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeIn(List<String> values) {
+            addCriterion("work_type_code in", values, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotIn(List<String> values) {
+            addCriterion("work_type_code not in", values, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeBetween(String value1, String value2) {
+            addCriterion("work_type_code between", value1, value2, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotBetween(String value1, String value2) {
+            addCriterion("work_type_code not between", value1, value2, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyIsNull() {
+            addCriterion("efficiency is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyIsNotNull() {
+            addCriterion("efficiency is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyEqualTo(String value) {
+            addCriterion("efficiency =", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyNotEqualTo(String value) {
+            addCriterion("efficiency <>", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyGreaterThan(String value) {
+            addCriterion("efficiency >", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyGreaterThanOrEqualTo(String value) {
+            addCriterion("efficiency >=", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyLessThan(String value) {
+            addCriterion("efficiency <", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyLessThanOrEqualTo(String value) {
+            addCriterion("efficiency <=", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyLike(String value) {
+            addCriterion("efficiency like", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyNotLike(String value) {
+            addCriterion("efficiency not like", value, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyIn(List<String> values) {
+            addCriterion("efficiency in", values, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyNotIn(List<String> values) {
+            addCriterion("efficiency not in", values, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyBetween(String value1, String value2) {
+            addCriterion("efficiency between", value1, value2, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andEfficiencyNotBetween(String value1, String value2) {
+            addCriterion("efficiency not between", value1, value2, "efficiency");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreIsNull() {
+            addCriterion("score is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreIsNotNull() {
+            addCriterion("score is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreEqualTo(String value) {
+            addCriterion("score =", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotEqualTo(String value) {
+            addCriterion("score <>", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreGreaterThan(String value) {
+            addCriterion("score >", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreGreaterThanOrEqualTo(String value) {
+            addCriterion("score >=", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreLessThan(String value) {
+            addCriterion("score <", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreLessThanOrEqualTo(String value) {
+            addCriterion("score <=", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreLike(String value) {
+            addCriterion("score like", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotLike(String value) {
+            addCriterion("score not like", value, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreIn(List<String> values) {
+            addCriterion("score in", values, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotIn(List<String> values) {
+            addCriterion("score not in", values, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreBetween(String value1, String value2) {
+            addCriterion("score between", value1, value2, "score");
+            return (Criteria) this;
+        }
+
+        public Criteria andScoreNotBetween(String value1, String value2) {
+            addCriterion("score not between", value1, value2, "score");
             return (Criteria) this;
         }
 
@@ -432,6 +572,66 @@ public class RobotWorkTypeExample {
 
         public Criteria andDeleteNotBetween(Integer value1, Integer value2) {
             addCriterion("delete not between", value1, value2, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagIsNull() {
+            addCriterion("last_flag is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagIsNotNull() {
+            addCriterion("last_flag is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagEqualTo(Integer value) {
+            addCriterion("last_flag =", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagNotEqualTo(Integer value) {
+            addCriterion("last_flag <>", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagGreaterThan(Integer value) {
+            addCriterion("last_flag >", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagGreaterThanOrEqualTo(Integer value) {
+            addCriterion("last_flag >=", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagLessThan(Integer value) {
+            addCriterion("last_flag <", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagLessThanOrEqualTo(Integer value) {
+            addCriterion("last_flag <=", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagIn(List<Integer> values) {
+            addCriterion("last_flag in", values, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagNotIn(List<Integer> values) {
+            addCriterion("last_flag not in", values, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagBetween(Integer value1, Integer value2) {
+            addCriterion("last_flag between", value1, value2, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagNotBetween(Integer value1, Integer value2) {
+            addCriterion("last_flag not between", value1, value2, "lastFlag");
             return (Criteria) this;
         }
 

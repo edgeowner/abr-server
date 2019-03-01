@@ -36,6 +36,8 @@ public class ContractRent {
 
     private Integer contractStatus;
 
+    private Integer delete;
+
     private String createTime;
 
     private String updateTime;

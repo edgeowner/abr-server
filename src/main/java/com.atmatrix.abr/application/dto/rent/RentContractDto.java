@@ -1,11 +1,12 @@
 package com.atmatrix.abr.application.dto.rent;
 
+import com.atmatrix.abr.application.dto.condtion.RegionCondDto;
 import lombok.Data;
 
 /**
  * @ProjectName: abr-server
  * @ClassName: RentContractDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-27 6:04 PM
  **/
@@ -23,6 +24,8 @@ public class RentContractDto {
     private Integer billingPrice;//租赁价格
     private String billingPriceUnit;//租赁单位
     private Integer overdraft;//透支额度
+    private RegionCondDto regionCondDto; //所在省市区
+    private String workAddress;//具体工作地址
 
 
     private String startTime; //出租开始时间

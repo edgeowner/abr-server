@@ -22,7 +22,10 @@
         rd.billing_type as billingType,
         rd.overdraft as overdraft,
         ua.account_address as userAddress,
-        ua.name as userName
+        ua.name as userName,
+        cra.region_code as regionCode,
+        cra.region_name as regionName,
+        cra.work_address as workAddress
     </sql>
 
     <select id="queryByRobotUnionCode" resultType="com.atmatrix.abr.mgt.dto.ContractRentExtendDto">
@@ -30,7 +33,8 @@
         <include refid="Rent_Detail_Columns"/>
         from contract_rent as cr
         left join robot_basic as rb on rb.union_code = cr.robot_union_code
-        left join user_account ua on ua.union_code = cr.user_union_code
+        left join user_account as ua on ua.union_code = cr.user_union_code
+        left join contract_rent_address as cra on cra.rent_union_code = cr.union_code
         where cr.delete = 1
         and cr.robot_union_code = #{robotUnionCode}
     </select>

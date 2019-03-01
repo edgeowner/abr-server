@@ -37,7 +37,7 @@ public class RobotDetailMapperTest extends BaseTest {
             }
             robotDetail.setBillingPrice(356 + i * 100);
             robotDetail.setWorkType(String.valueOf(i * 1000));
-            robotDetail.setRentStatus("1");
+            robotDetail.setRentStatusCode("1");
             robotDetail.setDelete(DeleteEnum.TRUE.getCode());
             robotDetailMapper.insert(robotDetail);
         }

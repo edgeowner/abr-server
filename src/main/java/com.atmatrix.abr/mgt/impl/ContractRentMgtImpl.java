@@ -1,10 +1,10 @@
 package com.atmatrix.abr.mgt.impl;
 
+import com.atmatrix.abr.application.dto.condtion.RegionCondDto;
 import com.atmatrix.abr.application.dto.rent.RentContractDto;
 import com.atmatrix.abr.common.constants.BillingTypeEnum;
 import com.atmatrix.abr.common.util.DateUtils;
 import com.atmatrix.abr.common.util.IdWorker;
-import com.atmatrix.abr.infrastructure.dao.ContractRechargeMapper;
 import com.atmatrix.abr.infrastructure.dao.ContractRentExtendDao;
 import com.atmatrix.abr.infrastructure.dao.ContractRentMapper;
 import com.atmatrix.abr.infrastructure.dao.ContractRentTimeMapper;
@@ -14,16 +14,15 @@ import com.atmatrix.abr.infrastructure.entity.ContractRentTime;
 import com.atmatrix.abr.mgt.ContractRentMgt;
 import com.atmatrix.abr.mgt.dto.ContractRentExtendDto;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeUtils;
-import org.jolokia.util.DateUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 /**
  * @ProjectName: abr-server
  * @ClassName: ContractRentMgtImpl
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-27 6:28 PM
  **/
@@ -48,6 +47,16 @@ public class ContractRentMgtImpl implements ContractRentMgt {
         }
         RentContractDto result = new RentContractDto();
         BeanUtils.copyProperties(resource, result);
+        RegionCondDto regionDto = new RegionCondDto();
+        if (!StringUtils.isEmpty(resource.getRegionCode()) && !StringUtils.isEmpty(resource.getRegionName())) {
+            String[] codes = resource.getRegionCode().split(",");
+            String[] names = resource.getRegionName().split(",");
+            regionDto.setCode(codes[0]);
+            regionDto.setName(names[1]);
+            regionDto.setChildCode(codes[1]);
+            regionDto.setChildName(names[1]);
+        }
+        result.setRegionCondDto(regionDto);
         return result;
     }
 

@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 /**
  * @ProjectName: abr-server
  * @ClassName: RobotDetailDto
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-22 11:59 AM
  **/

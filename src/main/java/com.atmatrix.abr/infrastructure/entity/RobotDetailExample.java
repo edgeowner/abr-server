@@ -509,75 +509,77 @@ public class RobotDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusIsNull() {
-            addCriterion("rent_status is null");
+        public Criteria andRentStatusCodeIsNull() {
+            addCriterion("rent_status_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusIsNotNull() {
-            addCriterion("rent_status is not null");
+        public Criteria andRentStatusCodeIsNotNull() {
+            addCriterion("rent_status_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusEqualTo(String value) {
-            addCriterion("rent_status =", value, "rentStatus");
+        public Criteria andRentStatusCodeEqualTo(String value) {
+            addCriterion("rent_status_code =", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusNotEqualTo(String value) {
-            addCriterion("rent_status <>", value, "rentStatus");
+        public Criteria andRentStatusCodeNotEqualTo(String value) {
+            addCriterion("rent_status_code <>", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusGreaterThan(String value) {
-            addCriterion("rent_status >", value, "rentStatus");
+        public Criteria andRentStatusCodeGreaterThan(String value) {
+            addCriterion("rent_status_code >", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusGreaterThanOrEqualTo(String value) {
-            addCriterion("rent_status >=", value, "rentStatus");
+        public Criteria andRentStatusCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("rent_status_code >=", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusLessThan(String value) {
-            addCriterion("rent_status <", value, "rentStatus");
+        public Criteria andRentStatusCodeLessThan(String value) {
+            addCriterion("rent_status_code <", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusLessThanOrEqualTo(String value) {
-            addCriterion("rent_status <=", value, "rentStatus");
+        public Criteria andRentStatusCodeLessThanOrEqualTo(String value) {
+            addCriterion("rent_status_code <=", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusLike(String value) {
-            addCriterion("rent_status like", value, "rentStatus");
+        public Criteria andRentStatusCodeLike(String value) {
+            addCriterion("rent_status_code like", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusNotLike(String value) {
-            addCriterion("rent_status not like", value, "rentStatus");
+        public Criteria andRentStatusCodeNotLike(String value) {
+            addCriterion("rent_status_code not like", value, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusIn(List<String> values) {
-            addCriterion("rent_status in", values, "rentStatus");
+        public Criteria andRentStatusCodeIn(List<String> values) {
+            addCriterion("rent_status_code in", values, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusNotIn(List<String> values) {
-            addCriterion("rent_status not in", values, "rentStatus");
+        public Criteria andRentStatusCodeNotIn(List<String> values) {
+            addCriterion("rent_status_code not in", values, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusBetween(String value1, String value2) {
-            addCriterion("rent_status between", value1, value2, "rentStatus");
+        public Criteria andRentStatusCodeBetween(String value1, String value2) {
+            addCriterion("rent_status_code between", value1, value2, "rentStatusCode");
             return (Criteria) this;
         }
 
-        public Criteria andRentStatusNotBetween(String value1, String value2) {
-            addCriterion("rent_status not between", value1, value2, "rentStatus");
+        public Criteria andRentStatusCodeNotBetween(String value1, String value2) {
+            addCriterion("rent_status_code not between", value1, value2, "rentStatusCode");
             return (Criteria) this;
         }
+
+
 
         public Criteria andWorkTypeIsNull() {
             addCriterion("work_type is null");

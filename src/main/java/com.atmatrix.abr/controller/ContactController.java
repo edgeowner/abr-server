@@ -1,11 +1,9 @@
 package com.atmatrix.abr.controller;
 
 import com.atmatrix.abr.application.ContractApplication;
-import com.atmatrix.abr.application.dto.condtion.QueryCondPageDicDto;
-import com.atmatrix.abr.application.dto.page.PageInfoResult;
+import com.atmatrix.abr.application.dto.condtion.CommonQueryCondDto;
 import com.atmatrix.abr.application.dto.rent.RentContractDto;
 import com.atmatrix.abr.common.web.WebUtil;
-import com.atmatrix.abr.mgt.dto.RobotDetailDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -19,46 +17,46 @@ import java.util.Map;
 /**
  * @ProjectName: abr-server
  * @ClassName: ContactController
- * @Description: TODO
+ * @Description:
  * @Author: edgeowner
  * @Create: 2019-02-27 8:31 PM
  **/
 
 @Slf4j
 @RestController
-@Api(tags = "ContactController", description = "机器人合约接口")
-@RequestMapping("/v1/robot/trade")
+@Api(tags = "ContactController", description = "出租合约接口")
+@RequestMapping("/v1/robot/rent")
 public class ContactController {
 
 
     @Autowired
     private ContractApplication contractApplication;
 
-    @ApiOperation(value = "机器人出租合约保存", notes = "机器人出租合约保存")
-    @RequestMapping(value = "/rent/save", method = RequestMethod.POST)
+    @ApiOperation(value = "出租合约保存更新", notes = "出租合约保存更新")
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> getRobotList(@RequestBody RentContractDto saveOrUpdate) {
+    public ResponseEntity<Map<String, Object>> saveRentContract(@RequestBody RentContractDto saveOrUpdate) {
         try {
             contractApplication.saveOrUpdateContractRent(saveOrUpdate);
             return WebUtil.result(null);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error(MessageFormat.format("getRobotList Failed :{0}", e));
-            return WebUtil.error("查询机器人列表失败");
+            log.error(MessageFormat.format("saveRentContract Failed :{0}", e));
+            return WebUtil.error("出租合约保存失败");
         }
     }
 
-    @ApiOperation(value = "获取机器人出租合约", notes = "获取机器人出租合约")
-    @RequestMapping(value = "/rent/get", method = RequestMethod.POST)
+    @ApiOperation(value = "获取出租合约", notes = "获取出租合约")
+    @RequestMapping(value = "/get", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> getRentDetail(@RequestBody CommonQueryCondDto cond) {
+    public ResponseEntity<Map<String, Object>> getRentContract(@RequestBody CommonQueryCondDto cond) {
         try {
             RentContractDto result = contractApplication.queryRentInfoByRobotUnionCode(cond.getUnionCode());
             return WebUtil.result(result);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error(MessageFormat.format("getRentDetail Failed :{0}", e));
-            return WebUtil.error("获取机器人出租合约失败");
+            log.error(MessageFormat.format("getRentContract Failed :{0}", e));
+            return WebUtil.error("获取出租合约失败");
         }
     }
 
