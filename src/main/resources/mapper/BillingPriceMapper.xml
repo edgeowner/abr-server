@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atmatrix.abr.infrastructure.dao.BillingPriceMapper">
-    <resultMap id="BaseResultMap" type="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+    <resultMap id="BaseResultMap" type="com.atmatrix.abr.infrastructure.entity.BillingPriceScope">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="parent_union_code" jdbcType="VARCHAR" property="parentUnionCode"/>
         <result column="union_code" jdbcType="VARCHAR" property="unionCode"/>
@@ -78,7 +78,7 @@
     `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
     `create_time`, `update_time`
   </sql>
-    <select id="selectByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceExample"
+    <select id="selectByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceScopeExample"
             resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -86,7 +86,7 @@
         </if>
         'true' as QUERYID,
         <include refid="Base_Column_List"/>
-        from billing_price
+        from billing_price_scope
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -94,14 +94,14 @@
             order by ${orderByClause}
         </if>
     </select>
-    <delete id="deleteByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceExample">
-        delete from billing_price
+    <delete id="deleteByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceScopeExample">
+        delete from billing_price_scope
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
     <insert id="insert" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
-    insert into billing_price (
+    insert into billing_price_scope (
         `parent_union_code`,
         `union_code`,
         `name`,
@@ -127,7 +127,7 @@
         )
   </insert>
     <insert id="insertSelective" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
-        insert into billing_price
+        insert into billing_price_scope
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -199,15 +199,15 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceExample"
+    <select id="countByExample" parameterType="com.atmatrix.abr.infrastructure.entity.BillingPriceScopeExample"
             resultType="java.lang.Long">
-        select count(*) from billing_price
+        select count(*) from billing_price_scope
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update billing_price
+        update billing_price_scope
         <set>
             <if test="record.id != null">
                 `id` = #{record.id,jdbcType=INTEGER},
@@ -248,7 +248,7 @@
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update billing_price
+        update billing_price_scope
         set
         `id` = #{record.id,jdbcType=INTEGER},
         `parent_union_code` = #{record.parentUnionCode,jdbcType=VARCHAR},
@@ -266,19 +266,19 @@
         </if>
     </update>
 
-    <select id="getBillingPriceByParentCode" resultType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+    <select id="getBillingPriceByParentCode" resultType="com.atmatrix.abr.infrastructure.entity.BillingPriceScope">
         select
         <include refid="Base_Column_List"/>
-        from `billing_price`
+        from `billing_price_scope`
         where `parent_union_code` in
         <foreach collection="list" item="item" open="(" close=")" separator=",">
             #{item}
         </foreach>
     </select>
-    <select id="getBillingPriceByCode" resultType="com.atmatrix.abr.infrastructure.entity.BillingPrice">
+    <select id="getBillingPriceByCode" resultType="com.atmatrix.abr.infrastructure.entity.BillingPriceScope">
         select
         <include refid="Base_Column_List"/>
-        from `billing_price`
+        from `billing_price_scope`
         where `union_code` =#{code}
     </select>
 

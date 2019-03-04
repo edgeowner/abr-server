@@ -1,146 +1,3446 @@
-[2019-02-28 14:01:53] DEBUG 134 statementLog - {conn-10010, stmt-20000, rs-50000} query executed. 109.227241 millis. /* ping */ SELECT 1
-[2019-02-28 17:27:12] DEBUG 134 statementLog - {conn-10010, pstmt-20000} created. select count(1)
-        from robot_detail
-        where `rent_status_code` = ?
+[2019-03-01 15:58:38] DEBUG 134 statementLog - {conn-10010, stmt-20000, rs-50000} query executed. 96.728169 millis. /* ping */ SELECT 1
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} created. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 24.109657 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} created. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 3.461141 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} created. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.881819 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 15:58:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 15:59:24] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [a]
+[2019-03-01 15:59:24] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 15:59:24] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 2.403483 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 15:59:24] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.462174 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.524413 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.703642 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 15:59:41] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.625201 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.188163 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.157441 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:04:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.539399 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.222243 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.439735 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:12:26] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.140812 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.253711 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.106572 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:13:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 9.965259 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.440305 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.466048 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:14:46] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.293251 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.412874 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.428021 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:18:29] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.288759 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.159211 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.001472 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:18:37] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.984064 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.220835 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.084874 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:21:27] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.978486 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.415532 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.303035 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:24:32] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 9.920366 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 4.763379 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 3.164351 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:25:47] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.164107 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.47591 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.177092 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:25:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.974806 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.539806 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.247709 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:28:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.558421 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.339572 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.2132 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:28:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.033291 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.512573 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.213602 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:28:11] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.363326 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.479688 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.202109 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:28:31] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 6.74164 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.098979 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.084544 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:28:33] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 6.783302 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.161281 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.381443 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:28:59] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 9.846342 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.418943 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 3.771905 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:31:43] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.338527 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.40145 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.652228 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:33:03] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.137215 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.055213 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.022545 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:33:06] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.408895 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.713949 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.578717 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:33:12] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.907622 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.134593 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 1.980113 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:33:19] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 8.578484 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.288282 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.551309 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:34:20] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 10.428552 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.721636 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 6.915766 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:35:42] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : [404783011800760331]
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 7.805722 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [404783011800760331]
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 1.197929 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.521927 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 16:36:00] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 17:37:02] DEBUG 134 statementLog - {conn-10010, stmt-20000, rs-50000} query executed. 81.801723 millis. /* ping */ SELECT 1
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10007, pstmt-20001} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10009, pstmt-20004} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
         and `delete` = 1
-        group by `work_type`
-[2019-02-28 17:27:12] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Parameters : [1]
-[2019-02-28 17:27:12] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Types : [VARCHAR]
-[2019-02-28 17:27:12] DEBUG 134 statementLog - {conn-10010, pstmt-20000} executed. 12.095606 millis. select count(1)
-        from robot_detail
-        where `rent_status_code` = ?
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20002} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
         and `delete` = 1
-        group by `work_type`
-[2019-02-28 17:27:12] DEBUG 134 statementLog - {conn-10010, pstmt-20000} clearParameters. 
-[2019-02-28 17:31:11] DEBUG 134 statementLog - {conn-10010, pstmt-20000} created. select `work_type` as workType, count(1) as amount
-        from robot_detail
-        where `rent_status_code` = ?
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10008, pstmt-20003} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
         and `delete` = 1
-        group by `work_type`
-[2019-02-28 17:31:11] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Parameters : [1]
-[2019-02-28 17:31:11] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Types : [VARCHAR]
-[2019-02-28 17:31:11] DEBUG 134 statementLog - {conn-10010, pstmt-20000} executed. 19.51415 millis. select `work_type` as workType, count(1) as amount
-        from robot_detail
-        where `rent_status_code` = ?
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10007, pstmt-20001} Parameters : []
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10007, pstmt-20001} Types : []
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10009, pstmt-20004} Parameters : [region]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [rentStatus]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Parameters : [billing]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10009, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Types : [VARCHAR]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10007, pstmt-20001} executed. 3.003046 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 5.999622 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
         and `delete` = 1
-        group by `work_type`
-[2019-02-28 17:31:11] DEBUG 134 statementLog - {conn-10010, pstmt-20000} clearParameters. 
-[2019-02-28 17:31:58] DEBUG 134 statementLog - {conn-10010, pstmt-20000} created. select `work_type` as workType, count(1) as amount
-        from robot_detail
-        where `rent_status_code` = ?
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10008, pstmt-20003} executed. 6.266509 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
         and `delete` = 1
-        group by `work_type`
-[2019-02-28 17:31:58] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Parameters : [1]
-[2019-02-28 17:31:58] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Types : [VARCHAR]
-[2019-02-28 17:31:58] DEBUG 134 statementLog - {conn-10010, pstmt-20000} executed. 10.61022 millis. select `work_type` as workType, count(1) as amount
-        from robot_detail
-        where `rent_status_code` = ?
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10007, pstmt-20001} clearParameters. 
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10008, pstmt-20003} clearParameters. 
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10009, pstmt-20004} executed. 12.555657 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
         and `delete` = 1
-        group by `work_type`
-[2019-02-28 17:31:58] DEBUG 134 statementLog - {conn-10010, pstmt-20000} clearParameters. 
-[2019-02-28 20:10:36] DEBUG 134 statementLog - {conn-10010, pstmt-20000} created. select rd.`work_type` as workType, count(1) as amount
-        from exce_robot as er
-        inner join robot_detail rd on rd.robot_union_code = er.robot_union_code
-        where rd.`rent_status_code` = ?
-        and er.`delete` = 1
-        group by rd.`work_type`
-[2019-02-28 20:10:36] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Parameters : [1]
-[2019-02-28 20:10:36] DEBUG 134 statementLog - {conn-10010, pstmt-20000} Types : [VARCHAR]
-[2019-02-28 20:10:36] ERROR 149 statementLogError - {conn-10010, pstmt-20000} execute error. select rd.`work_type` as workType, count(1) as amount
-        from exce_robot as er
-        inner join robot_detail rd on rd.robot_union_code = er.robot_union_code
-        where rd.`rent_status_code` = ?
-        and er.`delete` = 1
-        group by rd.`work_type` java.sql.SQLSyntaxErrorException: Unknown column 'er.delete' in 'where clause'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.15.jar:8.0.15]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.15.jar:8.0.15]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.15.jar:8.0.15]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:970) ~[mysql-connector-java-8.0.15.jar:8.0.15]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:387) ~[mysql-connector-java-8.0.15.jar:8.0.15]
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409) ~[druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:619) ~[druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407) ~[druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440) [druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407) [druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440) [druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407) [druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167) [druid-1.1.10.jar:1.1.10]
-	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498) [druid-1.1.10.jar:1.1.10]
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) [mybatis-3.5.0.jar:3.5.0]
-	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:108) [pagehelper-5.1.8.jar:?]
-	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61) [mybatis-3.5.0.jar:3.5.0]
-	at com.sun.proxy.$Proxy218.query(Unknown Source) [?:?]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectMap(DefaultSqlSession.java:99) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectMap(DefaultSqlSession.java:94) [mybatis-3.5.0.jar:3.5.0]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) [mybatis-spring-2.0.0.jar:2.0.0]
-	at com.sun.proxy.$Proxy123.selectMap(Unknown Source) [?:?]
-	at org.mybatis.spring.SqlSessionTemplate.selectMap(SqlSessionTemplate.java:182) [mybatis-spring-2.0.0.jar:2.0.0]
-	at org.apache.ibatis.binding.MapperMethod.executeForMap(MapperMethod.java:197) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79) [mybatis-3.5.0.jar:3.5.0]
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58) [mybatis-3.5.0.jar:3.5.0]
-	at com.sun.proxy.$Proxy160.queryExceRobotAmountByWorkType(Unknown Source) [?:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at com.alibaba.druid.support.spring.stat.DruidStatInterceptor.invoke(DruidStatInterceptor.java:72) [druid-1.1.10.jar:1.1.10]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at com.sun.proxy.$Proxy161.queryExceRobotAmountByWorkType(Unknown Source) [?:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at com.alibaba.druid.support.spring.stat.DruidStatInterceptor.invoke(DruidStatInterceptor.java:72) [druid-1.1.10.jar:1.1.10]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at com.sun.proxy.$Proxy161.queryExceRobotAmountByWorkType(Unknown Source) [?:?]
-	at com.atmatrix.abr.infrastructure.dao.ExceRobotMapperTest.queryExceRobotAmountByWorkType(ExceRobotMapperTest.java:20) [test-classes/:?]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_171]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_171]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_171]
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
-	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
-	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190) [spring-test-5.1.5.RELEASE.jar:5.1.5.RELEASE]
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:?]
-	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:?]
-	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:?]
-	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:?]
-
-[2019-02-28 20:10:36] DEBUG 134 statementLog - {conn-10010, pstmt-20000} clearParameters. 
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20005} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20005} Parameters : [000, 100, 200]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20005} executed. 2.102478 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10010, pstmt-20005} clearParameters. 
+[2019-03-01 17:37:15] DEBUG 134 statementLog - {conn-10009, pstmt-20004} clearParameters. 
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20006} created. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20006} Parameters : [404783011800760331]
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20006} Types : [VARCHAR]
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20006} executed. 20.408066 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20006} clearParameters. 
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20007} created. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20007} Parameters : [404783011800760331]
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20007} Types : [VARCHAR]
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20007} executed. 3.440831 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20007} clearParameters. 
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20008} created. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20008} Parameters : []
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20008} Types : []
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20008} executed. 2.305167 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 17:37:45] DEBUG 134 statementLog - {conn-10009, pstmt-20008} clearParameters. 
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10007, pstmt-20009} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10007, pstmt-20009} Parameters : [region]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Parameters : [billing]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Types : [VARCHAR]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10007, pstmt-20009} Types : [VARCHAR]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10009, pstmt-20010} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10009, pstmt-20010} Parameters : []
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10009, pstmt-20010} Types : []
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [rentStatus]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10009, pstmt-20010} executed. 1.658629 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20003} executed. 3.91393 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20003} clearParameters. 
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10009, pstmt-20010} clearParameters. 
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 3.768108 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20011} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20011} Parameters : [000, 100, 200]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20011} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20011} executed. 1.402919 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10007, pstmt-20009} executed. 11.118473 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10008, pstmt-20011} clearParameters. 
+[2019-03-01 17:56:43] DEBUG 134 statementLog - {conn-10007, pstmt-20009} clearParameters. 
+[2019-03-01 17:59:38] DEBUG 134 statementLog - {conn-10010, stmt-20000, rs-50000} query executed. 139.731044 millis. /* ping */ SELECT 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10010, pstmt-20003} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10008, pstmt-20004} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10007, pstmt-20001} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Parameters : []
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Types : []
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Parameters : [region]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10007, pstmt-20001} Parameters : [billing]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : [rentStatus]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10007, pstmt-20001} Types : [VARCHAR]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : [VARCHAR]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} executed. 3.642851 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10007, pstmt-20001} executed. 6.578147 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 7.559435 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} clearParameters. 
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10007, pstmt-20001} clearParameters. 
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10008, pstmt-20004} executed. 16.687572 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20005} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Parameters : [000, 100, 200]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20005} executed. 1.605907 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10009, pstmt-20005} clearParameters. 
+[2019-03-01 18:00:02] DEBUG 134 statementLog - {conn-10008, pstmt-20004} clearParameters. 
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Parameters : [region]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20007} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : [rentStatus]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10007, pstmt-20006} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : [VARCHAR]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20007} Parameters : [billing]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10007, pstmt-20006} Parameters : []
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20007} Types : [VARCHAR]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10007, pstmt-20006} Types : []
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10007, pstmt-20006} executed. 1.982613 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 4.032984 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10007, pstmt-20006} clearParameters. 
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20007} executed. 5.26534 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20007} clearParameters. 
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Parameters : [000, 100, 200]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10008, pstmt-20004} executed. 11.422818 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20005} executed. 1.717347 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10009, pstmt-20005} clearParameters. 
+[2019-03-01 18:00:05] DEBUG 134 statementLog - {conn-10008, pstmt-20004} clearParameters. 
+[2019-03-01 18:03:27] DEBUG 134 statementLog - {conn-10010, stmt-20000, rs-50000} query executed. 131.034105 millis. /* ping */ SELECT 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20004} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10009, pstmt-20002} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10007, pstmt-20001} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10008, pstmt-20003} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10007, pstmt-20001} Parameters : []
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10007, pstmt-20001} Types : []
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Parameters : [region]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Parameters : [rentStatus]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Parameters : [billing]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Types : [VARCHAR]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10007, pstmt-20001} executed. 5.123862 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10008, pstmt-20003} executed. 7.043408 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20004} executed. 6.274418 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10009, pstmt-20002} executed. 12.379488 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10008, pstmt-20003} clearParameters. 
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10007, pstmt-20001} clearParameters. 
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20004} clearParameters. 
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20005} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20005} Parameters : [000, 100, 200]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20005} executed. 2.302055 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10010, pstmt-20005} clearParameters. 
+[2019-03-01 18:03:52] DEBUG 134 statementLog - {conn-10009, pstmt-20002} clearParameters. 
+[2019-03-01 18:03:53] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Parameters : [region]
+[2019-03-01 18:03:53] DEBUG 134 statementLog - {conn-10009, pstmt-20006} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:03:53] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Parameters : [billing]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10007, pstmt-20007} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20003} Types : [VARCHAR]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10009, pstmt-20006} Parameters : []
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10007, pstmt-20007} Parameters : [rentStatus]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10007, pstmt-20007} Types : [VARCHAR]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10009, pstmt-20006} Types : []
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10009, pstmt-20006} executed. 4.409093 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20003} executed. 2602.877341 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10009, pstmt-20006} clearParameters. 
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20003} clearParameters. 
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10007, pstmt-20007} executed. 10.699935 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20008} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10007, pstmt-20007} clearParameters. 
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20008} Parameters : [000, 100, 200]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20008} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10010, pstmt-20004} executed. 2668.426497 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20008} executed. 5.128022 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10008, pstmt-20008} clearParameters. 
+[2019-03-01 18:03:56] DEBUG 134 statementLog - {conn-10010, pstmt-20004} clearParameters. 
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Parameters : [region]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10008, pstmt-20009} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10007, pstmt-20007} Parameters : [rentStatus]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10008, pstmt-20009} Parameters : []
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10007, pstmt-20007} Types : [VARCHAR]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10008, pstmt-20009} Types : []
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Parameters : [billing]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10008, pstmt-20009} executed. 5.036172 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10007, pstmt-20007} executed. 7.479488 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10008, pstmt-20009} clearParameters. 
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10007, pstmt-20007} clearParameters. 
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20002} executed. 7.499047 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10010, pstmt-20004} executed. 12.772495 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20002} clearParameters. 
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20010} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20010} Parameters : [000, 100, 200]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20010} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20010} executed. 3.950721 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10009, pstmt-20010} clearParameters. 
+[2019-03-01 18:04:00] DEBUG 134 statementLog - {conn-10010, pstmt-20004} clearParameters. 
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Parameters : [rentStatus]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Parameters : [billing]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10008, pstmt-20009} Parameters : []
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10007, pstmt-20007} Parameters : [region]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10008, pstmt-20009} Types : []
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} Types : [VARCHAR]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10007, pstmt-20007} Types : [VARCHAR]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10008, pstmt-20009} executed. 2.66038 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10008, pstmt-20009} clearParameters. 
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} executed. 6.391442 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20004} executed. 6.575453 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10009, pstmt-20002} clearParameters. 
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20004} clearParameters. 
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20005} Parameters : [000, 100, 200]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20005} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20005} executed. 1.818536 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10007, pstmt-20007} executed. 11.60576 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10010, pstmt-20005} clearParameters. 
+[2019-03-01 18:04:02] DEBUG 134 statementLog - {conn-10007, pstmt-20007} clearParameters. 
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20011} created. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20011} Parameters : [404783011800760331]
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20011} Types : [VARCHAR]
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20011} executed. 12.521365 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20011} clearParameters. 
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20012} created. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20012} Parameters : [404783011800760331]
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20012} Types : [VARCHAR]
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20012} executed. 3.345337 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20012} clearParameters. 
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20013} created. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20013} Parameters : []
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20013} Types : []
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20013} executed. 2.318582 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:04:14] DEBUG 134 statementLog - {conn-10007, pstmt-20013} clearParameters. 
+[2019-03-01 18:08:12] DEBUG 134 statementLog - {conn-10010, stmt-20000, rs-50000} query executed. 100.512458 millis. /* ping */ SELECT 1
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20001} created. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : []
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : []
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 62.153088 millis. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20002} created. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [6]
+[2019-03-01 18:08:17] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [INTEGER]
+[2019-03-01 18:08:18] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 89.939659 millis. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:08:18] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10010, pstmt-20003} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10008, pstmt-20004} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20005} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20006} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20006} Parameters : [rentStatus]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Parameters : [billing]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Parameters : [region]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20006} Types : [VARCHAR]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Types : [VARCHAR]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 2.351956 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20006} executed. 5.256861 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20005} executed. 7.263598 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20006} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20005} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20007} created. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20007} Parameters : []
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20008} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20007} Types : []
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20008} Parameters : [000, 100, 200]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10008, pstmt-20004} executed. 17.119528 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20008} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20008} executed. 2.254206 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10007, pstmt-20008} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20007} executed. 55.635522 millis. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20007} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20009} created. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20009} Parameters : [6]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20009} Types : [INTEGER]
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10008, pstmt-20004} clearParameters. 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20009} executed. 81.853206 millis. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:08:38] DEBUG 134 statementLog - {conn-10009, pstmt-20009} clearParameters. 
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20010} created. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20010} Parameters : [404783011800760331]
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20010} Types : [VARCHAR]
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20010} executed. 6.313724 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20010} clearParameters. 
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20011} created. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20011} Parameters : [404783011800760331]
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20011} Types : [VARCHAR]
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20011} executed. 2.12459 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20011} clearParameters. 
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20012} created. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20012} Parameters : []
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20012} Types : []
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20012} executed. 2.512651 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:08:46] DEBUG 134 statementLog - {conn-10009, pstmt-20012} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Parameters : [region]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Types : [VARCHAR]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Parameters : [billing]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10007, pstmt-20006} Parameters : [rentStatus]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10007, pstmt-20006} Types : [VARCHAR]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10007, pstmt-20006} executed. 5.013881 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20004} executed. 4.857864 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Parameters : []
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10009, pstmt-20005} executed. 9.744917 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20003} Types : []
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10007, pstmt-20006} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20004} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20003} executed. 1.681625 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20013} created. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20003} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20013} Parameters : [000, 100, 200]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20013} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20013} executed. 1.442288 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10008, pstmt-20013} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : []
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : []
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 52.537584 millis. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [6]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [INTEGER]
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10009, pstmt-20005} clearParameters. 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 83.528714 millis. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:08:48] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20014} created. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Parameters : [404783011800760331]
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Types : [VARCHAR]
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20014} executed. 7.213279 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20014} clearParameters. 
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20015} created. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Parameters : [404783011800760331]
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Types : [VARCHAR]
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20015} executed. 1.537345 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20015} clearParameters. 
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20016} created. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Parameters : []
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Types : []
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20016} executed. 2.565521 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:08:49] DEBUG 134 statementLog - {conn-10010, pstmt-20016} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20017} created. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Parameters : [billing]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Parameters : [region]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10007, pstmt-20018} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Types : [VARCHAR]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20017} Parameters : [rentStatus]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10007, pstmt-20018} Parameters : []
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20017} Types : [VARCHAR]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10007, pstmt-20018} Types : []
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10007, pstmt-20018} executed. 1.832223 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10007, pstmt-20018} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20004} executed. 5.153732 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20017} executed. 4.642231 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20004} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20017} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20013} Parameters : [000, 100, 200]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20013} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Parameters : []
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20001} Types : []
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20013} executed. 1.84853 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10008, pstmt-20013} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10009, pstmt-20005} executed. 10.764561 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20001} executed. 56.647947 millis. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20001} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Parameters : [6]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20002} Types : [INTEGER]
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10009, pstmt-20005} clearParameters. 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20002} executed. 83.005777 millis. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:08:52] DEBUG 134 statementLog - {conn-10010, pstmt-20002} clearParameters. 
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Parameters : [404783011800760331]
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Types : [VARCHAR]
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20014} executed. 9.551061 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20014} clearParameters. 
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Parameters : [404783011800760331]
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Types : [VARCHAR]
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20015} executed. 1.889147 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20015} clearParameters. 
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Parameters : []
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Types : []
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20016} executed. 2.5715 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:08:58] DEBUG 134 statementLog - {conn-10010, pstmt-20016} clearParameters. 
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Parameters : [404783011800760331]
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Types : [VARCHAR]
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20014} executed. 20.456607 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20014} clearParameters. 
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Parameters : [404783011800760331]
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Types : [VARCHAR]
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20015} executed. 1.920534 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20015} clearParameters. 
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Parameters : []
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Types : []
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20016} executed. 4.511757 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:10:17] DEBUG 134 statementLog - {conn-10010, pstmt-20016} clearParameters. 
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Parameters : [404783011800760331]
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Types : [VARCHAR]
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20014} executed. 9.570637 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20014} clearParameters. 
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Parameters : [404783011800760331]
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Types : [VARCHAR]
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20015} executed. 1.536092 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20015} clearParameters. 
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Parameters : []
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Types : []
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20016} executed. 4.226789 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:10:24] DEBUG 134 statementLog - {conn-10010, pstmt-20016} clearParameters. 
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Parameters : [404783011800760331]
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Types : [VARCHAR]
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20014} executed. 8.055557 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20014} clearParameters. 
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Parameters : [404783011800760331]
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Types : [VARCHAR]
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20015} executed. 1.560112 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20015} clearParameters. 
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Parameters : []
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Types : []
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20016} executed. 2.242625 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:10:34] DEBUG 134 statementLog - {conn-10010, pstmt-20016} clearParameters. 
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Parameters : [404783011800760331]
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20014} Types : [VARCHAR]
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20014} executed. 9.091543 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20014} clearParameters. 
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Parameters : [404783011800760331]
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20015} Types : [VARCHAR]
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20015} executed. 1.213056 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20015} clearParameters. 
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Parameters : []
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20016} Types : []
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20016} executed. 2.138532 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:10:40] DEBUG 134 statementLog - {conn-10010, pstmt-20016} clearParameters. 
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10010, pstmt-20017} Parameters : [region]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10010, pstmt-20017} Types : [VARCHAR]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10010, pstmt-20017} executed. 7.093116 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Parameters : [rentStatus]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10009, pstmt-20005} Types : [VARCHAR]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20019} created. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20019} Parameters : []
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20019} Types : []
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10009, pstmt-20005} executed. 5.08514 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20019} executed. 1.700677 millis. select  
+    rwt.`id` as id,
+    rwt.`worktype_name` as name,
+    rwt.`union_code` as code
+   
+    from work_type rwt
+    where rwt.`delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10009, pstmt-20005} clearParameters. 
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20019} clearParameters. 
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20020} created. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20020} Parameters : []
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20020} Types : []
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20020} executed. 58.934018 millis. SELECT count(0) FROM robot_detail AS rd LEFT JOIN work_type AS rw ON rw.union_code = rd.work_type LEFT JOIN robot_basic AS rb ON rb.union_code = rd.robot_union_code LEFT JOIN robot_dictionary AS rdi ON rdi.code = rd.billing_type AND rdi.type = 'billing' LEFT JOIN robot_dictionary AS rds ON rds.code = rd.rent_status_code AND rds.type = 'rentStatusCode' LEFT JOIN robot_dictionary AS rdu ON rdu.`parent_code` = rd.`billing_type` AND rdu.`type` = 'unit' WHERE rd.`delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20020} clearParameters. 
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20021} created. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20021} Parameters : [6]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10007, pstmt-20021} Types : [INTEGER]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Parameters : [billing]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20004} Types : [VARCHAR]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20004} executed. 3.775274 millis. select
+         
+    `id`, `type`, `code`, `name`, `parent_code`, `parent_name`, `level`, `show_status`, `sort`, `delete`,
+    `create_time`, `update_time`
+   
+        from robot_dictionary
+        where `type`= ?
+        and `delete` = 1
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20004} clearParameters. 
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20013} Parameters : [000, 100, 200]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20013} Types : [VARCHAR, VARCHAR, VARCHAR]
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20013} executed. 1.836054 millis. select
+         
+    `id`, `parent_union_code`, `union_code`, `name`, `min_price`, `max_price`, `type`, `unit`, `delete`,
+    `create_time`, `update_time`
+   
+        from `billing_price`
+        where `parent_union_code` in
+         (  
+            ?
+         , 
+            ?
+         , 
+            ?
+         )
+[2019-03-01 18:11:34] DEBUG 134 statementLog - {conn-10008, pstmt-20013} clearParameters. 
+[2019-03-01 18:11:35] DEBUG 134 statementLog - {conn-10010, pstmt-20017} clearParameters. 
+[2019-03-01 18:11:35] DEBUG 134 statementLog - {conn-10007, pstmt-20021} executed. 112.735232 millis. select
+         
+        rd.`id` as id,
+        rd.`robot_name` as robotName,
+        rd.`robot_union_code` as robotUnionCode,
+        rd.`region_code` as regionCode,
+        rd.`region_name` as regionName,
+        rd.`billing_type` as billingType,
+        rd.`billing_price` as billingPrice,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`work_type` as workType,
+        rd.`delete` as `delete`,
+        rd.`create_time` as createTime,
+        rd.`update_time` as updateTime,
+        rw.`pic_url` as picUrl,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as worktypeDesc,
+        rds.`name` as rentStatusCodeName,
+        rdi.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join work_type as rw on rw.union_code = rd.work_type
+        left join robot_basic as rb on rb.union_code = rd.robot_union_code
+        left join robot_dictionary as rdi on rdi.code = rd.billing_type and rdi.type = 'billing'
+        left join robot_dictionary as rds on rds.code = rd.rent_status_code and rds.type = 'rentStatusCode'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        WHERE rd.`delete` = 1
+         
+             
+         
+         
+         
+         
+         
+         
+        order by id desc LIMIT ? 
+[2019-03-01 18:11:35] DEBUG 134 statementLog - {conn-10007, pstmt-20021} clearParameters. 
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20022} created. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20022} Parameters : [404783011800760331]
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20022} Types : [VARCHAR]
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20022} executed. 8.904126 millis. select
+         
+        rd.`id` as id,
+        rb.`union_code` as robotUnionCode,
+        rb.`device_id`  as  deviceId,
+        rb.`account_address` as accountAddress,
+        rb.`robot_pic_url` as picUrl,
+        rd.`robot_name` as name,
+        rd.`region_code` as regionCode,
+        rd.`rent_status_code` as rentStatusCode,
+        rd.`billing_type`  as billingTypeCode,
+        rd.`billing_price` as billingPrice,
+        rd.`work_type` as workTypeCode,
+        rd.`overdraft` as overdraft,
+        rw.`worktype_name` as workTypeName,
+        rw.`worktype_desc` as workTypeDesc,
+        rdr.`name` as rentStatusName,
+        rdb.`name` as billingTypeName,
+        rdu.`name` as unit
+     
+        from robot_detail as rd
+        left join robot_basic as rb on rb.`union_code` = rd.`robot_union_code`
+        left join robot_dictionary as rdb on rdb.`code` = rd.`billing_type` and rdb.`type` = 'billing'
+        left join robot_dictionary as rdr on rdr.`code` = rd.`rent_status_code` and rdr.`type` = 'rentStatus'
+        left join robot_dictionary as rdu on rdu.`parent_code` = rd.`billing_type` and rdu.`type` = 'unit'
+        left join work_type as rw on rw.`union_code` = rd.`work_type` and rw.`delete` = 1
+        where rd.`robot_union_code` = ?
+        and rd.`delete` = 1
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20022} clearParameters. 
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20023} created. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20023} Parameters : [404783011800760331]
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20023} Types : [VARCHAR]
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20023} executed. 2.808062 millis. select  
+    `id`, `robot_union_code`, `key`, `value`, `delete`, `create_time`, `update_time`
+   
+    from robot_param
+    where `delete` = 1
+    and `robot_union_code` = ?
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20023} clearParameters. 
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20024} created. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20024} Parameters : []
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20024} Types : []
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20024} executed. 3.171102 millis. select
+        rd.code as code,
+        rd.name as name
+        from robot_dictionary as rd
+        where rd.type = 'billing'
+        and rd.sort != 0
+        and rd.delete = 1
+[2019-03-01 18:11:38] DEBUG 134 statementLog - {conn-10007, pstmt-20024} clearParameters. 

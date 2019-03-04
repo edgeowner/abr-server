@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atmatrix.abr.infrastructure.dao.PriceExtendDao">
+
+    <!--private Integer id;-->
+    <!--private String unionCode;-->
+    <!--private String workTypeCode;-->
+    <!--private String workTypeName;-->
+
+    <!--private Double maxDayProceeds;-->
+    <!--private Double avgDayProceeds;-->
+    <!--private Double excDayProceeds;-->
+    <!--private String createTime;-->
+    <!--private String updateTime;-->
+
+    <sql id="Evaluation_Exce_Columns">
+        ps.id,
+        ps.union_code as unionCode,
+        ps.work_type_code as  workTypeCode,
+        wt.worktype_name as  workTypeName,
+        ps.max_dayProceeds as maxDayProceeds,
+        ps.avg_dayProceeds as avgDayProceeds,
+        ps.exc_dayProceeds as excDayProceeds,
+        ps.create_time as createTime,
+        ps.update_time as updateTime
+    </sql>
+    <select id="queryPriceStandardByWorkType" resultType="com.atmatrix.abr.mgt.dto.PriceStandardExDto">
+        select <include refid="Evaluation_Exce_Columns"/>
+        from price_standard as  ps
+        left join work_type as wt on wt.union_code = ps.work_type_code
+        where ps.`delete` = 1
+    </select>
+
+
+</mapper>

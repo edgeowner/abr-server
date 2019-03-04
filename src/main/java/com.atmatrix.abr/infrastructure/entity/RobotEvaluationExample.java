@@ -515,6 +515,126 @@ public class RobotEvaluationExample {
             return (Criteria) this;
         }
 
+        public Criteria andDeleteIsNull() {
+            addCriterion("delete is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteIsNotNull() {
+            addCriterion("delete is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteEqualTo(Integer value) {
+            addCriterion("delete =", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteNotEqualTo(Integer value) {
+            addCriterion("delete <>", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteGreaterThan(Integer value) {
+            addCriterion("delete >", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("delete >=", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteLessThan(Integer value) {
+            addCriterion("delete <", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteLessThanOrEqualTo(Integer value) {
+            addCriterion("delete <=", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteIn(List<Integer> values) {
+            addCriterion("delete in", values, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteNotIn(List<Integer> values) {
+            addCriterion("delete not in", values, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBetween(Integer value1, Integer value2) {
+            addCriterion("delete between", value1, value2, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteNotBetween(Integer value1, Integer value2) {
+            addCriterion("delete not between", value1, value2, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagIsNull() {
+            addCriterion("last_flag is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagIsNotNull() {
+            addCriterion("last_flag is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagEqualTo(Integer value) {
+            addCriterion("last_flag =", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagNotEqualTo(Integer value) {
+            addCriterion("last_flag <>", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagGreaterThan(Integer value) {
+            addCriterion("last_flag >", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagGreaterThanOrEqualTo(Integer value) {
+            addCriterion("last_flag >=", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagLessThan(Integer value) {
+            addCriterion("last_flag <", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagLessThanOrEqualTo(Integer value) {
+            addCriterion("last_flag <=", value, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagIn(List<Integer> values) {
+            addCriterion("last_flag in", values, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagNotIn(List<Integer> values) {
+            addCriterion("last_flag not in", values, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagBetween(Integer value1, Integer value2) {
+            addCriterion("last_flag between", value1, value2, "lastFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastFlagNotBetween(Integer value1, Integer value2) {
+            addCriterion("last_flag not between", value1, value2, "lastFlag");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;

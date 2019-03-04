@@ -42,7 +42,7 @@ public enum QueryDicTypeEnum {
         return null;
     }
 
-    public static List<String> getAllValues(){
+    public static List<String> getAllValues() {
         List<String> result = Lists.newArrayList();
         for (QueryDicTypeEnum item : QueryDicTypeEnum.values()) {
             result.add(item.getName());

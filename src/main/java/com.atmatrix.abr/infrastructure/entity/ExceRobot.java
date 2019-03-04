@@ -2,7 +2,6 @@ package com.atmatrix.abr.infrastructure.entity;
 
 import lombok.Data;
 
-import java.util.Date;
 
 @Data
 public class ExceRobot {
@@ -10,17 +9,20 @@ public class ExceRobot {
 
     private String robotUnionCode;
 
-    private String exceptionUnionCode;
+    private String rentUnionCode;
 
-    private String exceptionTypeName;
+    private String exceTypeCode;
 
-    private String analysis; //分析结果
+    private String exceTypeName;
 
-    private String exceptionTime;
+    private String analysis;
+
+    private String exceTime;
+
+    private Integer delete;
 
     private String createTime;
 
     private String updateTime;
-
 
 }

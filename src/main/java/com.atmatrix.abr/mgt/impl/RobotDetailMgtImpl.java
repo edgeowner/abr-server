@@ -4,6 +4,7 @@ import com.atmatrix.abr.application.dto.page.PageInfoResult;
 import com.atmatrix.abr.application.dto.page.PageQuery;
 import com.atmatrix.abr.infrastructure.dao.RobotExtendDao;
 import com.atmatrix.abr.mgt.RobotDetailMgt;
+import com.atmatrix.abr.mgt.dto.RobotCommonInfoDto;
 import com.atmatrix.abr.mgt.dto.RobotConditionDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
@@ -54,8 +55,10 @@ public class RobotDetailMgtImpl implements RobotDetailMgt {
     }
 
     @Override
-    public Map<String, Integer> getAmountGroupByWorkType(String rentStatusCode) {
-        return robotExtendDao.countRentRobotGroupByWorkType(rentStatusCode);
+    public RobotCommonInfoDto getExceCommonRobotInfo(String robotUnionCode, String rentUnionCode) {
+        RobotCommonInfoDto result = robotExtendDao.queryExceCommonInfoByCodes(robotUnionCode,rentUnionCode);
+        return result;
     }
+
 
 }

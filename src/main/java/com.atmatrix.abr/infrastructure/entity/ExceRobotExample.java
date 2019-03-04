@@ -235,143 +235,213 @@ public class ExceRobotExample {
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeIsNull() {
-            addCriterion("exception_union_code is null");
+        public Criteria andUnionCodeIsNull() {
+            addCriterion("union_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeIsNotNull() {
-            addCriterion("exception_union_code is not null");
+        public Criteria andUnionCodeIsNotNull() {
+            addCriterion("union_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeEqualTo(String value) {
-            addCriterion("exception_union_code =", value, "exceptionUnionCode");
+        public Criteria andUnionCodeEqualTo(String value) {
+            addCriterion("union_code =", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeNotEqualTo(String value) {
-            addCriterion("exception_union_code <>", value, "exceptionUnionCode");
+        public Criteria andUnionCodeNotEqualTo(String value) {
+            addCriterion("union_code <>", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeGreaterThan(String value) {
-            addCriterion("exception_union_code >", value, "exceptionUnionCode");
+        public Criteria andUnionCodeGreaterThan(String value) {
+            addCriterion("union_code >", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("exception_union_code >=", value, "exceptionUnionCode");
+        public Criteria andUnionCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("union_code >=", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeLessThan(String value) {
-            addCriterion("exception_union_code <", value, "exceptionUnionCode");
+        public Criteria andUnionCodeLessThan(String value) {
+            addCriterion("union_code <", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeLessThanOrEqualTo(String value) {
-            addCriterion("exception_union_code <=", value, "exceptionUnionCode");
+        public Criteria andUnionCodeLessThanOrEqualTo(String value) {
+            addCriterion("union_code <=", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeLike(String value) {
-            addCriterion("exception_union_code like", value, "exceptionUnionCode");
+        public Criteria andUnionCodeLike(String value) {
+            addCriterion("union_code like", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeNotLike(String value) {
-            addCriterion("exception_union_code not like", value, "exceptionUnionCode");
+        public Criteria andUnionCodeNotLike(String value) {
+            addCriterion("union_code not like", value, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeIn(List<String> values) {
-            addCriterion("exception_union_code in", values, "exceptionUnionCode");
+        public Criteria andUnionCodeIn(List<String> values) {
+            addCriterion("union_code in", values, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeNotIn(List<String> values) {
-            addCriterion("exception_union_code not in", values, "exceptionUnionCode");
+        public Criteria andUnionCodeNotIn(List<String> values) {
+            addCriterion("union_code not in", values, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeBetween(String value1, String value2) {
-            addCriterion("exception_union_code between", value1, value2, "exceptionUnionCode");
+        public Criteria andUnionCodeBetween(String value1, String value2) {
+            addCriterion("union_code between", value1, value2, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionUnionCodeNotBetween(String value1, String value2) {
-            addCriterion("exception_union_code not between", value1, value2, "exceptionUnionCode");
+        public Criteria andUnionCodeNotBetween(String value1, String value2) {
+            addCriterion("union_code not between", value1, value2, "unionCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameIsNull() {
-            addCriterion("exception_type_name is null");
+        public Criteria andExceTypeCodeIsNull() {
+            addCriterion("exce_type_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameIsNotNull() {
-            addCriterion("exception_type_name is not null");
+        public Criteria andExceTypeCodeIsNotNull() {
+            addCriterion("exce_type_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameEqualTo(String value) {
-            addCriterion("exception_type_name =", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeEqualTo(String value) {
+            addCriterion("exce_type_code =", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameNotEqualTo(String value) {
-            addCriterion("exception_type_name <>", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeNotEqualTo(String value) {
+            addCriterion("exce_type_code <>", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameGreaterThan(String value) {
-            addCriterion("exception_type_name >", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeGreaterThan(String value) {
+            addCriterion("exce_type_code >", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameGreaterThanOrEqualTo(String value) {
-            addCriterion("exception_type_name >=", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("exce_type_code >=", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameLessThan(String value) {
-            addCriterion("exception_type_name <", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeLessThan(String value) {
+            addCriterion("exce_type_code <", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameLessThanOrEqualTo(String value) {
-            addCriterion("exception_type_name <=", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeLessThanOrEqualTo(String value) {
+            addCriterion("exce_type_code <=", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameLike(String value) {
-            addCriterion("exception_type_name like", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeLike(String value) {
+            addCriterion("exce_type_code like", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameNotLike(String value) {
-            addCriterion("exception_type_name not like", value, "exceptionTypeName");
+        public Criteria andExceTypeCodeNotLike(String value) {
+            addCriterion("exce_type_code not like", value, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameIn(List<String> values) {
-            addCriterion("exception_type_name in", values, "exceptionTypeName");
+        public Criteria andExceTypeCodeIn(List<String> values) {
+            addCriterion("exce_type_code in", values, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameNotIn(List<String> values) {
-            addCriterion("exception_type_name not in", values, "exceptionTypeName");
+        public Criteria andExceTypeCodeNotIn(List<String> values) {
+            addCriterion("exce_type_code not in", values, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameBetween(String value1, String value2) {
-            addCriterion("exception_type_name between", value1, value2, "exceptionTypeName");
+        public Criteria andExceTypeCodeBetween(String value1, String value2) {
+            addCriterion("exce_type_code between", value1, value2, "exceTypeCode");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTypeNameNotBetween(String value1, String value2) {
-            addCriterion("exception_type_name not between", value1, value2, "exceptionTypeName");
+        public Criteria andExceTypeCodeNotBetween(String value1, String value2) {
+            addCriterion("exce_type_code not between", value1, value2, "exceTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameIsNull() {
+            addCriterion("exce_type_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameIsNotNull() {
+            addCriterion("exce_type_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameEqualTo(String value) {
+            addCriterion("exce_type_name =", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameNotEqualTo(String value) {
+            addCriterion("exce_type_name <>", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameGreaterThan(String value) {
+            addCriterion("exce_type_name >", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameGreaterThanOrEqualTo(String value) {
+            addCriterion("exce_type_name >=", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameLessThan(String value) {
+            addCriterion("exce_type_name <", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameLessThanOrEqualTo(String value) {
+            addCriterion("exce_type_name <=", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameLike(String value) {
+            addCriterion("exce_type_name like", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameNotLike(String value) {
+            addCriterion("exce_type_name not like", value, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameIn(List<String> values) {
+            addCriterion("exce_type_name in", values, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameNotIn(List<String> values) {
+            addCriterion("exce_type_name not in", values, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameBetween(String value1, String value2) {
+            addCriterion("exce_type_name between", value1, value2, "exceTypeName");
+            return (Criteria) this;
+        }
+
+        public Criteria andExceTypeNameNotBetween(String value1, String value2) {
+            addCriterion("exce_type_name not between", value1, value2, "exceTypeName");
             return (Criteria) this;
         }
 
@@ -445,63 +515,123 @@ public class ExceRobotExample {
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeIsNull() {
-            addCriterion("exception_time is null");
+        public Criteria andExceTimeIsNull() {
+            addCriterion("exce_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeIsNotNull() {
-            addCriterion("exception_time is not null");
+        public Criteria andExceTimeIsNotNull() {
+            addCriterion("exce_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeEqualTo(Date value) {
-            addCriterion("exception_time =", value, "exceptionTime");
+        public Criteria andExceTimeEqualTo(Date value) {
+            addCriterion("exce_time =", value, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeNotEqualTo(Date value) {
-            addCriterion("exception_time <>", value, "exceptionTime");
+        public Criteria andExceTimeNotEqualTo(Date value) {
+            addCriterion("exce_time <>", value, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeGreaterThan(Date value) {
-            addCriterion("exception_time >", value, "exceptionTime");
+        public Criteria andExceTimeGreaterThan(Date value) {
+            addCriterion("exce_time >", value, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("exception_time >=", value, "exceptionTime");
+        public Criteria andExceTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("exce_time >=", value, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeLessThan(Date value) {
-            addCriterion("exception_time <", value, "exceptionTime");
+        public Criteria andExceTimeLessThan(Date value) {
+            addCriterion("exce_time <", value, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeLessThanOrEqualTo(Date value) {
-            addCriterion("exception_time <=", value, "exceptionTime");
+        public Criteria andExceTimeLessThanOrEqualTo(Date value) {
+            addCriterion("exce_time <=", value, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeIn(List<Date> values) {
-            addCriterion("exception_time in", values, "exceptionTime");
+        public Criteria andExceTimeIn(List<Date> values) {
+            addCriterion("exce_time in", values, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeNotIn(List<Date> values) {
-            addCriterion("exception_time not in", values, "exceptionTime");
+        public Criteria andExceTimeNotIn(List<Date> values) {
+            addCriterion("exce_time not in", values, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeBetween(Date value1, Date value2) {
-            addCriterion("exception_time between", value1, value2, "exceptionTime");
+        public Criteria andExceTimeBetween(Date value1, Date value2) {
+            addCriterion("exce_time between", value1, value2, "exceTime");
             return (Criteria) this;
         }
 
-        public Criteria andExceptionTimeNotBetween(Date value1, Date value2) {
-            addCriterion("exception_time not between", value1, value2, "exceptionTime");
+        public Criteria andExceTimeNotBetween(Date value1, Date value2) {
+            addCriterion("exce_time not between", value1, value2, "exceTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteIsNull() {
+            addCriterion("delete is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteIsNotNull() {
+            addCriterion("delete is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteEqualTo(Integer value) {
+            addCriterion("delete =", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteNotEqualTo(Integer value) {
+            addCriterion("delete <>", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteGreaterThan(Integer value) {
+            addCriterion("delete >", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("delete >=", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteLessThan(Integer value) {
+            addCriterion("delete <", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteLessThanOrEqualTo(Integer value) {
+            addCriterion("delete <=", value, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteIn(List<Integer> values) {
+            addCriterion("delete in", values, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteNotIn(List<Integer> values) {
+            addCriterion("delete not in", values, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteBetween(Integer value1, Integer value2) {
+            addCriterion("delete between", value1, value2, "delete");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteNotBetween(Integer value1, Integer value2) {
+            addCriterion("delete not between", value1, value2, "delete");
             return (Criteria) this;
         }
 

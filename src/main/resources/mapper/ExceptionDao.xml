@@ -2,12 +2,153 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atmatrix.abr.infrastructure.dao.ExceptionDao">
 
+    <!--private Integer id;-->
+    <!--private String unionCode; //异常标识-->
+    <!--private String robotUnionCode; //机器人唯一标识-->
+    <!--private String deviceId; //设备ID-->
+    <!--private String workAddress; //国作地址-->
+    <!--private String lastScore; //最近绩效-->
+    <!--private String analysis; //异常原因-->
+    <!--private Double workHours; /最近一次工作时长-->
+    <!--private String workTimes;//最近一次工作次数-->
+    <!--private String createTime;-->
+    <!--private String updateTime;-->
     <sql id="Evaluation_Exce_Columns">
-
+        er.id,
+        er.rent_union_code as rentUnionCode,
+        er.robot_union_code as robotUnionCode,
+        er.device_id  as deviceId,
+        cra.work_address as  workAddress,
+        re.score as lastScore,
+        er.analysis as analysis,
+        wtr.work_time_hours as workHours,
+        wtr.work_time_count as wokrTimes,
+        er.create_time as createTime,
+        er.update_time as updateTime
     </sql>
 
     <select id="queryEvaluationExceRobot" resultType="com.atmatrix.abr.mgt.dto.RobotExceDto">
-        select <include refid="Evaluation_Exce_Columns"/>
-        from
+        select
+        <include refid="Evaluation_Exce_Columns"/>
+        from exce_robot as er
+        left join robot_basic as rb on rb.union_code = er.union_code
+        left join contract_rent_address as cra on cra.robot_union_code = er.robot_union_code
+        left join robot_evaluation as re on re.robot_union_code = er.robot_union_code and re.last_flag = 1
+        left join work_time_record as wtr on wtr.robot_union_code = er.robot_union_code
+        where er.`delete` = 1
+        and er.exce_type_code = #{exceCode}
     </select>
+
+    <select id="queryExceRobotAmountByWorkType" resultType="java.util.Map">
+        select rd.`work_type` as workType, count(1) as amount
+        from exce_robot as er
+        inner join robot_detail rd on rd.robot_union_code = er.robot_union_code
+        where
+        rd.`rent_status_code` = #{rentStatusCode}
+        and er.`exce_type_code` = #{exceCode}
+        and er.`delete` = 1
+        group by workType
+    </select>
+
+    <sql id="Price_Exce_Columns">
+        er.id as id,
+        er.rent_union_code as rentUnionCode,
+        er.robot_union_code as robotUnionCode,
+        er.device_id as deviceId,
+        cra.work_address as workAddress,
+        rp.last_proceeds as lastProceeds,
+        er.analysis as analysis,
+        wtr.work_time_hours as workHours,
+        wtr.work_time_count as workTimes,
+        wtr.work_time_total as workTimeTotal,
+        er.create_time as createTime,
+        er.update_time as updateTime
+    </sql>
+    <select id="queryPriceExceRobots" resultType="com.atmatrix.abr.mgt.dto.RobotPriceExceDto">
+        select
+        <include refid="Price_Exce_Columns"/>
+        from exce_robot as er
+        left join robot_basic as rb on rb.union_code = er.union_code
+        left join contract_rent_address as cra on cra.rent_union_code = er.rent_union_code
+        left join robot_proceeds as rp on rp.rent_union_code = er.rent_union_code and rp.last_flag = 1
+        left join work_time_record as wtr on wtr.rent_union_code = er.rent_union_code
+        where er.`delete` = 1
+        and er.exce_type_code = #{exceCode}
+    </select>
+
+
+    <sql id="Price_Standard_Columns">
+        ps.id,
+        ps.union_code as unionCode,
+        ps.work_type_code as  workTypeCode,
+        wt.worktype_name as  workTypeName,
+        ps.max_dayProceeds as maxDayProceeds,
+        ps.avg_dayProceeds as avgDayProceeds,
+        ps.exc_dayProceeds as excDayProceeds,
+        ps.create_time as createTime,
+        ps.update_time as updateTime
+    </sql>
+    <select id="queryPriceStandardByWorkType" resultType="com.atmatrix.abr.mgt.dto.PriceStandardExDto">
+        select
+        <include refid="Price_Standard_Columns"/>
+        from price_standard as ps
+        left join work_type as wt on wt.union_code = ps.work_type_code
+        where ps.`delete` = 1
+    </select>
+
+    <select id="countExceRobotGroupByWorkType" resultType="java.util.HashMap">
+        select `work_type_code` as workType, count(1) as amount
+        from exce_robot
+        where  `delete` = 1
+        and exce_type_code = #{exceCode}
+        group by `work_type_code`
+    </select>
+
+    <sql id="Overdraft_Columns">
+        er.id as id,
+        er.robot_union_code as robotUnionCode,
+        er.rent_union_code as rentUnionCode,
+        er.exce_type_code as exceTypeCode,
+        er.exce_type_name as exce_type_name,
+        er.billing_type_code as billingTypeCode,
+        er.billing_left as billingLeft,
+        cr.rent_address as rentAddress,
+        er.reference_overdraft as refOverdraft,
+        er.reference_desc as refDesc,
+        rb.device_id as deviceId,
+        er.create_time as createTime,
+        er.update_time as updateTime
+    </sql>
+
+    <select id="queryOverdraftReference" resultType="com.atmatrix.abr.mgt.dto.RobotExceOverdraftDto">
+        select
+        <include refid="Overdraft_Columns"/>
+        from exce_robot as er
+        left join robot_overdraft as ro on ro.rent_union_code = er.rent_union_code
+        left join robot_basic as rb on rb.union_code = er.robot_union_code
+        left join contract_rent as cr on cr.union_code= er.rent_union_code
+        where ro.`delete` = 1
+        and er.exce_type_code = #{exceCode}
+    </select>
+
+    <sql id="Exce_Robot_Info">
+        er.id as id,
+        er.robot_union_code as robotUnionCode,
+        er.rent_union_code as rentUnionCode,
+        er.exce_type_code as exceTypeCode,
+        er.exce_type_name as exceTypeName,
+        er.reason as reason,
+        er.exce_time as exceTime,
+        rb.robot_name as robotName,
+        rb.device_id as deviceId
+    </sql>
+    <select id="querySimpleExceRobots" resultType="com.atmatrix.abr.mgt.dto.ExceRobotExtend">
+        select
+        <include refid="Exce_Robot_Info"/>
+        from exce_robot as er
+        left join robot_basic as rb on rb.union_code = er.robot_union_code
+        where er."delete" = 1
+    </select>
+
+
 </mapper>

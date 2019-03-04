@@ -1,7 +1,7 @@
 package com.atmatrix.abr.infrastructure.dao;
 
-import com.atmatrix.abr.infrastructure.entity.BillingPrice;
-import com.atmatrix.abr.infrastructure.entity.BillingPriceExample;
+import com.atmatrix.abr.infrastructure.entity.BillingPriceScope;
+import com.atmatrix.abr.infrastructure.entity.BillingPriceScopeExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,22 +15,22 @@ import java.util.List;
  **/
 
 public interface BillingPriceMapper {
-    long countByExample(BillingPriceExample example);
+    long countByExample(BillingPriceScopeExample example);
 
-    int deleteByExample(BillingPriceExample example);
+    int deleteByExample(BillingPriceScopeExample example);
 
-    int insert(BillingPrice record);
+    int insert(BillingPriceScope record);
 
-    int insertSelective(BillingPrice record);
+    int insertSelective(BillingPriceScope record);
 
-    List<BillingPrice> selectByExample(BillingPriceExample example);
+    List<BillingPriceScope> selectByExample(BillingPriceScopeExample example);
 
-    int updateByExampleSelective(@Param("record") BillingPrice record, @Param("example") BillingPriceExample example);
+    int updateByExampleSelective(@Param("record") BillingPriceScope record, @Param("example") BillingPriceScopeExample example);
 
-    int updateByExample(@Param("record") BillingPrice record, @Param("example") BillingPriceExample example);
+    int updateByExample(@Param("record") BillingPriceScope record, @Param("example") BillingPriceScopeExample example);
 
 
-    List<BillingPrice> getBillingPriceByParentCode(@Param("list")List<String> parentCode);
+    List<BillingPriceScope> getBillingPriceByParentCode(@Param("list") List<String> parentCode);
 
-    BillingPrice getBillingPriceByCode(@Param("code") String code);
+    BillingPriceScope getBillingPriceByCode(@Param("code") String code);
 }

@@ -55,7 +55,7 @@ public class RobotDetailMapperTest extends BaseTest {
         robotConditionDto.setMin(400);
         robotConditionDto.setWorkTypes(list);
         robotConditionDto.setLike(true);
-        robotConditionDto.setRentStatus("1");
+        robotConditionDto.setRentStatusCode("1");
         robotConditionDto.setRegionCode("110000");
         List<RobotDetailDto> robotDetailDtos = robotExtendDao.queryListByPageCondition(robotConditionDto);
 

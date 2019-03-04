@@ -305,6 +305,76 @@ public class ContractRentExample {
             return (Criteria) this;
         }
 
+        public Criteria andWorkTypeCodeIsNull() {
+            addCriterion("work_type_code is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeIsNotNull() {
+            addCriterion("work_type_code is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeEqualTo(String value) {
+            addCriterion("work_type_code =", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotEqualTo(String value) {
+            addCriterion("work_type_code <>", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeGreaterThan(String value) {
+            addCriterion("work_type_code >", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("work_type_code >=", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeLessThan(String value) {
+            addCriterion("work_type_code <", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeLessThanOrEqualTo(String value) {
+            addCriterion("work_type_code <=", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeLike(String value) {
+            addCriterion("work_type_code like", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotLike(String value) {
+            addCriterion("work_type_code not like", value, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeIn(List<String> values) {
+            addCriterion("work_type_code in", values, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotIn(List<String> values) {
+            addCriterion("work_type_code not in", values, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeBetween(String value1, String value2) {
+            addCriterion("work_type_code between", value1, value2, "workTypeCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorkTypeCodeNotBetween(String value1, String value2) {
+            addCriterion("work_type_code not between", value1, value2, "workTypeCode");
+            return (Criteria) this;
+        }
+
         public Criteria andRentAddressIsNull() {
             addCriterion("rent_address is null");
             return (Criteria) this;

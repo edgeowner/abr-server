@@ -1,7 +1,6 @@
 package com.atmatrix.abr.mgt;
 
-import com.atmatrix.abr.infrastructure.entity.BillingPrice;
-import com.atmatrix.abr.mgt.dto.BillingTypeDto;
+import com.atmatrix.abr.infrastructure.entity.BillingPriceScope;
 
 import java.util.List;
 
@@ -15,8 +14,8 @@ import java.util.List;
 
 public interface BillingMgt {
 
-    List<BillingPrice> getBillPriceByParentCode(List<String> parentCodeList);
+    List<BillingPriceScope> getBillPriceByParentCode(List<String> parentCodeList);
 
-    BillingPrice getBillPriceByCode(String code);
+    BillingPriceScope getBillPriceByCode(String code);
 
 }

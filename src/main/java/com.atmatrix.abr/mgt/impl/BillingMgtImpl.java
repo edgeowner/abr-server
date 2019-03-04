@@ -1,7 +1,7 @@
 package com.atmatrix.abr.mgt.impl;
 
 import com.atmatrix.abr.infrastructure.dao.BillingPriceMapper;
-import com.atmatrix.abr.infrastructure.entity.BillingPrice;
+import com.atmatrix.abr.infrastructure.entity.BillingPriceScope;
 import com.atmatrix.abr.mgt.BillingMgt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,14 +25,14 @@ public class BillingMgtImpl implements BillingMgt {
 
 
     @Override
-    public List<BillingPrice> getBillPriceByParentCode(List<String> parentCodeList) {
-        List<BillingPrice> result = billingPriceMapper.getBillingPriceByParentCode(parentCodeList);
+    public List<BillingPriceScope> getBillPriceByParentCode(List<String> parentCodeList) {
+        List<BillingPriceScope> result = billingPriceMapper.getBillingPriceByParentCode(parentCodeList);
         return result;
     }
 
     @Override
-    public BillingPrice getBillPriceByCode(String code) {
-        BillingPrice result = billingPriceMapper.getBillingPriceByCode(code);
+    public BillingPriceScope getBillPriceByCode(String code) {
+        BillingPriceScope result = billingPriceMapper.getBillingPriceByCode(code);
         return result;
     }
 

@@ -14,6 +14,8 @@ public class ContractRent {
 
     private String robotUnionCode;
 
+    private String workTypeCode;
+
     private String rentAddress;
 
     private String robotAddress;

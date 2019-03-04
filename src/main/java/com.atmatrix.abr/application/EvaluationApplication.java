@@ -3,7 +3,7 @@ package com.atmatrix.abr.application;
 import com.atmatrix.abr.application.dto.condtion.QueryCondPageDto;
 import com.atmatrix.abr.application.dto.condtion.WorkTypeCondDto;
 import com.atmatrix.abr.application.dto.evaluation.EvaluationStandardDto;
-import com.atmatrix.abr.application.dto.evaluation.RobotExceptionDto;
+import com.atmatrix.abr.application.dto.evaluation.RobotEvaluationExceDto;
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
 
 /**
@@ -30,7 +30,7 @@ public interface EvaluationApplication {
      * @param cond
      * @return
      */
-    PageInfoResult<RobotExceptionDto> getExceptionRobot(WorkTypeCondDto cond);
+    PageInfoResult<RobotEvaluationExceDto> getExceptionRobot(WorkTypeCondDto cond);
 
 
 

@@ -1,13 +1,13 @@
 package com.atmatrix.abr.infrastructure.entity;
 
-
 import lombok.Data;
+
 
 @Data
 public class RobotEvaluation {
     private Integer id;
 
-    private String unionCode;
+    private String rentUnionCode;
 
     private String robotUnionCode;
 
@@ -17,9 +17,11 @@ public class RobotEvaluation {
 
     private String score;
 
+    private Integer delete;
+
+    private Integer lastFlag;
+
     private String createTime;
 
     private String updateTime;
-
-
 }

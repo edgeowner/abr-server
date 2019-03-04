@@ -17,8 +17,8 @@ public class RobotConditionDto {
     private String regionCode;
     private Integer min;
     private Integer max;
-    private String rentStatus;
+    private String rentStatusCode;
     private List<String> workTypes;
     private String billingTypeCode;
-    private boolean like=false;//是否模糊查询
+    private boolean like = false;//是否模糊查询
 }

@@ -7,5 +7,4 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class ExceRobotWithBLOBs extends ExceRobot {
     private String reason;
-
 }

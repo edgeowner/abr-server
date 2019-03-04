@@ -5,6 +5,7 @@
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="union_code" jdbcType="VARCHAR" property="unionCode"/>
         <result column="robot_union_code" jdbcType="VARCHAR" property="robotUnionCode"/>
+        <result column="work_type_code" jdbcType="VARCHAR" property="workTypeCode"/>
         <result column="rent_address" jdbcType="VARCHAR" property="rentAddress"/>
         <result column="robot_address" jdbcType="VARCHAR" property="robotAddress"/>
         <result column="billing_price" jdbcType="INTEGER" property="billingPrice"/>
@@ -84,6 +85,7 @@
         `id`,
         `union_code`,
         `robot_union_code`,
+        `work_type_code`,
         `rent_address`,
         `robot_address`,
         `billing_price`,
@@ -124,6 +126,8 @@
     insert into contract_rent (
         `union_code`,
         `robot_union_code`,
+        `work_type_code`,
+        `rent_address`,
         `rent_address`,
         `robot_address`,
         `billing_price`,
@@ -141,6 +145,7 @@
     values (
       #{unionCode,jdbcType=VARCHAR},
       #{robotUnionCode,jdbcType=VARCHAR},
+      #{workTypeCode,jdbcType=VARCHAR},
       #{rentAddress,jdbcType=VARCHAR},
       #{robotAddress,jdbcType=VARCHAR},
       #{billingPrice,jdbcType=INTEGER},
@@ -167,6 +172,9 @@
             </if>
             <if test="robotUnionCode != null">
                 robot_union_code,
+            </if>
+            <if test="workTypeCode != null">
+                work_type_code,
             </if>
             <if test="rentAddress != null">
                 rent_address,
@@ -217,6 +225,9 @@
             </if>
             <if test="robotUnionCode != null">
                 #{robotUnionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="workTypeCode != null">
+                #{workTypeCode,jdbcType=VARCHAR},
             </if>
             <if test="rentAddress != null">
                 #{rentAddress,jdbcType=VARCHAR},
@@ -278,6 +289,9 @@
             <if test="record.robotUnionCode != null">
                 robot_union_code = #{record.robotUnionCode,jdbcType=VARCHAR},
             </if>
+            <if test="record.workTypeCode != null">
+                work_type_code = #{record.workTypeCode,jdbcType=VARCHAR},
+            </if>
             <if test="record.rentAddress != null">
                 rent_address = #{record.rentAddress,jdbcType=VARCHAR},
             </if>
@@ -321,6 +335,7 @@
         set
         `union_code` = #{record.unionCode,jdbcType=VARCHAR},
         `robot_union_code` = #{record.robotUnionCode,jdbcType=VARCHAR},
+        `work_type_code` = #{record.workTypeCode,jdbcType=VARCHAR},
         `rent_address` = #{record.rentAddress,jdbcType=VARCHAR},
         `robot_address` = #{record.robotAddress,jdbcType=VARCHAR},
         `billing_price` = #{record.billingPrice,jdbcType=INTEGER},

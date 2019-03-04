@@ -1,14 +1,11 @@
 package com.atmatrix.abr.controller;
 
-import com.atmatrix.abr.application.ContractApplication;
 import com.atmatrix.abr.application.EvaluationApplication;
-import com.atmatrix.abr.application.dto.condtion.CommonQueryCondDto;
 import com.atmatrix.abr.application.dto.condtion.QueryCondPageDto;
 import com.atmatrix.abr.application.dto.condtion.WorkTypeCondDto;
 import com.atmatrix.abr.application.dto.evaluation.EvaluationStandardDto;
-import com.atmatrix.abr.application.dto.evaluation.RobotExceptionDto;
+import com.atmatrix.abr.application.dto.evaluation.RobotEvaluationExceDto;
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
-import com.atmatrix.abr.application.dto.rent.RentContractDto;
 import com.atmatrix.abr.common.web.WebUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -56,7 +53,7 @@ public class EvaluationController {
     @ResponseBody
     public ResponseEntity<Map<String, Object>> getExceptionRobotList(@RequestBody WorkTypeCondDto cond) {
         try {
-            PageInfoResult<RobotExceptionDto> result = evaluationApplication.getExceptionRobot(cond);
+            PageInfoResult<RobotEvaluationExceDto> result = evaluationApplication.getExceptionRobot(cond);
             return WebUtil.result(result);
         } catch (Exception e) {
             e.printStackTrace();

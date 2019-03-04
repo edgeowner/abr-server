@@ -5,7 +5,7 @@ import com.atmatrix.abr.application.dto.BillingDto;
 import com.atmatrix.abr.application.dto.BillingPriceDto;
 import com.atmatrix.abr.application.dto.DictionaryDto;
 import com.atmatrix.abr.common.constants.QueryDicTypeEnum;
-import com.atmatrix.abr.infrastructure.entity.BillingPrice;
+import com.atmatrix.abr.infrastructure.entity.BillingPriceScope;
 import com.atmatrix.abr.infrastructure.entity.RobotDictionary;
 import com.atmatrix.abr.mgt.BillingMgt;
 import com.atmatrix.abr.mgt.DictionaryMgt;
@@ -88,15 +88,15 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
         String billing = QueryDicTypeEnum.BILLING.getName();
         List<RobotDictionary> resource = dictionaryMgt.getListDtoByType(billing);
         List<String> billTypeCode = Lists.newArrayList();
-        resource.stream().forEach(e->{
-            BillingDto  billingDto = new BillingDto();
+        resource.stream().forEach(e -> {
+            BillingDto billingDto = new BillingDto();
             billingDto.setCode(e.getCode());
             billingDto.setName(e.getName());
             billingDto.setType(e.getType());
             billTypeCode.add(e.getCode());
             result.add(billingDto);
         });
-        List<BillingPrice> billingPrices = billingMgt.getBillPriceByParentCode(billTypeCode);
+        List<BillingPriceScope> billingPrices = billingMgt.getBillPriceByParentCode(billTypeCode);
         handlerBillingTypePriceDto(result, billingPrices);
         return result;
     }
@@ -121,19 +121,18 @@ public class DictionaryApplictionImpl implements DictionaryAppliction {
     }
 
 
-
-    private void handlerBillingTypePriceDto(List<BillingDto> result, List<BillingPrice> billingPrices) {
+    private void handlerBillingTypePriceDto(List<BillingDto> result, List<BillingPriceScope> billingPrices) {
         if (!CollectionUtils.isEmpty(billingPrices)) {
             for (BillingDto billingDto : result) {
                 List<BillingPriceDto> priceList = billingDto.getPriceList();
                 BillingPriceDto billingPriceDto = null;
-                for (BillingPrice billingPrice : billingPrices) {
-                    if (billingPrice.getParentUnionCode().equals(billingDto.getCode())) {
+                for (BillingPriceScope billingPriceScope : billingPrices) {
+                    if (billingPriceScope.getParentUnionCode().equals(billingDto.getCode())) {
                         billingPriceDto = new BillingPriceDto();
-                        billingPriceDto.setCode(billingPrice.getUnionCode());
-                        billingPriceDto.setMax(billingPrice.getMaxPrice());
-                        billingPriceDto.setMin(billingPrice.getMinPrice());
-                        billingPriceDto.setShowText(billingPrice.getName());
+                        billingPriceDto.setCode(billingPriceScope.getUnionCode());
+                        billingPriceDto.setMax(billingPriceScope.getMaxPrice());
+                        billingPriceDto.setMin(billingPriceScope.getMinPrice());
+                        billingPriceDto.setShowText(billingPriceScope.getName());
                         priceList.add(billingPriceDto);
                     }
                 }

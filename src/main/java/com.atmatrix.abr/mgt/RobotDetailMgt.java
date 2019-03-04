@@ -3,6 +3,7 @@ package com.atmatrix.abr.mgt;
 
 import com.atmatrix.abr.application.dto.page.PageInfoResult;
 import com.atmatrix.abr.application.dto.page.PageQuery;
+import com.atmatrix.abr.mgt.dto.RobotCommonInfoDto;
 import com.atmatrix.abr.mgt.dto.RobotConditionDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
@@ -20,5 +21,5 @@ public interface RobotDetailMgt {
     RobotDetailDto getRobotDetailDto(String unionCode);
 
 
-    Map<String, Integer> getAmountGroupByWorkType(String rentStatusCode);
+    RobotCommonInfoDto getExceCommonRobotInfo(String robotUnionCode, String rentUnionCode);
 }

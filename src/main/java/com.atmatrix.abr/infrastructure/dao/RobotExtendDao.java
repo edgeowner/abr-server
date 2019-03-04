@@ -1,5 +1,6 @@
 package com.atmatrix.abr.infrastructure.dao;
 
+import com.atmatrix.abr.mgt.dto.RobotCommonInfoDto;
 import com.atmatrix.abr.mgt.dto.RobotConditionDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailDto;
 import com.atmatrix.abr.mgt.dto.RobotDetailExtendDto;
@@ -25,7 +26,6 @@ public interface RobotExtendDao {
 
     RobotDetailDto queryOneByUnionCode(@Param("unionCode") String unionCode);
 
-    @MapKey("workType")
-    Map<String, Integer> countRentRobotGroupByWorkType(@Param("rentStatusCode")String rentStatusCode);
 
+    RobotCommonInfoDto queryExceCommonInfoByCodes(@Param("robotUnionCode") String robotUnionCode, @Param("rentUnionCode") String rentUnionCode);
 }

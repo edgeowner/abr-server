@@ -23,4 +23,4 @@
 /nbdist/
 /.nb-gradle/
 /build/
-log
+src/main/java/com.atmatrix.abr/common/logs

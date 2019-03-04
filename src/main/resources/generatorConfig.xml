@@ -74,24 +74,13 @@
         </javaClientGenerator>
 
 
-        <table tableName="contract_rent_address" domainObjectName="RentAddress"
+        <table tableName="robot_overdraft" domainObjectName="RobotOverdraft"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
         </table>
 
 
-        <table tableName="robot_evaluation" domainObjectName="RobotEvaluation"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
-
-        <table tableName="work_time_avg" domainObjectName="WorkTimeAvg"
-               enableCountByExample="true" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true">
-        </table>
 
     </context>
 </generatorConfiguration>
